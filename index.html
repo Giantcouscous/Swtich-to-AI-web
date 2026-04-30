@@ -561,26 +561,12 @@ footer p.copy { font-size: 12px; color: var(--muted); }
       <div class="form-top">
         <div class="form-tag">✦ Free AI Assessment</div>
         <div class="form-title">See where AI fits in your business</div>
-        <div class="form-sub">Takes 3 minutes. We'll be in touch within 24 hours to book your session.</div>
+        <div class="form-sub">Takes 30 seconds. We'll be in touch within 24 hours to book your session.</div>
       </div>
       <div class="form-body">
-        <div class="fields-row">
-          <div class="field">
-            <label>First Name</label>
-            <input type="text" id="f-first" placeholder="John">
-          </div>
-          <div class="field">
-            <label>Last Name</label>
-            <input type="text" id="f-last" placeholder="Smith">
-          </div>
-        </div>
         <div class="field">
           <label>Business Email</label>
           <input type="email" id="f-email" placeholder="john@yourbusiness.com">
-        </div>
-        <div class="field">
-          <label>Company Name</label>
-          <input type="text" id="f-company" placeholder="Your Business Ltd">
         </div>
         <div class="field">
           <label>Industry</label>
@@ -596,10 +582,6 @@ footer p.copy { font-size: 12px; color: var(--muted); }
             <option>Other</option>
           </select>
         </div>
-        <div class="field">
-          <label>Biggest time drain right now</label>
-          <textarea id="f-drain" placeholder="e.g. Chasing clients, writing reports, managing emails..."></textarea>
-        </div>
         <button class="submit-btn" id="submit-btn" type="button" onclick="openTally(event)">
           Get my free assessment <span class="btn-arrow">→</span>
         </button>
@@ -611,7 +593,7 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <span class="trust-label">Trusted by</span>
+  <span class="trust-label">Built for</span>
   <div class="trust-items">
     <div class="trust-item">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
@@ -716,7 +698,7 @@ footer p.copy { font-size: 12px; color: var(--muted); }
         LinkedIn
       </a>
     </div>
-    <p class="founder-bio">Ahmed is a <strong>VP at Bank of America</strong>, where he uses AI tools daily to cut through the admin that would otherwise eat his week. <strong>The same tools that save him hours every week are completely unknown to most small business owners.</strong> SwitchToAI is his answer to that gap: a straightforward service that maps where your time is actually going, and builds the automation to get it back.</p>
+    <p class="founder-bio">Ahmed is a <strong>VP at a major global financial institution</strong>, where he uses AI tools daily to cut through the admin that would otherwise eat his week. <strong>The same tools that save him hours every week are completely unknown to most small business owners.</strong> SwitchToAI is his answer to that gap: a straightforward service that maps where your time is actually going, and builds the automation to get it back.</p>
   </div>
 </section>
 
@@ -777,12 +759,8 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 
   function openTally(e) {
     e.preventDefault();
-    const first    = document.getElementById('f-first').value.trim();
-    const last     = document.getElementById('f-last').value.trim();
     const email    = document.getElementById('f-email').value.trim();
-    const company  = document.getElementById('f-company').value.trim();
     const industry = document.getElementById('f-industry').value;
-    const drain    = document.getElementById('f-drain').value.trim();
 
     if (!email) {
       document.getElementById('f-email').focus();
@@ -791,12 +769,8 @@ footer p.copy { font-size: 12px; color: var(--muted); }
     }
 
     const params = new URLSearchParams();
-    if (first)    params.set('first_name', first);
-    if (last)     params.set('last_name', last);
     if (email)    params.set('email', email);
-    if (company)  params.set('company', company);
     if (industry) params.set('industry', industry);
-    if (drain)    params.set('time_drain', drain);
 
     const url = `https://tally.so/r/vGqXeQ?${params.toString()}`;
     const a = document.createElement('a');
