@@ -559,7 +559,8 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   <div class="nav-right">
     <a href="#how" class="nav-link">How it works</a>
     <a href="#industries" class="nav-link">Who it's for</a>
-<a href="https://tally.so/r/vGqXeQ" target="_blank" class="nav-btn">Free assessment</a>  </div>
+    <a href="#assessment" class="nav-btn">Free assessment</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -629,7 +630,7 @@ footer p.copy { font-size: 12px; color: var(--muted); }
           <label>Biggest time drain right now</label>
           <textarea id="f-drain" placeholder="e.g. Chasing clients, writing reports, managing emails..."></textarea>
         </div>
-        <button class="submit-btn" onclick="openTally()">
+        <button class="submit-btn" id="submit-btn" type="button" onclick="openTally(event)">
           Get my free assessment <span class="btn-arrow">→</span>
         </button>
         <p class="form-note">No pitch. No obligation. Just a clear picture of where AI can help.</p>
@@ -789,7 +790,7 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 <section class="cta-section">
   <div class="sec-title" style="max-width:560px">Ready to see what <em>AI can do</em> for your business?</div>
   <p class="cta-sub">Takes 2 minutes to apply. Report delivered within 48 hours.</p>
-  <a href="https://tally.so/r/vGqXeQ" target="_blank" class="cta-btn">Get your free assessment →</a>
+  <a href="#assessment" class="cta-btn">Get your free assessment →</a>
 </section>
 
 <!-- FOOTER -->
@@ -846,17 +847,10 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
-</script>
-
-<script>
-  // Scroll-reactive nav
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
 
   // Open Tally with pre-filled params
-  function openTally() {
+  function openTally(e) {
+    e.preventDefault();
     const first    = document.getElementById('f-first').value.trim();
     const last     = document.getElementById('f-last').value.trim();
     const email    = document.getElementById('f-email').value.trim();
@@ -866,22 +860,26 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 
     if (!email) {
       document.getElementById('f-email').focus();
+      document.getElementById('f-email').style.borderColor = '#3B7BFF';
       return;
     }
 
-    const params = new URLSearchParams({
-      ...(first    && { first_name: first }),
-      ...(last     && { last_name: last }),
-      ...(email    && { email }),
-      ...(company  && { company }),
-      ...(industry && { industry }),
-      ...(drain    && { time_drain: drain }),
-    });
+    const params = new URLSearchParams();
+    if (first)    params.set('first_name', first);
+    if (last)     params.set('last_name', last);
+    if (email)    params.set('email', email);
+    if (company)  params.set('company', company);
+    if (industry) params.set('industry', industry);
+    if (drain)    params.set('time_drain', drain);
 
-    window.open(
-      `https://tally.so/r/vGqXeQ?${params.toString()}`,
-      '_blank'
-    );
+    const url = `https://tally.so/r/vGqXeQ?${params.toString()}`;
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 </script>
 </body>
