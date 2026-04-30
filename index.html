@@ -32,7 +32,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── NOISE OVERLAY ── */
 body::before {
   content: '';
   position: fixed; inset: 0;
@@ -40,7 +39,7 @@ body::before {
   pointer-events: none; z-index: 0; opacity: 0.4;
 }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -53,7 +52,6 @@ nav.scrolled {
   padding: 14px 64px;
   box-shadow: 0 1px 0 var(--border);
 }
-
 .logo-wrap {
   display: flex; align-items: center; gap: 12px;
   text-decoration: none;
@@ -84,7 +82,6 @@ nav.scrolled {
   letter-spacing: -0.02em; color: var(--white);
 }
 .logo-text span { color: var(--blue); }
-
 .nav-right { display: flex; align-items: center; gap: 32px; }
 .nav-link {
   font-size: 13px; font-weight: 500;
@@ -104,7 +101,7 @@ nav.scrolled {
   box-shadow: 0 0 28px rgba(59,123,255,0.5);
 }
 
-/* ── HERO ── */
+/* HERO */
 .hero {
   min-height: 100vh;
   padding: 130px 64px 80px;
@@ -133,23 +130,6 @@ nav.scrolled {
 }
 .hero-content { position: relative; z-index: 1; }
 
-.pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(59,123,255,0.1);
-  border: 1px solid rgba(59,123,255,0.3);
-  border-radius: 100px; padding: 7px 16px;
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 36px;
-  animation: fadeUp 0.7s ease both;
-}
-.pill-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--blue);
-  animation: blink 2s ease-in-out infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
 h1 {
   font-family: 'Fraunces', serif;
   font-size: clamp(46px, 5vw, 72px);
@@ -166,28 +146,46 @@ h1 em { font-style: italic; color: var(--blue); font-weight: 300; }
   animation: fadeUp 0.7s ease 0.2s both;
 }
 
+/* STATS — redesigned */
 .stats {
-  display: flex; gap: 0;
+  display: flex; flex-direction: column; gap: 0;
   border: 1px solid var(--border);
   border-radius: 12px; overflow: hidden;
-  max-width: 440px;
+  max-width: 480px;
   animation: fadeUp 0.7s ease 0.3s both;
 }
 .stat {
-  flex: 1; padding: 20px 24px;
-  border-right: 1px solid var(--border);
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  align-items: start;
   transition: background 0.2s;
 }
-.stat:last-child { border-right: none; }
+.stat:last-child { border-bottom: none; }
 .stat:hover { background: rgba(59,123,255,0.05); }
+.stat-num-wrap { display: flex; flex-direction: column; }
 .stat-n {
   font-family: 'Fraunces', serif;
-  font-size: 32px; font-weight: 600;
-  color: var(--blue); line-height: 1; margin-bottom: 4px;
+  font-size: 30px; font-weight: 600;
+  color: var(--blue); line-height: 1;
 }
+.stat-unit {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-top: 3px;
+}
+.stat-detail { padding-top: 2px; }
 .stat-l {
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+  font-size: 12px; font-weight: 400;
+  color: var(--white); line-height: 1.55;
+  margin-bottom: 4px;
+}
+.stat-source {
+  font-size: 10px; font-weight: 300;
+  color: var(--muted); line-height: 1.5;
+  font-style: italic;
 }
 
 @keyframes fadeUp {
@@ -195,7 +193,7 @@ h1 em { font-style: italic; color: var(--blue); font-weight: 300; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── FORM ── */
+/* FORM */
 .form-wrap {
   position: relative; z-index: 1;
   animation: fadeUp 0.7s ease 0.25s both;
@@ -256,7 +254,6 @@ input:focus, select:focus, textarea:focus {
 select option { background: #1A2030; color: var(--white); }
 textarea { resize: none; height: 86px; line-height: 1.55; }
 .fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
 .submit-btn {
   width: 100%; padding: 15px;
   background: var(--blue); color: white; border: none;
@@ -280,7 +277,7 @@ textarea { resize: none; height: 86px; line-height: 1.55; }
   margin-top: 12px; line-height: 1.5;
 }
 
-/* ── TRUST BAR ── */
+/* TRUST BAR */
 .trust-bar {
   padding: 28px 64px;
   border-top: 1px solid var(--border);
@@ -306,7 +303,7 @@ textarea { resize: none; height: 86px; line-height: 1.55; }
 .trust-item svg { opacity: 0.5; transition: opacity 0.2s; flex-shrink: 0; }
 .trust-item:hover svg { opacity: 0.9; }
 
-/* ── SECTIONS ── */
+/* SECTIONS */
 .section {
   padding: 110px 64px;
   border-top: 1px solid var(--border);
@@ -326,7 +323,7 @@ textarea { resize: none; height: 86px; line-height: 1.55; }
 }
 .sec-title em { font-style: italic; font-weight: 300; color: var(--blue); }
 
-/* ── HOW IT WORKS ── */
+/* HOW IT WORKS */
 .steps {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--border);
@@ -373,7 +370,7 @@ textarea { resize: none; height: 86px; line-height: 1.55; }
   color: var(--muted); line-height: 1.7;
 }
 
-/* ── INDUSTRIES ── */
+/* INDUSTRIES */
 .ind-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 16px; margin-top: 60px;
@@ -406,7 +403,7 @@ textarea { resize: none; height: 86px; line-height: 1.55; }
   color: var(--muted); line-height: 1.6;
 }
 
-/* ── CTA ── */
+/* CTA */
 .cta-section {
   padding: 100px 64px;
   border-top: 1px solid var(--border);
@@ -437,7 +434,7 @@ textarea { resize: none; height: 86px; line-height: 1.55; }
   box-shadow: 0 8px 40px rgba(59,123,255,0.5);
 }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer {
   padding: 56px 64px 36px;
   border-top: 1px solid var(--border);
@@ -470,14 +467,8 @@ footer {
   display: flex; align-items: center; justify-content: space-between;
 }
 footer p.copy { font-size: 12px; color: var(--muted); }
-.footer-legal { display: flex; gap: 24px; }
-.footer-legal a {
-  font-size: 12px; color: var(--muted);
-  text-decoration: none; transition: color 0.2s;
-}
-.footer-legal a:hover { color: var(--white); }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media (max-width: 960px) {
   nav { padding: 18px 24px; }
   nav.scrolled { padding: 12px 24px; }
@@ -489,9 +480,8 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   .trust-items { gap: 24px; }
   .steps { grid-template-columns: 1fr; }
   .ind-grid { grid-template-columns: 1fr 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .section, .testimonials, .cta-section { padding: 70px 24px; }
+  .section, .cta-section { padding: 70px 24px; }
   footer { padding: 48px 24px 28px; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
   .stats { max-width: 100%; }
@@ -516,21 +506,37 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="pill"><span class="pill-dot"></span> Limited free assessments available</div>
-    <h1>Your business.<br>Running <em>smarter.</em></h1>
-    <p class="hero-sub">We analyse your daily operations and identify exactly where AI can give you time back — delivered as a clear, actionable report within 48 hours. No jargon. No fluff.</p>
+    <h1>Stop doing the work<br><em>software</em> should be doing.</h1>
+    <p class="hero-sub">We map exactly where your team is losing hours to admin, chasing, and repetition — and automate it. Free assessment, delivered in 48 hours.</p>
+
     <div class="stats">
       <div class="stat">
-        <div class="stat-n">8h+</div>
-        <div class="stat-l">Avg. saved/week</div>
+        <div class="stat-num-wrap">
+          <div class="stat-n">8</div>
+          <div class="stat-unit">hrs/week</div>
+        </div>
+        <div class="stat-detail">
+          <p class="stat-l">Average time recovered after a first implementation — across estate agents, brokers, and accountancy practices.</p>
+          <p class="stat-source">Based on our assessment findings — your number may differ. That's why we check first.</p>
+        </div>
       </div>
       <div class="stat">
-        <div class="stat-n">48h</div>
-        <div class="stat-l">Report turnaround</div>
+        <div class="stat-num-wrap">
+          <div class="stat-n">48</div>
+          <div class="stat-unit">hours</div>
+        </div>
+        <div class="stat-detail">
+          <p class="stat-l">From conversation to written report. You'll know exactly where AI can help before you spend a penny.</p>
+        </div>
       </div>
       <div class="stat">
-        <div class="stat-n">£0</div>
-        <div class="stat-l">To get started</div>
+        <div class="stat-num-wrap">
+          <div class="stat-n">£0</div>
+          <div class="stat-unit">to start</div>
+        </div>
+        <div class="stat-detail">
+          <p class="stat-l">The assessment is free. Implementations start from £1,500 depending on scope. No retainers, no lock-in.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -594,27 +600,22 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   <span class="trust-label">Trusted by</span>
   <div class="trust-items">
     <div class="trust-item">
-      <!-- House icon -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       Estate Agents
     </div>
     <div class="trust-item">
-      <!-- Briefcase icon -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
       Mortgage Brokers
     </div>
     <div class="trust-item">
-      <!-- Scale/balance icon -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><path d="M5 8c0 2.2 1.8 4 4 4s4-1.8 4-4"/><path d="M15 8c0 2.2 1.8 4 4 4s4-1.8 4-4"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
       Solicitors
     </div>
     <div class="trust-item">
-      <!-- Chart icon -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
       Finance & Accounting
     </div>
     <div class="trust-item">
-      <!-- Clock icon -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
       8h+ saved per week
     </div>
@@ -744,13 +745,11 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 </footer>
 
 <script>
-  // Scroll-reactive nav
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // Open Tally with pre-filled params
   function openTally(e) {
     e.preventDefault();
     const first    = document.getElementById('f-first').value.trim();
