@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — AI Automation for UK Businesses | SwitchToAI</title>
+<meta name="description" content="Practical guides on AI automation for UK estate agents, mortgage brokers, solicitors, and accountants. No jargon. Just what works.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#0E1117; --bg2:#141820; --bg3:#1A2030; --blue:#3B7BFF; --blue-dim:#2D6FE8; --white:#F0EEE9; --off:#F8F6F1; --muted:#7A8699; --border:rgba(255,255,255,0.07); --border-b:rgba(59,123,255,0.25); }
+html { scroll-behavior: smooth; }
+body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 64px; background: rgba(14,17,23,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.toggle-icon { width: 44px; height: 26px; background: #1C1C22; border: 2px solid #333; border-radius: 13px; position: relative; transition: border-color 0.3s; }
+.toggle-icon::after { content: ''; position: absolute; right: 3px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 10px rgba(59,123,255,0.6); }
+.logo-wrap:hover .toggle-icon { border-color: var(--blue); }
+.logo-text { font-weight: 800; font-size: 17px; letter-spacing: -0.02em; color: var(--white); }
+.logo-text span { color: var(--blue); }
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover { color: var(--white); }
+.nav-btn { background: var(--blue); color: white; padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; box-shadow: 0 0 20px rgba(59,123,255,0.3); transition: background 0.2s; }
+.nav-btn:hover { background: var(--blue-dim); }
+
+.blog-hero { padding: 90px 64px 60px; max-width: 1100px; margin: 0 auto; position: relative; }
+.blog-hero::after { content: ''; position: absolute; top: 0; right: 0; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59,123,255,0.08) 0%, transparent 65%); pointer-events: none; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--off); margin-bottom: 20px; }
+h1 em { font-style: italic; color: var(--blue); font-weight: 300; }
+.blog-intro { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 560px; }
+
+.blog-body { padding: 0 64px 90px; max-width: 1100px; margin: 0 auto; }
+
+.coming-soon { border: 1px solid var(--border); border-radius: 16px; padding: 80px 48px; text-align: center; background: var(--bg2); position: relative; overflow: hidden; }
+.coming-soon::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+.coming-soon-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
+.coming-soon h2 { font-family: 'Fraunces', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 600; color: var(--off); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.15; }
+.coming-soon h2 em { font-style: italic; font-weight: 300; color: var(--blue); }
+.coming-soon p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 480px; margin: 0 auto 40px; }
+
+.topics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 700px; margin: 0 auto 48px; }
+.topic { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; font-size: 12px; font-weight: 500; color: var(--muted); text-align: center; line-height: 1.4; }
+.topic strong { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+
+.notify-row { display: flex; gap: 12px; max-width: 400px; margin: 0 auto; }
+.notify-input { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 16px; font-family: 'Manrope', sans-serif; font-size: 13px; color: var(--white); outline: none; transition: border-color 0.2s; }
+.notify-input::placeholder { color: rgba(122,134,153,0.5); }
+.notify-input:focus { border-color: rgba(59,123,255,0.4); }
+.notify-btn { background: var(--blue); color: white; border: none; border-radius: 8px; padding: 12px 20px; font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+.notify-btn:hover { background: var(--blue-dim); }
+.notify-note { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; }
+
+footer { padding: 40px 64px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.footer-note { font-size: 12px; color: var(--muted); }
+
+@media (max-width: 960px) {
+  nav { padding: 16px 24px; } .nav-link { display: none; }
+  .blog-hero { padding: 60px 24px 40px; }
+  .blog-body { padding: 0 24px 60px; }
+  .topics { grid-template-columns: 1fr 1fr; }
+  .notify-row { flex-direction: column; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo-wrap" href="/">
+    <div class="toggle-icon"></div>
+    <div class="logo-text">SwitchTo<span>AI</span></div>
+  </a>
+  <div class="nav-right">
+    <a href="/#how" class="nav-link">How it works</a>
+    <a href="/#industries" class="nav-link">Industries</a>
+    <a href="/#assessment" class="nav-btn">Free assessment</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="sec-label">Insights</div>
+  <h1>Practical AI for <em>UK businesses</em></h1>
+  <p class="blog-intro">No hype. No theory. Just specific, tested ways that estate agents, brokers, solicitors, and accountants are using automation to get hours back every week.</p>
+</div>
+
+<div class="blog-body">
+  <div class="coming-soon">
+    <div class="coming-soon-label">Coming soon</div>
+    <h2>Articles <em>in progress</em></h2>
+    <p>The first posts are being written now. Topics will cover specific workflows, tool recommendations, and real implementation breakdowns — by vertical.</p>
+
+    <div class="topics">
+      <div class="topic"><strong>Estate Agents</strong>Lead follow-up automation</div>
+      <div class="topic"><strong>Mortgage Brokers</strong>Document collection workflows</div>
+      <div class="topic"><strong>Solicitors</strong>AML & onboarding automation</div>
+      <div class="topic"><strong>Finance</strong>Month-end reporting</div>
+    </div>
+
+    <div>
+      <div class="notify-row">
+        <input class="notify-input" type="email" placeholder="your@email.com">
+        <button class="notify-btn" onclick="notifyMe(event)">Notify me</button>
+      </div>
+      <p class="notify-note">No spam. One email when the first article goes live.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a class="logo-wrap" href="/" style="text-decoration:none">
+    <div class="toggle-icon"></div>
+    <div class="logo-text">SwitchTo<span>AI</span></div>
+  </a>
+  <span class="footer-note">© 2026 SwitchToAI Ltd · London, UK · hello@switchtoai.ai</span>
+</footer>
+
+<script>
+function notifyMe(e) {
+  e.preventDefault();
+  const input = document.querySelector('.notify-input');
+  const btn = document.querySelector('.notify-btn');
+  if (!input.value.trim()) { input.focus(); return; }
+  btn.textContent = 'Done ✓';
+  btn.style.background = '#1d9e6e';
+  input.disabled = true;
+  btn.disabled = true;
+}
+</script>
+
+</body>
+</html>
