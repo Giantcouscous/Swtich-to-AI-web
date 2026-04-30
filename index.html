@@ -468,6 +468,17 @@ footer {
 }
 footer p.copy { font-size: 12px; color: var(--muted); }
 
+/* FOUNDER */
+.founder-section { padding: 90px 64px; border-top: 1px solid var(--border); }
+.founder-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: center; }
+.founder-avatar { width: 88px; height: 88px; border-radius: 50%; background: rgba(59,123,255,0.12); border: 1px solid rgba(59,123,255,0.25); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; color: var(--blue); margin-bottom: 20px; }
+.founder-name { font-size: 18px; font-weight: 700; color: var(--off); letter-spacing: -0.01em; margin-bottom: 4px; }
+.founder-title { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+.founder-linkedin { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--blue); text-decoration: none; transition: opacity 0.2s; }
+.founder-linkedin:hover { opacity: 0.75; }
+.founder-bio { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.8; }
+.founder-bio strong { color: var(--off); font-weight: 600; }
+
 /* RESPONSIVE */
 @media (max-width: 960px) {
   nav { padding: 18px 24px; }
@@ -482,6 +493,8 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   .ind-grid { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   .section, .cta-section { padding: 70px 24px; }
+  .founder-section { padding: 60px 24px; }
+  .founder-inner { grid-template-columns: 1fr; gap: 40px; }
   footer { padding: 48px 24px 28px; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
   .stats { max-width: 100%; }
@@ -499,6 +512,7 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   <div class="nav-right">
     <a href="#how" class="nav-link">How it works</a>
     <a href="#industries" class="nav-link">Who it's for</a>
+    <a href="/blog/" class="nav-link">Blog</a>
     <a href="#assessment" class="nav-btn">Free assessment</a>
   </div>
 </nav>
@@ -657,7 +671,7 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 <!-- WHO IT'S FOR -->
 <section class="section" id="industries">
   <div class="sec-label">Who It's For</div>
-  <div class="sec-title">Built for businesses with <em>5 to 50 people</em></div>
+  <div class="sec-title">Built for <em>UK businesses</em> ready to stop wasting time on admin</div>
   <div class="ind-grid">
     <a href="/estate-agents.html" class="ind-card" style="text-decoration:none">
       <div class="ind-icon">
@@ -690,19 +704,28 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   </div>
 </section>
 
-<!-- EARLY ADOPTERS -->
-<section class="section" style="text-align: center;">
-  <div class="sec-label">Early Access</div>
-  <div class="sec-title" style="margin: 0 auto 24px; max-width: 600px;">We're working with our <em>first clients now</em></div>
-  <p style="font-size: 16px; font-weight: 300; color: var(--muted); max-width: 520px; margin: 0 auto 40px; line-height: 1.75;">We're currently running free assessments for a small number of UK businesses. If you're in estate agency, mortgage broking, legal, or finance — and you're open to sharing honest feedback — we'd like to work with you.</p>
-  <a href="https://tally.so/r/vGqXeQ" target="_blank" class="cta-btn">Apply for a free assessment →</a>
+<!-- FOUNDER -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div>
+      <div class="founder-avatar">AM</div>
+      <div class="founder-name">Ahmed Madjaji</div>
+      <div class="founder-title">Founder, SwitchToAI</div>
+      <a href="https://www.linkedin.com/in/madjajiahmed/" target="_blank" rel="noopener" class="founder-linkedin">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <p class="founder-bio">Ahmed is a <strong>VP at Bank of America</strong>, where he uses AI tools daily to cut through the admin that would otherwise eat his week. <strong>The same tools that save him hours every week are completely unknown to most small business owners.</strong> SwitchToAI is his answer to that gap: a straightforward service that maps where your time is actually going, and builds the automation to get it back.</p>
+  </div>
 </section>
 
-<!-- BOTTOM CTA -->
+<!-- CTA -->
 <section class="cta-section">
-  <div class="sec-title" style="max-width:560px">Ready to see what <em>AI can do</em> for your business?</div>
-  <p class="cta-sub">Takes 2 minutes to apply. Report delivered within 48 hours.</p>
-  <a href="#assessment" class="cta-btn">Get your free assessment →</a>
+  <div class="sec-label" style="margin-bottom:16px">Early Access</div>
+  <div class="sec-title" style="margin: 0 auto 16px; max-width: 600px;">We're working with our <em>first clients now</em></div>
+  <p class="cta-sub" style="max-width:520px; margin: 0 auto 40px;">We're running free assessments for a small number of UK businesses. If you're in estate agency, mortgage broking, legal, or finance — and open to sharing honest feedback — we'd like to work with you.</p>
+  <a href="https://tally.so/r/vGqXeQ" target="_blank" class="cta-btn">Apply for a free assessment →</a>
 </section>
 
 <!-- FOOTER -->
@@ -730,12 +753,14 @@ footer p.copy { font-size: 12px; color: var(--muted); }
         <li><a href="https://tally.so/r/vGqXeQ" target="_blank">Apply Now</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#industries">Who it's for</a></li>
+        <li><a href="/blog/">Blog</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="mailto:hello@switchtoai.ai">hello@switchtoai.ai</a></li>
+        <li><a href="https://www.linkedin.com/in/madjajiahmed/" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </div>
   </div>
