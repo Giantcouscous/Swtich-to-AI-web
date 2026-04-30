@@ -585,7 +585,7 @@ footer p.copy { font-size: 12px; color: var(--muted); }
     </div>
   </div>
 
-  <!-- TALLY FORM -->
+  <!-- FORM -->
   <div class="form-wrap" id="assessment">
     <div class="form-card">
       <div class="form-top">
@@ -593,18 +593,47 @@ footer p.copy { font-size: 12px; color: var(--muted); }
         <div class="form-title">See where AI fits in your business</div>
         <div class="form-sub">Takes 3 minutes. We'll be in touch within 24 hours to book your session.</div>
       </div>
-      <div style="padding: 0;">
-        <iframe
-          data-tally-src="https://tally.so/embed/vGqXeQ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-          loading="lazy"
-          width="100%"
-          height="400"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          title="SwitchToAI Free Assessment"
-          style="border-radius: 0 0 16px 16px; display: block;"
-        ></iframe>
+      <div class="form-body">
+        <div class="fields-row">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" id="f-first" placeholder="John">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" id="f-last" placeholder="Smith">
+          </div>
+        </div>
+        <div class="field">
+          <label>Business Email</label>
+          <input type="email" id="f-email" placeholder="john@yourbusiness.com">
+        </div>
+        <div class="field">
+          <label>Company Name</label>
+          <input type="text" id="f-company" placeholder="Your Business Ltd">
+        </div>
+        <div class="field">
+          <label>Industry</label>
+          <select id="f-industry">
+            <option value="" disabled selected>Select your industry</option>
+            <option>Estate Agency</option>
+            <option>Mortgage Broking</option>
+            <option>Legal / Solicitors</option>
+            <option>Finance & Accounting</option>
+            <option>Construction & Trades</option>
+            <option>Hospitality & Events</option>
+            <option>E-commerce / Retail</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Biggest time drain right now</label>
+          <textarea id="f-drain" placeholder="e.g. Chasing clients, writing reports, managing emails..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="openTally()">
+          Get my free assessment <span class="btn-arrow">→</span>
+        </button>
+        <p class="form-note">No pitch. No obligation. Just a clear picture of where AI can help.</p>
       </div>
     </div>
   </div>
@@ -820,6 +849,41 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   });
 </script>
 
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<script>
+  // Scroll-reactive nav
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Open Tally with pre-filled params
+  function openTally() {
+    const first    = document.getElementById('f-first').value.trim();
+    const last     = document.getElementById('f-last').value.trim();
+    const email    = document.getElementById('f-email').value.trim();
+    const company  = document.getElementById('f-company').value.trim();
+    const industry = document.getElementById('f-industry').value;
+    const drain    = document.getElementById('f-drain').value.trim();
+
+    if (!email) {
+      document.getElementById('f-email').focus();
+      return;
+    }
+
+    const params = new URLSearchParams({
+      ...(first    && { first_name: first }),
+      ...(last     && { last_name: last }),
+      ...(email    && { email }),
+      ...(company  && { company }),
+      ...(industry && { industry }),
+      ...(drain    && { time_drain: drain }),
+    });
+
+    window.open(
+      `https://tally.so/r/vGqXeQ?${params.toString()}`,
+      '_blank'
+    );
+  }
+</script>
 </body>
 </html>
