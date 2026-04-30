@@ -406,56 +406,6 @@ textarea { resize: none; height: 86px; line-height: 1.55; }
   color: var(--muted); line-height: 1.6;
 }
 
-/* ── TESTIMONIALS ── */
-.testimonials { padding: 110px 64px; border-top: 1px solid var(--border); }
-.testimonials-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 20px; margin-top: 60px;
-}
-.testimonial {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px; padding: 32px 28px;
-  transition: border-color 0.3s, transform 0.2s;
-  position: relative;
-}
-.testimonial:hover {
-  border-color: var(--border-b); transform: translateY(-2px);
-}
-.testimonial::before {
-  content: '"';
-  font-family: 'Fraunces', serif;
-  font-size: 80px; line-height: 0.8;
-  color: rgba(59,123,255,0.15);
-  position: absolute; top: 24px; left: 24px;
-  font-style: italic;
-}
-.stars {
-  display: flex; gap: 3px; margin-bottom: 20px;
-}
-.star { color: #F59E0B; font-size: 14px; }
-.testimonial-text {
-  font-size: 14px; font-weight: 300;
-  line-height: 1.75; color: var(--white);
-  margin-bottom: 24px; font-style: italic;
-}
-.testimonial-author {
-  display: flex; align-items: center; gap: 12px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-.author-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--blue);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; font-weight: 700; color: white; flex-shrink: 0;
-}
-.author-name {
-  font-size: 13px; font-weight: 700; color: var(--off);
-  margin-bottom: 2px;
-}
-.author-role { font-size: 12px; color: var(--muted); }
-
 /* ── CTA ── */
 .cta-section {
   padding: 100px 64px;
@@ -708,82 +658,43 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   <div class="sec-label">Who It's For</div>
   <div class="sec-title">Built for businesses with <em>5 to 50 people</em></div>
   <div class="ind-grid">
-    <div class="ind-card">
+    <a href="/estate-agents.html" class="ind-card" style="text-decoration:none">
       <div class="ind-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       </div>
       <div class="ind-name">Estate Agents</div>
       <div class="ind-desc">Automate listings, client follow-ups, and viewing reports so your team focuses on closing.</div>
-    </div>
-    <div class="ind-card">
+    </a>
+    <a href="/mortgage-brokers.html" class="ind-card" style="text-decoration:none">
       <div class="ind-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
       </div>
       <div class="ind-name">Mortgage Brokers</div>
       <div class="ind-desc">Never miss a lead again. AI handles enquiries and follow-ups around the clock.</div>
-    </div>
-    <div class="ind-card">
+    </a>
+    <a href="/solicitors.html" class="ind-card" style="text-decoration:none">
       <div class="ind-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
       </div>
       <div class="ind-name">Solicitors</div>
       <div class="ind-desc">Cut time spent on routine client Q&A, document prep, and case status updates.</div>
-    </div>
-    <div class="ind-card">
+    </a>
+    <a href="/finance-accounting.html" class="ind-card" style="text-decoration:none">
       <div class="ind-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
       </div>
       <div class="ind-name">Finance & Accounting</div>
       <div class="ind-desc">Automate reporting, data entry, and client communications that eat your week.</div>
-    </div>
+    </a>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="sec-label">Early Results</div>
-  <div class="sec-title">What business owners <em>are saying</em></div>
-  <div class="testimonials-grid">
-    <div class="testimonial">
-      <div class="stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">The assessment identified a tool that now handles our Saturday reporting automatically. That's 2 hours a week back, every week. The ROI was immediate.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">SR</div>
-        <div>
-          <div class="author-name">Sarah R.</div>
-          <div class="author-role">Operations Manager, Estate Agency</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial">
-      <div class="stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">I was sceptical but the report was genuinely specific to our business. Not generic advice — actual tools and steps we could implement the same week.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">JM</div>
-        <div>
-          <div class="author-name">James M.</div>
-          <div class="author-role">Director, Mortgage Brokerage</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial">
-      <div class="stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">We were spending 30 minutes setting up every new client project manually. That's been fully automated. Wish we'd done this 2 years ago.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">PK</div>
-        <div>
-          <div class="author-name">Priya K.</div>
-          <div class="author-role">Partner, Legal Practice</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- EARLY ADOPTERS -->
+<section class="section" style="text-align: center;">
+  <div class="sec-label">Early Access</div>
+  <div class="sec-title" style="margin: 0 auto 24px; max-width: 600px;">We're working with our <em>first clients now</em></div>
+  <p style="font-size: 16px; font-weight: 300; color: var(--muted); max-width: 520px; margin: 0 auto 40px; line-height: 1.75;">We're currently running free assessments for a small number of UK businesses. If you're in estate agency, mortgage broking, legal, or finance — and you're open to sharing honest feedback — we'd like to work with you.</p>
+  <a href="https://tally.so/r/vGqXeQ" target="_blank" class="cta-btn">Apply for a free assessment →</a>
 </section>
 
 <!-- BOTTOM CTA -->
@@ -804,40 +715,31 @@ footer p.copy { font-size: 12px; color: var(--muted); }
       <p>Helping UK businesses identify where AI can save time and money — starting with a free, no-obligation assessment.</p>
     </div>
     <div>
-      <div class="footer-col-title">Services</div>
+      <div class="footer-col-title">Industries</div>
       <ul class="footer-links">
-        <li><a href="#">Free AI Assessment</a></li>
-        <li><a href="#">Process Automation</a></li>
-        <li><a href="#">CRM Setup</a></li>
-        <li><a href="#">AI Agents</a></li>
+        <li><a href="/estate-agents.html">Estate Agents</a></li>
+        <li><a href="/mortgage-brokers.html">Mortgage Brokers</a></li>
+        <li><a href="/solicitors.html">Solicitors</a></li>
+        <li><a href="/finance-accounting.html">Finance & Accounting</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Industries</div>
+      <div class="footer-col-title">Assessment</div>
       <ul class="footer-links">
-        <li><a href="#">Estate Agents</a></li>
-        <li><a href="#">Mortgage Brokers</a></li>
-        <li><a href="#">Solicitors</a></li>
-        <li><a href="#">Finance</a></li>
+        <li><a href="https://tally.so/r/vGqXeQ" target="_blank">Apply Now</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#industries">Who it's for</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="mailto:hello@switchtoai.ai">hello@switchtoai.ai</a></li>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p class="copy">© 2026 SwitchToAI Ltd · switchtoai.ai · London, UK</p>
-    <div class="footer-legal">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Cookies</a>
-    </div>
   </div>
 </footer>
 
