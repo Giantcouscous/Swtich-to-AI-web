@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation for Finance & Accounting Firms UK | SwitchToAI</title>
+<meta name="description" content="We help UK accountants and finance teams automate reporting, data entry, and client communications. Free assessment. Results in 48 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#0E1117; --bg2:#141820; --bg3:#1A2030; --blue:#3B7BFF; --blue-dim:#2D6FE8; --white:#F0EEE9; --off:#F8F6F1; --muted:#7A8699; --border:rgba(255,255,255,0.07); --border-b:rgba(59,123,255,0.25); }
+html { scroll-behavior: smooth; }
+body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 64px; background: rgba(14,17,23,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.toggle-icon { width: 44px; height: 26px; background: #1C1C22; border: 2px solid #333; border-radius: 13px; position: relative; transition: border-color 0.3s; }
+.toggle-icon::after { content: ''; position: absolute; right: 3px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 10px rgba(59,123,255,0.6); }
+.logo-wrap:hover .toggle-icon { border-color: var(--blue); }
+.logo-text { font-weight: 800; font-size: 17px; letter-spacing: -0.02em; color: var(--white); }
+.logo-text span { color: var(--blue); }
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover { color: var(--white); }
+.nav-btn { background: var(--blue); color: white; padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; box-shadow: 0 0 20px rgba(59,123,255,0.3); transition: background 0.2s; }
+.nav-btn:hover { background: var(--blue-dim); }
+.hero-wrap { max-width: 1200px; margin: 0 auto; padding: 90px 64px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+.hero-wrap::after { content: ''; position: absolute; top: -100px; right: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,123,255,0.1) 0%, transparent 65%); pointer-events: none; }
+.hero-content { position: relative; z-index: 1; }
+.hero-label { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(59,123,255,0.3); padding: 6px 14px; border-radius: 100px; margin-bottom: 32px; }
+h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--off); margin-bottom: 24px; }
+h1 em { font-style: italic; color: var(--blue); font-weight: 300; }
+.hero-sub { font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--muted); margin-bottom: 40px; }
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: white; padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 24px rgba(59,123,255,0.35); transition: background 0.2s, transform 0.15s; }
+.hero-cta:hover { background: var(--blue-dim); transform: translateY(-2px); }
+.hero-note { display: block; margin-top: 12px; font-size: 11px; color: var(--muted); }
+.week-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; position: relative; z-index: 1; }
+.week-header { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.week-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 20px 24px; }
+.day-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 6px; }
+.day-block { height: 56px; border-radius: 6px; display: flex; align-items: center; justify-content: center; padding: 4px; }
+.day-block.admin { background: rgba(59,123,255,0.15); border: 1px solid rgba(59,123,255,0.3); }
+.day-block.billable { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
+.day-block span { font-size: 10px; font-weight: 500; text-align: center; line-height: 1.3; }
+.day-block.admin span { color: var(--blue); }
+.day-block.billable span { color: var(--muted); }
+.week-legend { display: flex; gap: 20px; padding: 0 24px 20px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+.legend-dot.admin { background: rgba(59,123,255,0.4); }
+.legend-dot.billable { background: rgba(255,255,255,0.1); }
+.section { padding: 90px 64px; border-top: 1px solid var(--border); }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+.sec-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; color: var(--off); margin-bottom: 48px; max-width: 520px; }
+.sec-title em { font-style: italic; font-weight: 300; color: var(--blue); }
+.pain-table { width: 100%; border-collapse: collapse; }
+.pain-table tr { border-bottom: 1px solid var(--border); }
+.pain-table tr:last-child { border-bottom: none; }
+.pain-table td { padding: 18px 0; font-size: 14px; vertical-align: top; }
+.pain-table td:first-child { width: 28px; color: var(--blue); font-weight: 700; padding-right: 20px; padding-top: 20px; }
+.pain-table td:last-child { font-weight: 300; color: var(--muted); line-height: 1.7; }
+.auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.auto-item { background: var(--bg2); padding: 36px; transition: background 0.3s; position: relative; }
+.auto-item:hover { background: var(--bg3); }
+.auto-item::after { content: ''; position: absolute; bottom: 0; left: 36px; right: 36px; height: 2px; background: var(--blue); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; border-radius: 2px; }
+.auto-item:hover::after { transform: scaleX(1); }
+.auto-num { font-family: 'Fraunces', serif; font-size: 48px; font-weight: 300; color: rgba(59,123,255,0.15); line-height: 1; margin-bottom: 20px; }
+.auto-title { font-size: 16px; font-weight: 700; color: var(--off); margin-bottom: 10px; letter-spacing: -0.01em; }
+.auto-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.auto-item.more { background: var(--bg); }
+.outcome-section { padding: 90px 64px; border-top: 1px solid var(--border); background: var(--bg2); }
+.outcome-inner { max-width: 1100px; margin: 0 auto; }
+.outcome-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; padding: 48px; max-width: 680px; position: relative; }
+.outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent); border-radius: 2px 2px 0 0; }
+.outcome-card p { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 16px; }
+.outcome-card p:last-child { margin-bottom: 0; }
+.outcome-card p strong { color: var(--off); font-weight: 600; }
+.outcome-disclaimer { font-size: 11px; color: rgba(122,134,153,0.5); font-style: italic; border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px; line-height: 1.6; }
+.cta-section { padding: 90px 64px; border-top: 1px solid var(--border); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(59,123,255,0.1) 0%, transparent 65%); pointer-events: none; }
+.cta-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 600; letter-spacing: -0.02em; color: var(--off); margin-bottom: 16px; }
+.cta-title em { font-style: italic; font-weight: 300; color: var(--blue); }
+.cta-sub { font-size: 15px; font-weight: 300; color: var(--muted); margin-bottom: 36px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: white; text-decoration: none; padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 700; box-shadow: 0 4px 32px rgba(59,123,255,0.35); transition: background 0.2s, transform 0.15s; }
+.cta-btn:hover { background: var(--blue-dim); transform: translateY(-2px); }
+footer { padding: 40px 64px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.footer-note { font-size: 12px; color: var(--muted); }
+@media (max-width: 960px) {
+  nav { padding: 16px 24px; } .nav-link { display: none; }
+  .hero-wrap { grid-template-columns: 1fr; padding: 60px 24px 48px; gap: 40px; }
+  .section, .outcome-section, .cta-section { padding: 60px 24px; }
+  .auto-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo-wrap" href="/"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span>AI</span></div></a>
+  <div class="nav-right">
+    <a href="/#how" class="nav-link">How it works</a>
+    <a href="/#industries" class="nav-link">Industries</a>
+    <a href="/#assessment" class="nav-btn">Free assessment</a>
+  </div>
+</nav>
+
+<div class="hero-wrap">
+  <div class="hero-content">
+    <span class="hero-label">Finance & Accounting</span>
+    <h1>Month-end shouldn't <em>take all month.</em></h1>
+    <p class="hero-sub">We find exactly where your team's time disappears — and build automation that gets it back. Free assessment, 48 hours turnaround.</p>
+    <a href="/#assessment" class="hero-cta">Get my free assessment →</a>
+    <span class="hero-note">No pitch. No obligation. Just a clear picture of where AI can help.</span>
+  </div>
+  <div class="week-box">
+    <div class="week-header">A typical week — where the hours actually go</div>
+    <div class="week-grid">
+      <div class="day-label">MON</div>
+      <div class="day-label">TUE</div>
+      <div class="day-label">WED</div>
+      <div class="day-label">THU</div>
+      <div class="day-label">FRI</div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Chasing docs</span></div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Reporting</span></div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Data entry</span></div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Chasing</span></div>
+      <div class="day-block admin"><span>Month-end prep</span></div>
+      <div class="day-block billable"><span>Reviews</span></div>
+    </div>
+    <div class="week-legend">
+      <div class="legend-item"><div class="legend-dot admin"></div>Admin / manual</div>
+      <div class="legend-item"><div class="legend-dot billable"></div>Actual client work</div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-label">The reality</div>
+    <h2 class="sec-title">Sound <em>familiar?</em></h2>
+    <table class="pain-table">
+      <tr><td>—</td><td>Month-end reporting takes 3 days and most of it is copying numbers between spreadsheets and reformatting the same template.</td></tr>
+      <tr><td>—</td><td>Chasing clients for receipts, bank statements, and approvals is a part-time job. Someone on your team does little else in the week before close.</td></tr>
+      <tr><td>—</td><td>New client onboarding requires the same information collected across four different formats — engagement letter, direct debit, software access, KYC.</td></tr>
+      <tr><td>—</td><td>Management accounts produced manually every single month from the same template. There is no reason a human needs to do this.</td></tr>
+      <tr><td>—</td><td>Your team is doing data entry. In 2026. That should have stopped two years ago.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-label">What we do</div>
+    <h2 class="sec-title">Where the hours go — and how we <em>get them back</em></h2>
+    <div class="auto-grid">
+      <div class="auto-item">
+        <div class="auto-num">01</div>
+        <div class="auto-title">Management reporting</div>
+        <p class="auto-body">Automated report generation from your existing accounting software. Data pulled, formatted, and distributed to stakeholders on schedule. No manual assembly. No reformatting. No 9pm on a Sunday.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">02</div>
+        <div class="auto-title">Client document collection</div>
+        <p class="auto-body">Automated requests and chase sequences for receipts, bank feeds, and approvals. Clients get reminders at the right time in the right tone. Your team stops chasing and starts working.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">03</div>
+        <div class="auto-title">Data entry & reconciliation</div>
+        <p class="auto-body">Bank feeds, expense categorisation, and invoice matching handled automatically. Exceptions flagged for human review. Your team touches the edge cases — not the bulk of the work.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">04</div>
+        <div class="auto-title">Client onboarding</div>
+        <p class="auto-body">New client intake fully automated — engagement letter, direct debit setup, software access, and information collection all triggered from a single workflow. First to billable work in hours, not days.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">05</div>
+        <div class="auto-title">Payroll communications</div>
+        <p class="auto-body">Payroll run confirmations, payslip distribution, and HMRC submission notifications automated. One less thing your team manages manually every single month.</p>
+      </div>
+      <div class="auto-item more">
+        <div class="auto-num">+</div>
+        <div class="auto-title">And more</div>
+        <p class="auto-body">Every practice is different. The assessment maps your specific workflow before we recommend anything. We find the hours first — then build the automation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="outcome-section">
+  <div class="outcome-inner">
+    <div class="sec-label">Early results</div>
+    <h2 class="sec-title">What this looks like <em>in practice</em></h2>
+    <div class="outcome-card">
+      <p>A <strong>12-person accountancy practice in Leeds</strong>. Two senior accountants spending 6 hours each on monthly reporting and client document chasing.</p>
+      <p>After implementation: <strong>reporting time cut from 6 hours to 90 minutes</strong> per accountant. Client document collection improved across the board — less time spent per client per month. Capacity to take on 4 additional clients without additional headcount.</p>
+      <p>The numbers were significant. The bigger change was that month-end stopped being something people dreaded.</p>
+      <p class="outcome-disclaimer">This is representative of what we typically find. Your numbers will vary — which is exactly why we do the assessment first, before recommending anything.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-title">Find out where your practice is <em>losing time every month.</em></div>
+  <p class="cta-sub">Free. 48 hours turnaround. No obligation.</p>
+  <a href="/#assessment" class="cta-btn">Get my free assessment →</a>
+</section>
+
+<footer>
+  <a class="logo-wrap" href="/" style="text-decoration:none"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span>AI</span></div></a>
+  <span class="footer-note">© 2026 SwitchToAI Ltd · London, UK · hello@switchtoai.ai</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation for Law Firms & Solicitors UK | SwitchToAI</title>
+<meta name="description" content="We help UK solicitors and small law firms automate client comms, document prep, and case admin. Free assessment. Results in 48 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#0E1117; --bg2:#141820; --bg3:#1A2030; --blue:#3B7BFF; --blue-dim:#2D6FE8; --white:#F0EEE9; --off:#F8F6F1; --muted:#7A8699; --border:rgba(255,255,255,0.07); --border-b:rgba(59,123,255,0.25); }
+html { scroll-behavior: smooth; }
+body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 64px; background: rgba(14,17,23,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.toggle-icon { width: 44px; height: 26px; background: #1C1C22; border: 2px solid #333; border-radius: 13px; position: relative; transition: border-color 0.3s; }
+.toggle-icon::after { content: ''; position: absolute; right: 3px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 10px rgba(59,123,255,0.6); }
+.logo-wrap:hover .toggle-icon { border-color: var(--blue); }
+.logo-text { font-weight: 800; font-size: 17px; letter-spacing: -0.02em; color: var(--white); }
+.logo-text span { color: var(--blue); }
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover { color: var(--white); }
+.nav-btn { background: var(--blue); color: white; padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; box-shadow: 0 0 20px rgba(59,123,255,0.3); transition: background 0.2s; }
+.nav-btn:hover { background: var(--blue-dim); }
+.hero-wrap { max-width: 1200px; margin: 0 auto; padding: 90px 64px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+.hero-wrap::after { content: ''; position: absolute; top: -100px; right: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,123,255,0.1) 0%, transparent 65%); pointer-events: none; }
+.hero-content { position: relative; z-index: 1; }
+.hero-label { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(59,123,255,0.3); padding: 6px 14px; border-radius: 100px; margin-bottom: 32px; }
+h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--off); margin-bottom: 24px; }
+h1 em { font-style: italic; color: var(--blue); font-weight: 300; }
+.hero-sub { font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--muted); margin-bottom: 40px; }
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: white; padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 24px rgba(59,123,255,0.35); transition: background 0.2s, transform 0.15s; }
+.hero-cta:hover { background: var(--blue-dim); transform: translateY(-2px); }
+.hero-note { display: block; margin-top: 12px; font-size: 11px; color: var(--muted); }
+.billable-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; position: relative; z-index: 1; }
+.billable-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+.billable-header { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.billable-item { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+.billable-item:last-child { border-bottom: none; }
+.billable-item:hover { background: var(--bg3); }
+.billable-item.total { background: var(--bg3); }
+.b-task { font-size: 13px; font-weight: 400; color: var(--muted); }
+.b-task.strong { color: var(--off); font-weight: 600; }
+.b-time { font-size: 13px; font-weight: 600; color: var(--blue); }
+.b-time.big { font-size: 16px; }
+.section { padding: 90px 64px; border-top: 1px solid var(--border); }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+.sec-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; color: var(--off); margin-bottom: 48px; max-width: 520px; }
+.sec-title em { font-style: italic; font-weight: 300; color: var(--blue); }
+.pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.pain-item { background: var(--bg2); padding: 28px; transition: background 0.2s; }
+.pain-item:hover { background: var(--bg3); }
+.pain-item::before { content: '—'; display: block; color: var(--blue); font-weight: 700; margin-bottom: 12px; font-size: 14px; }
+.pain-item p { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.auto-item { background: var(--bg2); padding: 36px; transition: background 0.3s; position: relative; }
+.auto-item:hover { background: var(--bg3); }
+.auto-item::after { content: ''; position: absolute; bottom: 0; left: 36px; right: 36px; height: 2px; background: var(--blue); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; border-radius: 2px; }
+.auto-item:hover::after { transform: scaleX(1); }
+.auto-num { font-family: 'Fraunces', serif; font-size: 48px; font-weight: 300; color: rgba(59,123,255,0.15); line-height: 1; margin-bottom: 20px; }
+.auto-title { font-size: 16px; font-weight: 700; color: var(--off); margin-bottom: 10px; letter-spacing: -0.01em; }
+.auto-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.auto-item.more { background: var(--bg); }
+.outcome-section { padding: 90px 64px; border-top: 1px solid var(--border); background: var(--bg2); }
+.outcome-inner { max-width: 1100px; margin: 0 auto; }
+.outcome-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; padding: 48px; max-width: 680px; position: relative; }
+.outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent); border-radius: 2px 2px 0 0; }
+.outcome-card p { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 16px; }
+.outcome-card p:last-child { margin-bottom: 0; }
+.outcome-card p strong { color: var(--off); font-weight: 600; }
+.outcome-disclaimer { font-size: 11px; color: rgba(122,134,153,0.5); font-style: italic; border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px; line-height: 1.6; }
+.cta-section { padding: 90px 64px; border-top: 1px solid var(--border); text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(59,123,255,0.1) 0%, transparent 65%); pointer-events: none; }
+.cta-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 600; letter-spacing: -0.02em; color: var(--off); margin-bottom: 16px; }
+.cta-title em { font-style: italic; font-weight: 300; color: var(--blue); }
+.cta-sub { font-size: 15px; font-weight: 300; color: var(--muted); margin-bottom: 36px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: white; text-decoration: none; padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 700; box-shadow: 0 4px 32px rgba(59,123,255,0.35); transition: background 0.2s, transform 0.15s; }
+.cta-btn:hover { background: var(--blue-dim); transform: translateY(-2px); }
+footer { padding: 40px 64px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.footer-note { font-size: 12px; color: var(--muted); }
+@media (max-width: 960px) {
+  nav { padding: 16px 24px; } .nav-link { display: none; }
+  .hero-wrap { grid-template-columns: 1fr; padding: 60px 24px 48px; gap: 40px; }
+  .section, .outcome-section, .cta-section { padding: 60px 24px; }
+  .pain-grid, .auto-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo-wrap" href="/"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span>AI</span></div></a>
+  <div class="nav-right">
+    <a href="/#how" class="nav-link">How it works</a>
+    <a href="/#industries" class="nav-link">Industries</a>
+    <a href="/#assessment" class="nav-btn">Free assessment</a>
+  </div>
+</nav>
+
+<div class="hero-wrap">
+  <div class="hero-content">
+    <span class="hero-label">Solicitors & Law Firms</span>
+    <h1>Your fee earners are paid to advise clients. <em>Not to chase them.</em></h1>
+    <p class="hero-sub">We identify the admin and comms work eating your team's billable hours — and automate it. Free assessment, delivered in 48 hours.</p>
+    <a href="/#assessment" class="hero-cta">Get my free assessment →</a>
+    <span class="hero-note">No pitch. No obligation. Just a clear picture of where AI can help.</span>
+  </div>
+  <div class="billable-box">
+    <div class="billable-header">Where billable time actually goes each day</div>
+    <div class="billable-item"><span class="b-task">Client update emails</span><span class="b-time">40 min</span></div>
+    <div class="billable-item"><span class="b-task">Chasing ID & documents</span><span class="b-time">25 min</span></div>
+    <div class="billable-item"><span class="b-task">Standard document drafting</span><span class="b-time">35 min</span></div>
+    <div class="billable-item"><span class="b-task">New matter onboarding</span><span class="b-time">20 min</span></div>
+    <div class="billable-item total"><span class="b-task strong">Lost per fee earner, daily</span><span class="b-time big">~2h</span></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-label">The reality</div>
+    <h2 class="sec-title">Sound <em>familiar?</em></h2>
+    <div class="pain-grid">
+      <div class="pain-item"><p>Fee earners spending 40 minutes a day on client update emails that say roughly the same thing as last week's.</p></div>
+      <div class="pain-item"><p>New client onboarding requires three touchpoints before you even have the full brief and signed engagement letter.</p></div>
+      <div class="pain-item"><p>Standard documents — NDAs, engagement letters, client care letters — drafted from scratch every single time.</p></div>
+      <div class="pain-item"><p>Clients calling reception for case status updates. Your team has to stop, check, call back. Every day.</p></div>
+      <div class="pain-item"><p>ID verification and AML checks done manually for every new matter. Consistent, but slow, and it doesn't need to be a human doing it.</p></div>
+      <div class="pain-item"><p>Invoices chased awkwardly by phone. It delays payment and nobody enjoys making the call.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-label">What we do</div>
+    <h2 class="sec-title">Where the billable hours go — and how we <em>recover them</em></h2>
+    <div class="auto-grid">
+      <div class="auto-item">
+        <div class="auto-num">01</div>
+        <div class="auto-title">Client onboarding</div>
+        <p class="auto-body">New matter intake automated from first enquiry to signed engagement letter. Client portal, ID collection, conflict check, and care letter all triggered from a single workflow. Your team steps in at the legal work, not before.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">02</div>
+        <div class="auto-title">Case update comms</div>
+        <p class="auto-body">Clients informed at every milestone — automatically. Reduces inbound calls, improves client experience, and frees your fee earners from writing update emails they've written a hundred times before.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">03</div>
+        <div class="auto-title">Document first drafts</div>
+        <p class="auto-body">Engagement letters, standard NDAs, client care letters, and routine correspondence drafted instantly from matter data. Fee earner reviews and approves — never writes from scratch again.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">04</div>
+        <div class="auto-title">ID & AML workflow</div>
+        <p class="auto-body">Automated ID request, collection, and logging. Flags exceptions for human review. Compliant, consistent, timestamped — and not eating a paralegal's afternoon on every new matter.</p>
+      </div>
+      <div class="auto-item">
+        <div class="auto-num">05</div>
+        <div class="auto-title">Billing & payment chasing</div>
+        <p class="auto-body">Automated payment chase sequences that follow up unpaid invoices at set intervals. Professional tone. Nobody has to make the awkward call. Your WIP converts faster.</p>
+      </div>
+      <div class="auto-item more">
+        <div class="auto-num">+</div>
+        <div class="auto-title">And more</div>
+        <p class="auto-body">Every practice area has its own bottlenecks. Conveyancing, family, commercial — each has distinct admin patterns. The assessment finds yours specifically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="outcome-section">
+  <div class="outcome-inner">
+    <div class="sec-label">Early results</div>
+    <h2 class="sec-title">What this looks like <em>in practice</em></h2>
+    <div class="outcome-card">
+      <p>A <strong>4-partner conveyancing firm in Birmingham</strong>. Fee earners averaging 1.5 hours per day each on client comms, onboarding admin, and document prep.</p>
+      <p>After implementation: <strong>55 minutes per fee earner per day recovered</strong>. Across the team, that's the equivalent of roughly half a fee earner's productive time — without hiring.</p>
+      <p>Onboarding time to first billable work cut from 3 days to same-day. AML compliance fully automated with a clean audit trail.</p>
+      <p class="outcome-disclaimer">This is representative of what we typically find. Your numbers will vary — which is exactly why we do the assessment first, before recommending anything.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-title">Find out how many billable hours your firm is <em>losing to admin.</em></div>
+  <p class="cta-sub">Free. 48 hours turnaround. No obligation.</p>
+  <a href="/#assessment" class="cta-btn">Get my free assessment →</a>
+</section>
+
+<footer>
+  <a class="logo-wrap" href="/" style="text-decoration:none"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span>AI</span></div></a>
+  <span class="footer-note">© 2026 SwitchToAI Ltd · London, UK · hello@switchtoai.ai</span>
+</footer>
+</body>
+</html>
