@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Tool Recommendation — SwitchToAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#0E1117; --bg2:#141820; --bg3:#1A2030;
+  --blue:#3B7BFF; --blue-dim:#2D6FE8; --gold:#c8b560;
+  --white:#F0EEE9; --off:#F8F6F1; --muted:#7A8699;
+  --border:rgba(255,255,255,0.07); --border-b:rgba(59,123,255,0.25);
+  --green:#22c55e; --green-bg:rgba(34,197,94,0.08);
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:var(--bg); color:var(--white); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:18px 64px; background:rgba(14,17,23,0.95); backdrop-filter:blur(20px); box-shadow:0 1px 0 var(--border); }
+.logo-wrap { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.toggle-icon { width:36px; height:20px; background:var(--gold); border-radius:10px; position:relative; flex-shrink:0; }
+.toggle-icon::after { content:''; position:absolute; right:3px; top:50%; transform:translateY(-50%); width:14px; height:14px; border-radius:50%; background:#0a0a0a; }
+.logo-text { font-family:'Instrument Serif',serif; font-weight:400; font-size:18px; color:var(--white); }
+.nav-cta { background:var(--blue); color:white; padding:10px 22px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:background 0.2s; }
+.nav-cta:hover { background:var(--blue-dim); }
+
+/* LOADING STATE */
+.loading-section { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:120px 64px 80px; position:relative; }
+.loading-content { text-align:center; max-width:520px; }
+.loading-spinner { width:56px; height:56px; border:3px solid var(--border); border-top-color:var(--blue); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 32px; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.loading-title { font-family:'Fraunces',serif; font-size:28px; font-weight:600; color:var(--off); margin-bottom:12px; letter-spacing:-0.02em; }
+.loading-sub { font-size:15px; font-weight:300; color:var(--muted); line-height:1.7; }
+.loading-steps { margin-top:32px; display:flex; flex-direction:column; gap:10px; }
+.loading-step { display:flex; align-items:center; gap:12px; padding:12px 16px; background:var(--bg2); border:1px solid var(--border); border-radius:8px; font-size:13px; color:var(--muted); text-align:left; transition:border-color 0.3s,color 0.3s; }
+.loading-step.active { border-color:var(--border-b); color:var(--white); }
+.loading-step.done { border-color:rgba(34,197,94,0.3); color:var(--green); }
+.step-dot { width:8px; height:8px; border-radius:50%; background:var(--border); flex-shrink:0; transition:background 0.3s; }
+.loading-step.active .step-dot { background:var(--blue); animation:pulse 1s ease-in-out infinite; }
+.loading-step.done .step-dot { background:var(--green); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* MAIN CONTENT */
+.main-content { display:none; }
+
+/* TOOL SECTION */
+.tool-section { padding:120px 64px 80px; position:relative; overflow:hidden; }
+.tool-section::after { content:''; position:absolute; top:-100px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(59,123,255,0.1) 0%,transparent 65%); pointer-events:none; }
+.tool-section::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent); }
+.tool-inner { position:relative; z-index:1; max-width:900px; }
+.greeting { font-size:14px; font-weight:500; color:var(--muted); margin-bottom:16px; letter-spacing:0.04em; }
+.tool-headline { font-family:'Fraunces',serif; font-size:clamp(36px,4.5vw,60px); font-weight:600; line-height:1.08; letter-spacing:-0.02em; color:var(--off); margin-bottom:16px; }
+.tool-headline em { font-style:italic; color:var(--blue); font-weight:300; }
+.tool-context { font-size:16px; font-weight:300; color:var(--muted); margin-bottom:48px; line-height:1.7; max-width:600px; }
+
+.tool-card { background:var(--bg2); border:1px solid var(--border-b); border-radius:16px; overflow:hidden; max-width:720px; }
+.tool-card-header { padding:28px 32px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:16px; position:relative; }
+.tool-card-header::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),rgba(59,123,255,0.3)); }
+.tool-badge { background:rgba(59,123,255,0.15); border:1px solid rgba(59,123,255,0.3); color:var(--blue); font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:5px 12px; border-radius:100px; white-space:nowrap; }
+.tool-name { font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--off); letter-spacing:-0.02em; }
+.tool-card-body { padding:28px 32px; }
+.tool-why { font-size:15px; font-weight:400; color:var(--white); line-height:1.75; margin-bottom:20px; }
+.tool-desc { font-size:14px; font-weight:300; color:var(--muted); line-height:1.7; margin-bottom:24px; }
+.tool-meta { display:flex; gap:24px; flex-wrap:wrap; padding-top:20px; border-top:1px solid var(--border); }
+.tool-meta-item { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); }
+.tool-meta-item svg { flex-shrink:0; opacity:0.6; }
+.tool-link { display:inline-flex; align-items:center; gap:8px; margin-top:24px; background:rgba(59,123,255,0.1); border:1px solid rgba(59,123,255,0.3); color:var(--blue); padding:10px 20px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:background 0.2s,border-color 0.2s; }
+.tool-link:hover { background:rgba(59,123,255,0.2); border-color:rgba(59,123,255,0.5); }
+
+.tool-cta { margin-top:40px; padding:28px 32px; background:var(--bg3); border:1px solid var(--border); border-radius:12px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.tool-cta-text { font-size:15px; font-weight:300; color:var(--muted); line-height:1.6; max-width:440px; }
+.tool-cta-text strong { color:var(--white); font-weight:600; }
+.btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--blue); color:white; padding:14px 28px; border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; transition:background 0.2s,transform 0.15s; box-shadow:0 4px 20px rgba(59,123,255,0.3); white-space:nowrap; flex-shrink:0; }
+.btn-primary:hover { background:var(--blue-dim); transform:translateY(-1px); }
+
+/* DIVIDER */
+.section-divider { border:none; border-top:1px solid var(--border); margin:0; }
+
+/* ASSESSMENT SECTION */
+.assessment-section { padding:100px 64px; }
+.sec-label { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); margin-bottom:16px; }
+.sec-title { font-family:'Fraunces',serif; font-size:clamp(32px,4vw,48px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:var(--off); margin-bottom:20px; max-width:600px; }
+.sec-title em { font-style:italic; font-weight:300; color:var(--blue); }
+.sec-sub { font-size:16px; font-weight:300; color:var(--muted); max-width:540px; line-height:1.7; margin-bottom:60px; }
+
+.assessment-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.assessment-left { }
+.report-sections { display:flex; flex-direction:column; gap:12px; margin-bottom:36px; }
+.report-section-item { display:flex; gap:16px; padding:18px 20px; background:var(--bg2); border:1px solid var(--border); border-radius:10px; transition:border-color 0.2s; }
+.report-section-item:hover { border-color:var(--border-b); }
+.report-section-num { font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:var(--blue); opacity:0.6; min-width:28px; }
+.report-section-text { }
+.report-section-title { font-size:14px; font-weight:700; color:var(--off); margin-bottom:4px; }
+.report-section-desc { font-size:13px; font-weight:300; color:var(--muted); line-height:1.55; }
+.assessment-right { position:sticky; top:100px; }
+.matrix-container { background:var(--bg2); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.matrix-label { padding:16px 20px; border-bottom:1px solid var(--border); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+.matrix-container img { width:100%; display:block; }
+
+/* CASE STUDIES */
+.cases-section { padding:100px 64px; border-top:1px solid var(--border); }
+.cases-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:60px; }
+.case-card { background:var(--bg2); border:1px solid var(--border); border-radius:16px; padding:36px; transition:border-color 0.3s,transform 0.2s; position:relative; overflow:hidden; }
+.case-card:hover { border-color:var(--border-b); transform:translateY(-3px); }
+.case-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),rgba(59,123,255,0.2)); }
+.case-avatar { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--blue-dim)); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:18px; font-weight:600; color:white; margin-bottom:20px; }
+.case-business { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+.case-name { font-size:20px; font-weight:700; color:var(--off); margin-bottom:8px; letter-spacing:-0.01em; }
+.case-context { font-size:13px; font-weight:300; color:var(--muted); line-height:1.6; margin-bottom:24px; }
+.case-results { display:flex; flex-direction:column; gap:10px; padding-top:20px; border-top:1px solid var(--border); }
+.case-result { display:flex; align-items:center; gap:12px; }
+.case-result-num { font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--blue); line-height:1; min-width:80px; }
+.case-result-label { font-size:13px; font-weight:300; color:var(--muted); line-height:1.4; }
+.case-quote { margin-top:24px; padding:16px 18px; background:var(--bg3); border-radius:8px; font-size:13px; font-weight:300; color:rgba(240,238,233,0.7); line-height:1.65; font-style:italic; }
+
+/* CTA SECTION */
+.cta-section { padding:100px 64px; border-top:1px solid var(--border); text-align:center; position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; bottom:-200px; left:50%; transform:translateX(-50%); width:800px; height:400px; background:radial-gradient(circle,rgba(59,123,255,0.12) 0%,transparent 65%); pointer-events:none; }
+.cta-inner { position:relative; z-index:1; max-width:600px; margin:0 auto; }
+.cta-title { font-family:'Fraunces',serif; font-size:clamp(32px,4vw,52px); font-weight:600; color:var(--off); letter-spacing:-0.02em; line-height:1.1; margin-bottom:16px; }
+.cta-title em { font-style:italic; font-weight:300; color:var(--blue); }
+.cta-sub { font-size:16px; font-weight:300; color:var(--muted); margin-bottom:12px; line-height:1.65; }
+.cta-price { font-size:14px; color:var(--blue); font-weight:600; margin-bottom:40px; }
+.cta-btn { display:inline-flex; align-items:center; gap:10px; background:var(--blue); color:white; text-decoration:none; padding:18px 40px; border-radius:10px; font-size:16px; font-weight:700; box-shadow:0 4px 32px rgba(59,123,255,0.4); transition:background 0.2s,transform 0.15s,box-shadow 0.2s; }
+.cta-btn:hover { background:var(--blue-dim); transform:translateY(-2px); box-shadow:0 8px 40px rgba(59,123,255,0.55); }
+.cta-small { margin-top:16px; font-size:12px; color:var(--muted); }
+
+/* FOOTER */
+footer { padding:28px 64px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+footer p { font-size:12px; color:var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width:960px) {
+  nav { padding:16px 20px; }
+  .tool-section, .assessment-section, .cases-section, .cta-section { padding:80px 20px; }
+  .tool-section { padding-top:100px; }
+  .assessment-grid { grid-template-columns:1fr; }
+  .assessment-right { position:static; }
+  .cases-grid { grid-template-columns:1fr; }
+  .tool-cta { flex-direction:column; align-items:flex-start; }
+  footer { padding:24px 20px; flex-direction:column; gap:10px; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo-wrap" href="/">
+    <div class="toggle-icon"></div>
+    <div class="logo-text">SwitchToAI</div>
+  </a>
+  <a href="https://calendly.com/a-madjaji/30min" target="_blank" class="nav-cta">Book a call</a>
+</nav>
+
+<!-- LOADING STATE -->
+<div id="loading-section" class="loading-section">
+  <div class="loading-content">
+    <div class="loading-spinner"></div>
+    <div class="loading-title">Finding the right tool for you</div>
+    <div class="loading-sub" id="loading-name-text">Searching Futurepedia and theresanaiforthat.com for the best match...</div>
+    <div class="loading-steps">
+      <div class="loading-step active" id="step-1"><div class="step-dot"></div>Analysing your pain point</div>
+      <div class="loading-step" id="step-2"><div class="step-dot"></div>Searching AI tool directories</div>
+      <div class="loading-step" id="step-3"><div class="step-dot"></div>Matching to your business context</div>
+      <div class="loading-step" id="step-4"><div class="step-dot"></div>Preparing your recommendation</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT (hidden until loaded) -->
+<div id="main-content" class="main-content">
+
+  <!-- TOOL RECOMMENDATION -->
+  <section class="tool-section">
+    <div class="tool-inner">
+      <div class="greeting" id="greeting">Here's your recommendation</div>
+      <h1 class="tool-headline">The tool that solves<br><em id="tool-headline-pain">your problem</em></h1>
+      <p class="tool-context" id="tool-context-text">Based on what you told us, here's the most impactful tool we found.</p>
+
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <span class="tool-badge">Recommended Tool</span>
+          <span class="tool-name" id="tool-name">Loading...</span>
+        </div>
+        <div class="tool-card-body">
+          <p class="tool-why" id="tool-why">Loading recommendation...</p>
+          <p class="tool-desc" id="tool-desc"></p>
+          <div class="tool-meta">
+            <div class="tool-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7A8699" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              <span id="tool-price">Free – £X/month</span>
+            </div>
+            <div class="tool-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7A8699" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              <span id="tool-setup">Setup time loading...</span>
+            </div>
+          </div>
+          <a id="tool-link" href="#" target="_blank" rel="noopener" class="tool-link">
+            Visit website
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tool-cta">
+        <div class="tool-cta-text">
+          <strong>This is one tool for one problem.</strong> A full assessment maps every bottleneck in your business — not just the one you mentioned — and gives you a prioritised plan with financial impact.
+        </div>
+        <a href="https://calendly.com/a-madjaji/30min" target="_blank" class="btn-primary">
+          Book a free assessment call →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- WHAT'S IN AN ASSESSMENT -->
+  <section class="assessment-section">
+    <div class="sec-label">The Full Assessment</div>
+    <div class="sec-title">What you get for <em>£1,250</em></div>
+    <p class="sec-sub">A 30-minute conversation. A written report within 48 hours. Everything mapped, prioritised, and costed.</p>
+
+    <div class="assessment-grid">
+      <div class="assessment-left">
+        <div class="report-sections">
+          <div class="report-section-item">
+            <div class="report-section-num">01</div>
+            <div class="report-section-text">
+              <div class="report-section-title">Executive Summary</div>
+              <div class="report-section-desc">Your key pain points, the opportunity, and the expected outcome — in plain English, in three columns.</div>
+            </div>
+          </div>
+          <div class="report-section-item">
+            <div class="report-section-num">02</div>
+            <div class="report-section-text">
+              <div class="report-section-title">Impact / Effort Matrix</div>
+              <div class="report-section-desc">Every bottleneck plotted by business impact vs. implementation effort. Shows you exactly where to start.</div>
+            </div>
+          </div>
+          <div class="report-section-item">
+            <div class="report-section-num">03</div>
+            <div class="report-section-text">
+              <div class="report-section-title">Quick Wins — Phase 1</div>
+              <div class="report-section-desc">Three automations you can have live within a week. Tool, cost, setup time, and ROI calculation for each.</div>
+            </div>
+          </div>
+          <div class="report-section-item">
+            <div class="report-section-num">04</div>
+            <div class="report-section-text">
+              <div class="report-section-title">Strategic Recommendations — Phase 2</div>
+              <div class="report-section-desc">Higher-effort, higher-return implementations with full scoping, dependencies, and financial projections.</div>
+            </div>
+          </div>
+          <div class="report-section-item">
+            <div class="report-section-num">05</div>
+            <div class="report-section-text">
+              <div class="report-section-title">Risk & Compliance Register</div>
+              <div class="report-section-desc">Every implementation risk flagged with a mitigation. GDPR, data handling, and platform ToS covered.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="assessment-right">
+        <div class="matrix-container">
+          <div class="matrix-label">Sample — Impact / Effort Matrix</div>
+          <img src="/webbs_matrix.png" alt="Sample AI Assessment Impact/Effort Matrix — SwitchToAI" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- CASE STUDIES -->
+  <section class="cases-section">
+    <div class="sec-label">Client Results</div>
+    <div class="sec-title">What the assessment <em>actually finds</em></div>
+    <div class="cases-grid">
+
+      <!-- Retail Circle -->
+      <div class="case-card">
+        <div class="case-avatar">RC</div>
+        <div class="case-business">Luxury Watch Brokerage</div>
+        <div class="case-name">Retail Circle</div>
+        <div class="case-context">4-person team. Global market. Already highly automated — AWS CRM, custom integrations, tech-first operation. We were challenged to find meaningful gains in a business that had already done the obvious work.</div>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="case-result-num">8–12</div>
+            <div class="case-result-label">hours per week recovered through three automations</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-num">£234k</div>
+            <div class="case-result-label">Year 1 impact — conservative floor</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-num">£40–70</div>
+            <div class="case-result-label">combined tool cost per month</div>
+          </div>
+        </div>
+        <div class="case-quote">"Weekend leads were going unanswered until Monday. In a £10k–£150k+ deal market, one missed contact can cost more than a year of tool costs."</div>
+      </div>
+
+      <!-- Tacos Collective -->
+      <div class="case-card">
+        <div class="case-avatar">TC</div>
+        <div class="case-business">Multi-Site Food & Beverage</div>
+        <div class="case-name">Tacos Collective</div>
+        <div class="case-context">14–15 staff across multiple sites. Stock ordering done reactively via WhatsApp. Revenue reporting compiled manually every week. No unified view of supplier costs across locations.</div>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="case-result-num">5–6</div>
+            <div class="case-result-label">hours per week recovered across the ownership team</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-num">£9,100</div>
+            <div class="case-result-label">Year 1 time value at £35/hr — conservative</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-num">£9–16</div>
+            <div class="case-result-label">combined tool cost per month on Make</div>
+          </div>
+        </div>
+        <div class="case-quote">"Revenue reporting dropped from 60 minutes per week to under 5. One Make scenario replaced 52 hours of manual work per year."</div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-title">Ready for your <em>full assessment?</em></div>
+      <p class="cta-sub">A 30-minute conversation. A written report within 48 hours. Every bottleneck mapped, prioritised, and costed.</p>
+      <p class="cta-price">Assessment from £1,250 — most clients recover this in the first month.</p>
+      <a href="https://calendly.com/a-madjaji/30min" target="_blank" class="cta-btn">Book your 30-minute call →</a>
+      <p class="cta-small">No retainer. No lock-in. Just a clear picture of what's possible.</p>
+    </div>
+  </section>
+
+  <footer>
+    <a class="logo-wrap" href="/" style="text-decoration:none">
+      <div class="toggle-icon"></div>
+      <div class="logo-text">SwitchToAI</div>
+    </a>
+    <p>© 2026 SwitchToAI Ltd · switchtoai.ai · hello@switchtoai.ai</p>
+  </footer>
+
+</div><!-- end main-content -->
+
+<script>
+// ─── CONFIG ───────────────────────────────────────────────────────────────────
+const SUPABASE_URL = 'https://tfezfqoawgjugivwajfo.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmZXpmcW9hd2dqdWdpdndhamZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYzNzQ4MDcsImV4cCI6MjA2MTk1MDgwN30.DKeFcBPsLKfdMBmZP_VjJWdbYedbMLFZmIALn3OIXRI';
+const EMAILJS_PUBLIC_KEY = 'Fh8vr7qh3pTmRt0ps';
+const EMAILJS_SERVICE_ID = 'service_5qzkpxg';
+const EMAILJS_TEMPLATE_ID = 'template_l5ystes';
+
+// ─── PARSE URL PARAMS ────────────────────────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+const userName    = params.get('name')    || '';
+const userCompany = params.get('company') || '';
+const userPain    = params.get('pain')    || '';
+
+// ─── LOADING STEPS ANIMATION ─────────────────────────────────────────────────
+function animateLoadingSteps() {
+  const steps = ['step-1', 'step-2', 'step-3', 'step-4'];
+  let current = 0;
+
+  const interval = setInterval(() => {
+    if (current > 0) {
+      document.getElementById(steps[current - 1]).classList.remove('active');
+      document.getElementById(steps[current - 1]).classList.add('done');
+    }
+    if (current < steps.length) {
+      document.getElementById(steps[current]).classList.add('active');
+      current++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 1800);
+}
+
+// ─── CALL CLAUDE API ──────────────────────────────────────────────────────────
+async function getToolRecommendation() {
+  const prompt = `You are an AI tool specialist for SwitchToAI, a UK-based AI automation consultancy.
+
+A business owner has described their biggest pain point: "${userPain}"
+${userCompany ? `Their company: ${userCompany}` : ''}
+
+Search Futurepedia (futurepedia.io) and There's An AI For That (theresanaiforthat.com) to find the single best off-the-shelf AI tool that solves this specific problem.
+
+Return ONLY valid JSON in this exact format (no markdown, no explanation):
+{
+  "tool_name": "Tool Name",
+  "why_it_fits": "One or two sentences explaining exactly why this tool solves their specific pain point — be specific to what they described",
+  "what_it_does": "One sentence describing what the tool does generally",
+  "price": "Free / Free – £X/month / £X/month",
+  "setup_time": "e.g. 2 hours / Half a day / 1 week",
+  "url": "https://toolwebsite.com",
+  "pain_summary": "3-4 words summarising their pain point for the headline (e.g. 'manual lead follow-up' or 'weekend lead response')"
+}`;
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 600,
+      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      messages: [{ role: 'user', content: prompt }]
+    })
+  });
+
+  const data = await response.json();
+
+  // Extract text content from response
+  let rawText = '';
+  for (const block of data.content) {
+    if (block.type === 'text') {
+      rawText += block.text;
+    }
+  }
+
+  // Clean and parse JSON
+  const clean = rawText.replace(/```json|```/g, '').trim();
+  return JSON.parse(clean);
+}
+
+// ─── SAVE LEAD TO SUPABASE ───────────────────────────────────────────────────
+async function saveLead(toolName) {
+  try {
+    const { createClient } = supabase;
+    const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+    await db.from('leads').insert({
+      name: userName || null,
+      company: userCompany || null,
+      pain_point: userPain,
+      tool_recommended: toolName,
+    });
+  } catch (e) {
+    console.warn('Lead save failed:', e);
+  }
+}
+
+// ─── SEND EMAIL NOTIFICATION ─────────────────────────────────────────────────
+async function sendEmailNotification(toolName) {
+  try {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      name: userName || 'Anonymous',
+      company: userCompany || 'Not provided',
+      pain_point: userPain,
+      tool_recommended: toolName,
+    });
+  } catch (e) {
+    console.warn('Email notification failed:', e);
+  }
+}
+
+// ─── RENDER RECOMMENDATION ───────────────────────────────────────────────────
+function renderRecommendation(tool) {
+  // Greeting
+  if (userName) {
+    document.getElementById('greeting').textContent = `Here's your recommendation, ${userName.split(' ')[0]}`;
+  }
+
+  // Headline
+  document.getElementById('tool-headline-pain').textContent = tool.pain_summary || 'your problem';
+
+  // Context
+  const contextEl = document.getElementById('tool-context-text');
+  if (userCompany) {
+    contextEl.textContent = `Based on what you told us about ${userCompany}, here's the most impactful tool we found after searching current AI directories.`;
+  } else {
+    contextEl.textContent = 'Based on what you told us, here\'s the most impactful tool we found after searching current AI directories.';
+  }
+
+  // Tool card
+  document.getElementById('tool-name').textContent = tool.tool_name;
+  document.getElementById('tool-why').textContent = tool.why_it_fits;
+  document.getElementById('tool-desc').textContent = tool.what_it_does;
+  document.getElementById('tool-price').textContent = tool.price;
+  document.getElementById('tool-setup').textContent = `Setup: ${tool.setup_time}`;
+
+  const linkEl = document.getElementById('tool-link');
+  linkEl.href = tool.url;
+  linkEl.innerHTML = `Visit ${tool.tool_name} <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+}
+
+// ─── SHOW MAIN CONTENT ───────────────────────────────────────────────────────
+function showContent() {
+  document.getElementById('loading-section').style.display = 'none';
+  const main = document.getElementById('main-content');
+  main.style.display = 'block';
+  main.style.animation = 'fadeIn 0.6s ease both';
+}
+
+// ─── FALLBACK RECOMMENDATION ─────────────────────────────────────────────────
+function getFallback() {
+  return {
+    tool_name: 'Zapier',
+    why_it_fits: 'Zapier connects your existing tools and automates repetitive manual steps without any coding — based on what you described, it can eliminate the manual work immediately.',
+    what_it_does: 'An automation platform that connects 6,000+ apps and automates workflows between them.',
+    price: 'Free – £20/month',
+    setup_time: '2-4 hours',
+    url: 'https://zapier.com',
+    pain_summary: 'manual repetitive work'
+  };
+}
+
+// ─── MAIN ────────────────────────────────────────────────────────────────────
+async function init() {
+  if (!userPain) {
+    window.location.href = '/';
+    return;
+  }
+
+  // Update loading text with name if available
+  if (userName) {
+    document.getElementById('loading-name-text').textContent =
+      `Searching AI tool directories for the best match for ${userName.split(' ')[0]}...`;
+  }
+
+  animateLoadingSteps();
+
+  let tool;
+  try {
+    tool = await getToolRecommendation();
+  } catch (e) {
+    console.warn('Claude API failed, using fallback:', e);
+    tool = getFallback();
+  }
+
+  renderRecommendation(tool);
+
+  // Save lead and send email in parallel (non-blocking)
+  Promise.all([
+    saveLead(tool.tool_name),
+    sendEmailNotification(tool.tool_name)
+  ]).catch(console.warn);
+
+  // Small delay before showing content for UX
+  setTimeout(showContent, 500);
+}
+
+// Add fadeIn keyframe
+const style = document.createElement('style');
+style.textContent = '@keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }';
+document.head.appendChild(style);
+
+init();
+</script>
+</body>
+</html>
