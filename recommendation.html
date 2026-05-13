@@ -510,13 +510,30 @@ function animateLoadingSteps() {
 
 // ── API CALL via Cloudflare Worker ────────────────────────────────────────
 async function getToolRecommendation() {
+
   const response = await fetch('/api/recommend', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ pain: userPain, company: userCompany, name: userName }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      pain: userPain,
+      company: userCompany,
+      name: userName
+    })
   });
-  if (!response.ok) throw new Error(`Worker returned ${response.status}`);
-  return await response.json();
+
+  console.log('API status:', response.status);
+
+  const text = await response.text();
+
+  console.log('Raw API response:', text);
+
+  if (!response.ok) {
+    throw new Error(`API failed: ${response.status} ${text}`);
+  }
+
+  return JSON.parse(text);
 }
 
 // ── LEAD & EMAIL ──────────────────────────────────────────────────────────
@@ -631,22 +648,45 @@ document.addEventListener('keydown', (e) => {
 
 // ── INIT ──────────────────────────────────────────────────────────────────
 async function init() {
-  if (!userPain) { window.location.href = '/'; return; }
+  if (!userPain) {
+    window.location.href = '/';
+    return;
+  }
+
+  // Personalised loading text
   if (userName) {
     document.getElementById('loading-name-text').textContent =
       `Searching for the best match for ${userName.split(' ')[0]}...`;
   }
+
+  // START animation immediately
   animateLoadingSteps();
+
   let tool;
+
   try {
+
+    // Minimum loading experience so user sees animation
+    await new Promise(resolve => setTimeout(resolve, 3500));
+
     tool = await getToolRecommendation();
+
+    console.log('Worker response:', tool);
+
   } catch(e) {
-    console.warn('Recommendation failed, using fallback:', e);
-    tool = getFallback();
+
+    console.error('Recommendation failed:', e);
+
+   throw e;
   }
+
   renderRecommendation(tool);
-  Promise.all([saveLead(tool.tool_name)]).catch(console.warn);
-  setTimeout(showContent, 500);
+
+  Promise.all([
+    saveLead(tool.tool_name)
+  ]).catch(console.warn);
+
+  setTimeout(showContent, 400);
 }
 
 init();
