@@ -24,9 +24,9 @@ body::before { content:''; position:fixed; inset:0; background-image:url("data:i
 /* NAV */
 nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:18px 64px; background:rgba(14,17,23,0.95); backdrop-filter:blur(20px); box-shadow:0 1px 0 var(--border); }
 .logo-wrap { display:flex; align-items:center; gap:12px; text-decoration:none; }
-.toggle-icon { width:36px; height:20px; background:var(--gold); border-radius:10px; position:relative; flex-shrink:0; }
-.toggle-icon::after { content:''; position:absolute; right:3px; top:50%; transform:translateY(-50%); width:14px; height:14px; border-radius:50%; background:#0a0a0a; }
-.logo-text { font-family:'Instrument Serif',serif; font-weight:400; font-size:18px; color:var(--white); }
+.toggle-icon { width:44px; height:26px; background:#1C1C22; border:2px solid #333; border-radius:13px; position:relative; flex-shrink:0; transition:border-color 0.3s; }
+.toggle-icon::after { content:''; position:absolute; right:3px; top:50%; transform:translateY(-50%); width:18px; height:18px; border-radius:50%; background:#3B7BFF; box-shadow:0 0 10px rgba(59,123,255,0.6); }
+.logo-text { font-family:'Manrope',sans-serif; font-weight:800; font-size:17px; letter-spacing:-0.02em; color:var(--white); }
 .nav-cta { background:var(--blue); color:white; padding:10px 22px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:background 0.2s; }
 .nav-cta:hover { background:var(--blue-dim); }
 
@@ -153,7 +153,7 @@ footer p { font-size:12px; color:var(--muted); }
 <nav>
   <a class="logo-wrap" href="/">
     <div class="toggle-icon"></div>
-    <div class="logo-text">SwitchToAI</div>
+    <div class="logo-text">SwitchTo<span style="color:#3B7BFF">AI</span></div>
   </a>
   <a href="https://calendly.com/a-madjaji/30min" target="_blank" class="nav-cta">Book a call</a>
 </nav>
@@ -349,7 +349,7 @@ footer p { font-size:12px; color:var(--muted); }
   <footer>
     <a class="logo-wrap" href="/" style="text-decoration:none">
       <div class="toggle-icon"></div>
-      <div class="logo-text">SwitchToAI</div>
+      <div class="logo-text">SwitchTo<span style="color:#3B7BFF">AI</span></div>
     </a>
     <p>© 2026 SwitchToAI Ltd · switchtoai.ai · hello@switchtoai.ai</p>
   </footer>
