@@ -217,7 +217,7 @@ footer p { font-size:12px; color:var(--muted); }
   <div class="loading-content">
     <div class="loading-spinner"></div>
     <div class="loading-title">Finding the right tool for you</div>
-    <div class="loading-sub" id="loading-name-text">Searching Futurepedia and theresanaiforthat.com for the best match...</div>
+    <div class="loading-sub" id="loading-name-text">Searching our vetted tool database for the best match...</div>
     <div class="loading-steps">
       <div class="loading-step active" id="step-1"><div class="step-dot"></div>Analysing your pain point</div>
       <div class="loading-step" id="step-2"><div class="step-dot"></div>Searching AI tool directories</div>
@@ -475,7 +475,7 @@ async function getToolRecommendation() {
 A business owner has described their biggest pain point: "${userPain}"
 ${userCompany ? `Their company: ${userCompany}` : ''}
 
-Search Futurepedia (futurepedia.io) and There's An AI For That (theresanaiforthat.com) to find the single best off-the-shelf AI tool that solves this specific problem.
+Use your web search capability to identify the best current off-the-shelf AI or automation tool for this business pain point. Prioritise reputable vendors, mature products, transparent pricing, and tools suitable for small UK businesses.
 
 Return ONLY valid JSON in this exact format (no markdown, no explanation):
 {
@@ -558,9 +558,9 @@ function renderRecommendation(tool) {
   // Context
   const contextEl = document.getElementById('tool-context-text');
   if (userCompany) {
-    contextEl.textContent = `Based on what you told us about ${userCompany}, here's the most impactful tool we found after searching current AI directories.`;
+    contextEl.textContent = `Based on what you told us about ${userCompany}, here's the most impactful tool we found after searching our vetted tool database.`;
   } else {
-    contextEl.textContent = 'Based on what you told us, here\'s the most impactful tool we found after searching current AI directories.';
+    contextEl.textContent = 'Based on what you told us, here\'s the most impactful tool we found after searching our vetted tool database.';
   }
 
   // Tool card
@@ -662,7 +662,7 @@ async function init() {
   // Update loading text with name if available
   if (userName) {
     document.getElementById('loading-name-text').textContent =
-      `Searching AI tool directories for the best match for ${userName.split(' ')[0]}...`;
+      `Searching our vetted tool database for the best match for ${userName.split(' ')[0]}...`;
   }
 
   animateLoadingSteps();
