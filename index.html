@@ -1,703 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ4D8CHN9M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MJ4D8CHN9M');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="viewport" content="We map exactly where your team is losing hours to admin, chasing, and repetition — and automate it. Assessment for UK businesses, delivered in 48 hours.">
-<title>AI Automation for UK Businesses | SwitchToAI</title>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="We map exactly where your team is losing hours to admin, chasing, and repetition — and automate it. Free assessment for UK businesses, delivered in 48 hours.">
-<title>AI Automation for UK Businesses | SwitchToAI</title>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://switchtoai.ai/#business",
-      "name": "SwitchToAI",
-      "url": "https://switchtoai.ai",
-      "description": "AI automation consultancy helping UK businesses identify and automate the admin, chasing, and repetition eating their team's time.",
-      "areaServed": "GB",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "London",
-        "addressCountry": "GB"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "hello@switchtoai.ai",
-        "contactType": "customer service"
-      },
-      "founder": {
-        "@id": "https://switchtoai.ai/#ahmed"
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://switchtoai.ai/#ahmed",
-      "name": "Ahmed M",
-      "jobTitle": "Founder",
-      "worksFor": {
-        "@id": "https://switchtoai.ai/#business"
-      },
-      "url": "https://switchtoai.ai"
-    }
-  ]
-}
-</script>
+<title>SwitchToAI — Stop doing the work software should be doing</title>
+<meta name="description" content="We map exactly where your team is losing hours to admin, chasing, and repetition — and automate it. Free assessment, delivered in 48 hours.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
-<style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --bg:        #0E1117;
-  --bg2:       #141820;
-  --bg3:       #1A2030;
-  --blue:      #3B7BFF;
-  --blue-dim:  #2D6FE8;
-  --blue-glow: rgba(59,123,255,0.15);
-  --white:     #F0EEE9;
-  --off:       #F8F6F1;
-  --muted:     #7A8699;
-  --border:    rgba(255,255,255,0.07);
-  --border-b:  rgba(59,123,255,0.25);
+  --bg:#0E1117; --bg2:#141820; --bg3:#1A2030;
+  --blue:#3B7BFF; --blue-dim:#2D6FE8; --gold:#c8b560;
+  --white:#F0EEE9; --off:#F8F6F1; --muted:#7A8699;
+  --border:rgba(255,255,255,0.07); --border-b:rgba(59,123,255,0.25);
 }
-
 html { scroll-behavior: smooth; }
-body {
-  font-family: 'Manrope', sans-serif;
-  background: var(--bg);
-  color: var(--white);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 0; opacity: 0.4;
-}
-
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 64px;
-  transition: background 0.3s, padding 0.3s, box-shadow 0.3s;
-}
-nav.scrolled {
-  background: rgba(14,17,23,0.95);
-  backdrop-filter: blur(20px);
-  padding: 14px 64px;
-  box-shadow: 0 1px 0 var(--border);
-}
-.logo-wrap {
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none;
-}
-.toggle-icon {
-  width: 44px; height: 26px;
-  background: #1C1C22;
-  border: 2px solid #333;
-  border-radius: 13px;
-  position: relative;
-  transition: border-color 0.3s;
-}
-.toggle-icon::after {
-  content: '';
-  position: absolute;
-  right: 3px; top: 50%;
-  transform: translateY(-50%);
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 10px rgba(59,123,255,0.6);
-  transition: box-shadow 0.3s;
-}
-.logo-wrap:hover .toggle-icon { border-color: var(--blue); }
-.logo-wrap:hover .toggle-icon::after { box-shadow: 0 0 18px rgba(59,123,255,0.9); }
-.logo-text {
-  font-weight: 800; font-size: 17px;
-  letter-spacing: -0.02em; color: var(--white);
-}
-.logo-text span { color: var(--blue); }
-.nav-right { display: flex; align-items: center; gap: 32px; }
-.nav-link {
-  font-size: 13px; font-weight: 500;
-  color: var(--muted); text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-link:hover { color: var(--white); }
-.nav-btn {
-  background: var(--blue); color: white;
-  padding: 10px 22px; border-radius: 8px;
-  font-size: 13px; font-weight: 600; text-decoration: none;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 0 20px rgba(59,123,255,0.3);
-}
-.nav-btn:hover {
-  background: var(--blue-dim); transform: translateY(-1px);
-  box-shadow: 0 0 28px rgba(59,123,255,0.5);
-}
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  padding: 130px 64px 80px;
-  display: grid;
-  grid-template-columns: 1fr 460px;
-  gap: 80px;
-  align-items: center;
-  position: relative; overflow: hidden;
-}
-.hero::after {
-  content: '';
-  position: absolute; top: -100px; right: -100px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(59,123,255,0.12) 0%, transparent 65%);
-  pointer-events: none;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
-}
-.hero-content { position: relative; z-index: 1; }
-
-h1 {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(46px, 5vw, 72px);
-  font-weight: 600; line-height: 1.08;
-  letter-spacing: -0.02em; color: var(--off);
-  margin-bottom: 28px;
-  animation: fadeUp 0.7s ease 0.1s both;
-}
-h1 em { font-style: italic; color: var(--blue); font-weight: 300; }
-
-.hero-sub {
-  font-size: 17px; font-weight: 300; line-height: 1.75;
-  color: var(--muted); max-width: 480px; margin-bottom: 52px;
-  animation: fadeUp 0.7s ease 0.2s both;
-}
-
-/* STATS — redesigned */
-.stats {
-  display: flex; flex-direction: column; gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 12px; overflow: hidden;
-  max-width: 480px;
-  animation: fadeUp 0.7s ease 0.3s both;
-}
-.stat {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 16px;
-  align-items: start;
-  transition: background 0.2s;
-}
-.stat:last-child { border-bottom: none; }
-.stat:hover { background: rgba(59,123,255,0.05); }
-.stat-num-wrap { display: flex; flex-direction: column; }
-.stat-n {
-  font-family: 'Fraunces', serif;
-  font-size: 30px; font-weight: 600;
-  color: var(--blue); line-height: 1;
-}
-.stat-unit {
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--muted); margin-top: 3px;
-}
-.stat-detail { padding-top: 2px; }
-.stat-l {
-  font-size: 12px; font-weight: 400;
-  color: var(--white); line-height: 1.55;
-  margin-bottom: 4px;
-}
-.stat-source {
-  font-size: 10px; font-weight: 300;
-  color: var(--muted); line-height: 1.5;
-  font-style: italic;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* FORM */
-.form-wrap {
-  position: relative; z-index: 1;
-  animation: fadeUp 0.7s ease 0.25s both;
-}
-.form-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 16px; overflow: hidden;
-}
-.form-top {
-  padding: 32px 36px 28px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-}
-.form-top::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--blue), transparent);
-}
-.form-tag {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 10px;
-}
-.form-title {
-  font-family: 'Fraunces', serif;
-  font-size: 22px; font-weight: 600;
-  color: var(--off); line-height: 1.25; margin-bottom: 6px;
-}
-.form-sub {
-  font-size: 13px; font-weight: 300;
-  color: var(--muted); line-height: 1.55;
-}
-.form-body { padding: 28px 36px 32px; }
-.field { margin-bottom: 16px; }
-label {
-  display: block; font-size: 11px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 7px;
-}
-input, select, textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px; padding: 12px 14px;
-  font-family: 'Manrope', sans-serif;
-  font-size: 14px; color: var(--white);
-  outline: none;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-  appearance: none;
-}
-input::placeholder, textarea::placeholder { color: rgba(122,134,153,0.5); }
-input:focus, select:focus, textarea:focus {
-  border-color: rgba(59,123,255,0.5);
-  background: rgba(59,123,255,0.04);
-  box-shadow: 0 0 0 3px rgba(59,123,255,0.08);
-}
-select option { background: #1A2030; color: var(--white); }
-textarea { resize: none; height: 86px; line-height: 1.55; }
-.fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.submit-btn {
-  width: 100%; padding: 15px;
-  background: var(--blue); color: white; border: none;
-  border-radius: 8px;
-  font-family: 'Manrope', sans-serif;
-  font-size: 14px; font-weight: 700;
-  cursor: pointer; margin-top: 6px;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 24px rgba(59,123,255,0.3);
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.submit-btn:hover {
-  background: var(--blue-dim); transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(59,123,255,0.45);
-}
-.btn-arrow { transition: transform 0.2s; }
-.submit-btn:hover .btn-arrow { transform: translateX(4px); }
-.form-note {
-  text-align: center; font-size: 11px;
-  color: rgba(122,134,153,0.6);
-  margin-top: 12px; line-height: 1.5;
-}
-
-/* TRUST BAR */
-.trust-bar {
-  padding: 28px 64px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center;
-  justify-content: center; gap: 64px;
-  background: var(--bg2);
-}
-.trust-label {
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--muted); white-space: nowrap;
-}
-.trust-items {
-  display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
-}
-.trust-item {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 600; color: var(--muted);
-  transition: color 0.2s;
-}
-.trust-item:hover { color: var(--white); }
-.trust-item svg { opacity: 0.5; transition: opacity 0.2s; flex-shrink: 0; }
-.trust-item:hover svg { opacity: 0.9; }
-
-/* SECTIONS */
-.section {
-  padding: 110px 64px;
-  border-top: 1px solid var(--border);
-  position: relative;
-}
-.sec-label {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 16px;
-}
-.sec-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(34px, 4vw, 52px);
-  font-weight: 600; letter-spacing: -0.02em;
-  line-height: 1.1; color: var(--off);
-  margin-bottom: 70px; max-width: 520px;
-}
-.sec-title em { font-style: italic; font-weight: 300; color: var(--blue); }
-
-/* HOW IT WORKS */
-.steps {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--border);
-  border-radius: 16px; overflow: hidden;
-}
-.step {
-  background: var(--bg2); padding: 44px 36px;
-  transition: background 0.3s; position: relative;
-}
-.step:hover { background: var(--bg3); }
-.step::after {
-  content: '';
-  position: absolute; bottom: 0; left: 36px; right: 36px; height: 2px;
-  background: var(--blue); transform: scaleX(0);
-  transition: transform 0.3s ease; transform-origin: left; border-radius: 2px;
-}
-.step:hover::after { transform: scaleX(1); }
-.step-icon {
-  width: 44px; height: 44px;
-  background: rgba(59,123,255,0.1);
-  border: 1px solid rgba(59,123,255,0.2);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 24px;
-  transition: background 0.3s, border-color 0.3s;
-}
-.step:hover .step-icon {
-  background: rgba(59,123,255,0.2);
-  border-color: rgba(59,123,255,0.4);
-}
-.step-num {
-  font-family: 'Fraunces', serif;
-  font-size: 52px; font-weight: 300;
-  color: rgba(59,123,255,0.18); line-height: 1;
-  margin-bottom: 24px; transition: color 0.3s;
-}
-.step:hover .step-num { color: rgba(59,123,255,0.35); }
-.step-title {
-  font-size: 16px; font-weight: 700; color: var(--off);
-  margin-bottom: 12px; letter-spacing: -0.01em;
-}
-.step-desc {
-  font-size: 14px; font-weight: 300;
-  color: var(--muted); line-height: 1.7;
-}
-
-/* INDUSTRIES */
-.ind-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px; margin-top: 60px;
-}
-.ind-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 12px; padding: 28px 24px;
-  transition: border-color 0.3s, transform 0.2s;
-}
-.ind-card:hover {
-  border-color: var(--border-b); transform: translateY(-3px);
-}
-.ind-icon {
-  width: 44px; height: 44px;
-  background: rgba(59,123,255,0.08);
-  border: 1px solid rgba(59,123,255,0.15);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
-  transition: background 0.3s;
-}
-.ind-card:hover .ind-icon { background: rgba(59,123,255,0.15); }
-.ind-name {
-  font-size: 15px; font-weight: 700; color: var(--off);
-  margin-bottom: 8px; letter-spacing: -0.01em;
-}
-.ind-desc {
-  font-size: 13px; font-weight: 300;
-  color: var(--muted); line-height: 1.6;
-}
-
-/* CTA */
-.cta-section {
-  padding: 100px 64px;
-  border-top: 1px solid var(--border);
-  text-align: center; position: relative; overflow: hidden;
-}
-.cta-section::before {
-  content: '';
-  position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%);
-  width: 800px; height: 400px;
-  background: radial-gradient(circle, rgba(59,123,255,0.1) 0%, transparent 65%);
-  pointer-events: none;
-}
-.cta-section .sec-title { margin: 0 auto 40px; }
-.cta-sub {
-  font-size: 16px; font-weight: 300;
-  color: var(--muted); margin-bottom: 40px;
-}
-.cta-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--blue); color: white; text-decoration: none;
-  padding: 16px 36px; border-radius: 10px;
-  font-size: 15px; font-weight: 700;
-  box-shadow: 0 4px 32px rgba(59,123,255,0.35);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-}
-.cta-btn:hover {
-  background: var(--blue-dim); transform: translateY(-2px);
-  box-shadow: 0 8px 40px rgba(59,123,255,0.5);
-}
-
-/* FOOTER */
-footer {
-  padding: 56px 64px 36px;
-  border-top: 1px solid var(--border);
-}
-.footer-top {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 48px; margin-bottom: 48px;
-}
-.footer-brand p {
-  font-size: 13px; font-weight: 300;
-  color: var(--muted); line-height: 1.7;
-  margin-top: 16px; max-width: 240px;
-}
-.footer-col-title {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--white); margin-bottom: 16px;
-}
-.footer-links { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a {
-  font-size: 13px; font-weight: 300;
-  color: var(--muted); text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--white); }
-.footer-bottom {
-  padding-top: 28px;
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
-footer p.copy { font-size: 12px; color: var(--muted); }
-
-/* FOUNDER */
-.founder-section { padding: 90px 64px; border-top: 1px solid var(--border); }
-.founder-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: center; }
-.founder-avatar { width: 88px; height: 88px; border-radius: 50%; background: rgba(59,123,255,0.12); border: 1px solid rgba(59,123,255,0.25); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; color: var(--blue); margin-bottom: 20px; }
-.founder-name { font-size: 18px; font-weight: 700; color: var(--off); letter-spacing: -0.01em; margin-bottom: 4px; }
-.founder-title { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
-.founder-linkedin { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--blue); text-decoration: none; transition: opacity 0.2s; }
-.founder-linkedin:hover { opacity: 0.75; }
-.founder-bio { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.8; }
-.founder-bio strong { color: var(--off); font-weight: 600; }
-
-/* RESPONSIVE */
-@media (max-width: 960px) {
-  nav { padding: 18px 24px; }
-  nav.scrolled { padding: 12px 24px; }
-  .nav-link { display: none; }
-  .hero { grid-template-columns: 1fr; padding: 110px 24px 60px; gap: 48px; }
-  .form-top, .form-body { padding-left: 24px; padding-right: 24px; }
-  .fields-row { grid-template-columns: 1fr; }
-  .trust-bar { padding: 24px; gap: 24px; flex-direction: column; align-items: flex-start; }
-  .trust-items { gap: 24px; }
-  .steps { grid-template-columns: 1fr; }
-  .ind-grid { grid-template-columns: 1fr 1fr; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .section, .cta-section { padding: 70px 24px; }
-  .founder-section { padding: 60px 24px; }
-  .founder-inner { grid-template-columns: 1fr; gap: 40px; }
-  footer { padding: 48px 24px 28px; }
-  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-  .stats { max-width: 100%; }
+body { font-family:'Manrope',sans-serif; background:var(--bg); color:var(--white); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:22px 64px; transition:background 0.3s,padding 0.3s,box-shadow 0.3s; }
+nav.scrolled { background:rgba(14,17,23,0.95); backdrop-filter:blur(20px); padding:14px 64px; box-shadow:0 1px 0 var(--border); }
+.logo-wrap { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.toggle-icon { width:44px; height:26px; background:#1C1C22; border:2px solid #333; border-radius:13px; position:relative; flex-shrink:0; transition:border-color 0.3s; }
+.toggle-icon::after { content:''; position:absolute; right:3px; top:50%; transform:translateY(-50%); width:18px; height:18px; border-radius:50%; background:var(--blue); box-shadow:0 0 10px rgba(59,123,255,0.6); transition:box-shadow 0.3s; }
+.logo-wrap:hover .toggle-icon { border-color:var(--blue); }
+.logo-wrap:hover .toggle-icon::after { box-shadow:0 0 18px rgba(59,123,255,0.9); }
+.logo-text { font-family:'Manrope',sans-serif; font-weight:800; font-size:17px; letter-spacing:-0.02em; color:var(--white); }
+.nav-right { display:flex; align-items:center; gap:32px; }
+.nav-link { font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+.nav-link:hover { color:var(--white); }
+.nav-btn { background:var(--blue); color:white; padding:10px 22px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:background 0.2s,transform 0.15s; box-shadow:0 0 20px rgba(59,123,255,0.3); }
+.nav-btn:hover { background:var(--blue-dim); transform:translateY(-1px); }
+.hero { min-height:100vh; padding:130px 64px 80px; display:grid; grid-template-columns:1fr 460px; gap:80px; align-items:center; position:relative; overflow:hidden; }
+.hero::after { content:''; position:absolute; top:-100px; right:-100px; width:600px; height:600px; background:radial-gradient(circle,rgba(59,123,255,0.12) 0%,transparent 65%); pointer-events:none; }
+.hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent); }
+.hero-content { position:relative; z-index:1; }
+h1 { font-family:'Fraunces',serif; font-size:clamp(46px,5vw,72px); font-weight:600; line-height:1.08; letter-spacing:-0.02em; color:var(--off); margin-bottom:28px; animation:fadeUp 0.7s ease 0.1s both; }
+h1 em { font-style:italic; color:var(--blue); font-weight:300; }
+.hero-sub { font-size:17px; font-weight:300; line-height:1.75; color:var(--muted); max-width:480px; margin-bottom:52px; animation:fadeUp 0.7s ease 0.2s both; }
+.stats { display:flex; flex-direction:column; gap:0; border:1px solid var(--border); border-radius:12px; overflow:hidden; max-width:440px; animation:fadeUp 0.7s ease 0.3s both; }
+.stat { padding:20px 24px; border-bottom:1px solid var(--border); transition:background 0.2s; }
+.stat:last-child { border-bottom:none; }
+.stat:hover { background:rgba(59,123,255,0.05); }
+.stat-n { font-family:'Fraunces',serif; font-size:28px; font-weight:600; color:var(--blue); line-height:1; margin-bottom:6px; display:flex; align-items:baseline; gap:6px; }
+.stat-l { font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
+.stat-note { font-size:0.75rem; color:var(--muted); font-style:italic; font-weight:300; margin-top:4px; line-height:1.4; text-transform:none; letter-spacing:0; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.form-wrap { position:relative; z-index:1; animation:fadeUp 0.7s ease 0.25s both; }
+.form-card { background:var(--bg2); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+.form-top { padding:32px 36px 28px; border-bottom:1px solid var(--border); position:relative; }
+.form-top::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--blue),transparent); }
+.form-tag { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); margin-bottom:10px; }
+.form-title { font-family:'Fraunces',serif; font-size:22px; font-weight:600; color:var(--off); line-height:1.25; margin-bottom:6px; }
+.form-sub { font-size:13px; font-weight:300; color:var(--muted); line-height:1.55; }
+.form-body { padding:28px 36px 32px; }
+.field { margin-bottom:16px; }
+label { display:block; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+input, textarea { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:14px; color:var(--white); outline:none; transition:border-color 0.2s,background 0.2s,box-shadow 0.2s; }
+input::placeholder, textarea::placeholder { color:rgba(122,134,153,0.5); }
+input:focus, textarea:focus { border-color:rgba(59,123,255,0.5); background:rgba(59,123,255,0.04); box-shadow:0 0 0 3px rgba(59,123,255,0.08); }
+textarea { resize:none; height:90px; line-height:1.55; }
+.submit-btn { width:100%; padding:15px; background:var(--blue); color:white; border:none; border-radius:8px; font-family:'Manrope',sans-serif; font-size:14px; font-weight:700; cursor:pointer; margin-top:6px; transition:background 0.2s,transform 0.15s,box-shadow 0.2s; box-shadow:0 4px 24px rgba(59,123,255,0.3); display:flex; align-items:center; justify-content:center; gap:8px; }
+.submit-btn:hover { background:var(--blue-dim); transform:translateY(-2px); box-shadow:0 8px 32px rgba(59,123,255,0.45); }
+.btn-arrow { transition:transform 0.2s; }
+.submit-btn:hover .btn-arrow { transform:translateX(4px); }
+.form-note { text-align:center; font-size:11px; color:rgba(122,134,153,0.6); margin-top:12px; line-height:1.5; }
+.trust-bar { padding:28px 64px; border-top:1px solid var(--border); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:center; gap:64px; background:var(--bg2); }
+.trust-label { font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+.trust-items { display:flex; align-items:center; gap:48px; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:10px; font-size:13px; font-weight:600; color:var(--muted); transition:color 0.2s; }
+.trust-item:hover { color:var(--white); }
+.trust-item svg { opacity:0.5; transition:opacity 0.2s; flex-shrink:0; }
+.trust-item:hover svg { opacity:0.9; }
+.section { padding:110px 64px; border-top:1px solid var(--border); position:relative; }
+.sec-label { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); margin-bottom:16px; }
+.sec-title { font-family:'Fraunces',serif; font-size:clamp(34px,4vw,52px); font-weight:600; letter-spacing:-0.02em; line-height:1.1; color:var(--off); margin-bottom:70px; max-width:520px; }
+.sec-title em { font-style:italic; font-weight:300; color:var(--blue); }
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border-radius:16px; overflow:hidden; }
+.step { background:var(--bg2); padding:44px 36px; transition:background 0.3s; position:relative; }
+.step:hover { background:var(--bg3); }
+.step::after { content:''; position:absolute; bottom:0; left:36px; right:36px; height:2px; background:var(--blue); transform:scaleX(0); transition:transform 0.3s ease; transform-origin:left; border-radius:2px; }
+.step:hover::after { transform:scaleX(1); }
+.step-icon { width:44px; height:44px; background:rgba(59,123,255,0.1); border:1px solid rgba(59,123,255,0.2); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; transition:background 0.3s,border-color 0.3s; }
+.step:hover .step-icon { background:rgba(59,123,255,0.2); border-color:rgba(59,123,255,0.4); }
+.step-num { font-family:'Fraunces',serif; font-size:52px; font-weight:300; color:rgba(59,123,255,0.18); line-height:1; margin-bottom:24px; transition:color 0.3s; }
+.step:hover .step-num { color:rgba(59,123,255,0.35); }
+.step-title { font-size:16px; font-weight:700; color:var(--off); margin-bottom:12px; letter-spacing:-0.01em; }
+.step-desc { font-size:14px; font-weight:300; color:var(--muted); line-height:1.7; }
+.ind-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:60px; }
+.ind-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:28px 24px; transition:border-color 0.3s,transform 0.2s; text-decoration:none; display:block; }
+.ind-card:hover { border-color:var(--border-b); transform:translateY(-3px); }
+.ind-icon { width:44px; height:44px; background:rgba(59,123,255,0.08); border:1px solid rgba(59,123,255,0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:16px; transition:background 0.3s; }
+.ind-card:hover .ind-icon { background:rgba(59,123,255,0.15); }
+.ind-name { font-size:15px; font-weight:700; color:var(--off); margin-bottom:8px; letter-spacing:-0.01em; }
+.ind-desc { font-size:13px; font-weight:300; color:var(--muted); line-height:1.6; }
+.early-section { padding:100px 64px; border-top:1px solid var(--border); text-align:center; }
+.early-text { font-size:16px; font-weight:300; color:var(--muted); max-width:520px; margin:0 auto 40px; line-height:1.75; }
+.cta-section { padding:100px 64px; border-top:1px solid var(--border); text-align:center; position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; bottom:-200px; left:50%; transform:translateX(-50%); width:800px; height:400px; background:radial-gradient(circle,rgba(59,123,255,0.1) 0%,transparent 65%); pointer-events:none; }
+.cta-title { font-family:'Fraunces',serif; font-size:clamp(32px,4vw,48px); font-weight:600; color:var(--off); letter-spacing:-0.02em; line-height:1.15; margin-bottom:16px; max-width:560px; margin-left:auto; margin-right:auto; }
+.cta-title em { font-style:italic; font-weight:300; color:var(--blue); }
+.cta-sub { font-size:16px; font-weight:300; color:var(--muted); margin-bottom:40px; }
+.cta-btn { display:inline-flex; align-items:center; gap:10px; background:var(--blue); color:white; text-decoration:none; padding:16px 36px; border-radius:10px; font-size:15px; font-weight:700; box-shadow:0 4px 32px rgba(59,123,255,0.35); transition:background 0.2s,transform 0.15s,box-shadow 0.2s; }
+.cta-btn:hover { background:var(--blue-dim); transform:translateY(-2px); box-shadow:0 8px 40px rgba(59,123,255,0.5); }
+footer { padding:56px 64px 36px; border-top:1px solid var(--border); }
+.footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+.footer-brand p { font-size:13px; font-weight:300; color:var(--muted); line-height:1.7; margin-top:16px; max-width:240px; }
+.footer-col-title { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--white); margin-bottom:16px; }
+.footer-links { list-style:none; }
+.footer-links li { margin-bottom:10px; }
+.footer-links a { font-size:13px; font-weight:300; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--white); }
+.footer-bottom { padding-top:28px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+footer p.copy { font-size:12px; color:var(--muted); }
+@media (max-width:960px) {
+  nav { padding:18px 24px; } nav.scrolled { padding:12px 24px; }
+  .nav-link { display:none; }
+  .hero { grid-template-columns:1fr; padding:110px 24px 60px; gap:48px; }
+  .form-top, .form-body { padding-left:24px; padding-right:24px; }
+  .trust-bar { padding:24px; gap:24px; flex-direction:column; align-items:flex-start; }
+  .trust-items { gap:24px; }
+  .steps { grid-template-columns:1fr; }
+  .ind-grid { grid-template-columns:1fr 1fr; }
+  .footer-top { grid-template-columns:1fr 1fr; gap:32px; }
+  .section, .early-section, .cta-section { padding:70px 24px; }
+  footer { padding:48px 24px 28px; }
+  .footer-bottom { flex-direction:column; gap:10px; text-align:center; }
+  .stats { max-width:100%; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
   <a class="logo-wrap" href="#">
     <div class="toggle-icon"></div>
-    <div class="logo-text">SwitchTo<span>AI</span></div>
+    <div class="logo-text">SwitchTo<span style="color:var(--blue)">AI</span></div>
   </a>
   <div class="nav-right">
     <a href="#how" class="nav-link">How it works</a>
     <a href="#industries" class="nav-link">Who it's for</a>
-    <a href="https://blog.switchtoai.ai" class="nav-link">Blog</a>
     <a href="#assessment" class="nav-btn">Free assessment</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <h1>Stop doing the work<br><em>software</em> should be doing.</h1>
     <p class="hero-sub">We map exactly where your team is losing hours to admin, chasing, and repetition — and automate it. Free assessment, delivered in 48 hours.</p>
-
     <div class="stats">
       <div class="stat">
-        <div class="stat-num-wrap">
-          <div class="stat-n">8</div>
-          <div class="stat-unit">hrs/week</div>
-        </div>
-        <div class="stat-detail">
-          <p class="stat-l">Average time recovered after a first implementation — across estate agents, brokers, and accountancy practices.</p>
-          <p class="stat-source">Based on our assessment findings — your number may differ. That's why we check first.</p>
-        </div>
+        <div class="stat-n">8 <span style="font-size:16px;font-family:'Manrope',sans-serif;font-weight:500;">hrs/week</span></div>
+        <div class="stat-l">Average time recovered after a first implementation</div>
+        <div class="stat-note">Based on our assessment findings — your number may differ. That's why we check first.</div>
       </div>
       <div class="stat">
-        <div class="stat-num-wrap">
-          <div class="stat-n">48</div>
-          <div class="stat-unit">hours</div>
-        </div>
-        <div class="stat-detail">
-          <p class="stat-l">From conversation to written report. You'll know exactly where AI can help before you spend a penny.</p>
-        </div>
+        <div class="stat-n">48 <span style="font-size:16px;font-family:'Manrope',sans-serif;font-weight:500;">hours</span></div>
+        <div class="stat-l">From conversation to written report. Know where AI can help before spending a penny.</div>
       </div>
       <div class="stat">
-        <div class="stat-num-wrap">
-          <div class="stat-n">£0</div>
-          <div class="stat-unit">to start</div>
-        </div>
-        <div class="stat-detail">
-          <p class="stat-l">The assessment is free. Implementations start from £1,500 depending on scope. No retainers, no lock-in.</p>
-        </div>
+        <div class="stat-n">£0 <span style="font-size:16px;font-family:'Manrope',sans-serif;font-weight:500;">to start</span></div>
+        <div class="stat-l">The assessment is free. Implementations start from £1,500. No retainers, no lock-in.</div>
       </div>
     </div>
   </div>
 
-  <!-- FORM -->
   <div class="form-wrap" id="assessment">
     <div class="form-card">
       <div class="form-top">
-        <div class="form-tag">✦ Free AI Assessment</div>
-        <div class="form-title">See where AI fits in your business</div>
-        <div class="form-sub">Takes 30 seconds. We'll be in touch within 24 hours to book your session.</div>
+        <div class="form-tag">✦ Free Tool Recommendation</div>
+        <div class="form-title">Find the right AI tool for your business</div>
+        <div class="form-sub">Tell us your biggest time drain. We'll find the best tool for it — instantly.</div>
       </div>
       <div class="form-body">
         <div class="field">
-          <label>Business Email</label>
-          <input type="email" id="f-email" placeholder="john@yourbusiness.com">
+          <label>Your Name</label>
+          <input type="text" id="f-name" placeholder="John Smith">
         </div>
         <div class="field">
-          <label>Industry</label>
-          <select id="f-industry">
-            <option value="" disabled selected>Select your industry</option>
-            <option>Estate Agency</option>
-            <option>Mortgage Broking</option>
-            <option>Legal / Solicitors</option>
-            <option>Finance & Accounting</option>
-            <option>Construction & Trades</option>
-            <option>Hospitality & Events</option>
-            <option>E-commerce / Retail</option>
-            <option>Other</option>
-          </select>
+          <label>Company Name</label>
+          <input type="text" id="f-company" placeholder="Your Business Ltd">
         </div>
-        <button class="submit-btn" id="submit-btn" type="button" onclick="openTally(event)">
-          Get my free assessment <span class="btn-arrow">→</span>
+        <div class="field">
+          <label>Biggest time drain right now</label>
+          <textarea id="f-pain" placeholder="e.g. Chasing clients for documents, writing reports manually, following up on leads over the weekend..."></textarea>
+        </div>
+        <button class="submit-btn" type="button" onclick="goToRecommendation()">
+          Find my AI tool <span class="btn-arrow">→</span>
         </button>
-        <p class="form-note">No pitch. No obligation. Just a clear picture of where AI can help.</p>
+        <p class="form-note">Free. Instant. No email required to see your recommendation.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
 <div class="trust-bar">
   <span class="trust-label">Built for</span>
   <div class="trust-items">
-    <div class="trust-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      Estate Agents
-    </div>
-    <div class="trust-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-      Mortgage Brokers
-    </div>
-    <div class="trust-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><path d="M5 8c0 2.2 1.8 4 4 4s4-1.8 4-4"/><path d="M15 8c0 2.2 1.8 4 4 4s4-1.8 4-4"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
-      Solicitors
-    </div>
-    <div class="trust-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      Finance & Accounting
-    </div>
-    <div class="trust-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-      8h+ saved per week
-    </div>
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Estate Agents</div>
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Mortgage Brokers</div>
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><line x1="3" y1="21" x2="21" y2="21"/></svg>Solicitors</div>
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Finance & Accounting</div>
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
 <section class="section" id="how">
   <div class="sec-label">The Process</div>
   <div class="sec-title">Three steps to a <em>smarter</em> operation</div>
   <div class="steps">
     <div class="step">
-      <div class="step-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      </div>
+      <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
       <div class="step-num">01</div>
       <div class="step-title">30-Minute Conversation</div>
       <div class="step-desc">We ask the right questions about your daily workflow, your team, and the tasks eating up your week. No preparation needed.</div>
     </div>
     <div class="step">
-      <div class="step-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
-      </div>
+      <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
       <div class="step-num">02</div>
       <div class="step-title">Your AI Assessment Report</div>
       <div class="step-desc">Within 48 hours you receive a tailored report mapping each pain point to specific tools, quick wins, and their financial impact.</div>
     </div>
     <div class="step">
-      <div class="step-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
-      </div>
+      <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
       <div class="step-num">03</div>
       <div class="step-title">Follow-Up & Next Steps</div>
       <div class="step-desc">We walk through the report together on a 30-minute call. If you want us to handle the implementation, we can do that too.</div>
@@ -705,77 +229,35 @@ footer p.copy { font-size: 12px; color: var(--muted); }
   </div>
 </section>
 
-<!-- WHO IT'S FOR -->
 <section class="section" id="industries">
   <div class="sec-label">Who It's For</div>
-  <div class="sec-title">Built for <em>UK businesses</em> ready to stop wasting time on admin</div>
+  <div class="sec-title">Built for any service business where <em>time is leaking</em></div>
   <div class="ind-grid">
-    <a href="/estate-agents.html" class="ind-card" style="text-decoration:none">
-      <div class="ind-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      </div>
-      <div class="ind-name">Estate Agents</div>
-      <div class="ind-desc">Automate listings, client follow-ups, and viewing reports so your team focuses on closing.</div>
-    </a>
-    <a href="/mortgage-brokers.html" class="ind-card" style="text-decoration:none">
-      <div class="ind-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-      </div>
-      <div class="ind-name">Mortgage Brokers</div>
-      <div class="ind-desc">Never miss a lead again. AI handles enquiries and follow-ups around the clock.</div>
-    </a>
-    <a href="/solicitors.html" class="ind-card" style="text-decoration:none">
-      <div class="ind-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
-      </div>
-      <div class="ind-name">Solicitors</div>
-      <div class="ind-desc">Cut time spent on routine client Q&A, document prep, and case status updates.</div>
-    </a>
-    <a href="/finance-accounting.html" class="ind-card" style="text-decoration:none">
-      <div class="ind-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      </div>
-      <div class="ind-name">Finance & Accounting</div>
-      <div class="ind-desc">Automate reporting, data entry, and client communications that eat your week.</div>
-    </a>
+    <a href="/estate-agents.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="ind-name">Estate Agents</div><div class="ind-desc">Automate listings, client follow-ups, and viewing reports so your team focuses on closing.</div></a>
+    <a href="/mortgage-brokers.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div class="ind-name">Mortgage Brokers</div><div class="ind-desc">Never miss a lead again. AI handles enquiries and follow-ups around the clock.</div></a>
+    <a href="/solicitors.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><line x1="3" y1="21" x2="21" y2="21"/></svg></div><div class="ind-name">Solicitors</div><div class="ind-desc">Cut time spent on routine client Q&A, document prep, and case status updates.</div></a>
+    <a href="/finance-accounting.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="ind-name">Finance & Accounting</div><div class="ind-desc">Automate reporting, data entry, and client communications that eat your week.</div></a>
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section class="founder-section">
-  <div class="founder-inner" style="grid-template-columns: 1fr 1fr; gap: 40px;">
-    <div>
-      <div class="founder-avatar">AM</div>
-      <div class="founder-name">Abigail M</div>
-      <div class="founder-title">Client Lead, SwitchToAI</div>
-      <p class="founder-bio" style="margin-top: 16px;">Abigail comes from a background in human rights policy, where communicating clearly and managing complex stakeholder relationships were part of the job. She is the first person you speak to at SwitchToAI and the one who makes sure every assessment is handled properly. Her view is that good advice should feel straightforward rather than technical, and that every client deserves to understand exactly what they are getting before they commit to anything.</p>
-    </div>
-    <div>
-      <div class="founder-avatar">AM</div>
-      <div class="founder-name">Ahmed M</div>
-      <div class="founder-title">AI Advisor, SwitchToAI</div>
-      <p class="founder-bio" style="margin-top: 16px;">Ahmed has spent years working at a major global financial institution where AI tools are part of how serious work gets done. He built the methodology behind SwitchToAI because the efficiency gains that large organisations treat as standard are almost entirely absent from the small UK businesses that need them most. He designs every assessment framework and stays involved in implementations where the complexity warrants it.</p>
-    </div>
-  </div>
+<section class="early-section">
+  <div class="sec-label">Early Access</div>
+  <div class="sec-title" style="margin:0 auto 24px;max-width:600px;text-align:center;">We're working with our <em>first clients now</em></div>
+  <p class="early-text">We're currently running assessments for a small number of UK businesses. If you're open to sharing honest feedback, we'd like to work with you.</p>
+  <a href="#assessment" class="cta-btn">Get your free tool recommendation →</a>
 </section>
 
-<!-- CTA -->
 <section class="cta-section">
-  <div class="sec-label" style="margin-bottom:16px">Early Access</div>
-  <div class="sec-title" style="margin: 0 auto 16px; max-width: 600px;">We're working with our <em>first clients now</em></div>
-  <p class="cta-sub" style="max-width:520px; margin: 0 auto 40px;">We're running free assessments for a small number of UK businesses. If you're in estate agency, mortgage broking, legal, or finance — and open to sharing honest feedback — we'd like to work with you.</p>
-  <a href="https://tally.so/r/vGqXeQ" target="_blank" class="cta-btn">Apply for a free assessment →</a>
+  <div class="cta-title">Ready to see what <em>AI can do</em> for your business?</div>
+  <p class="cta-sub">Takes 2 minutes. Instant recommendation. Free assessment available.</p>
+  <a href="#assessment" class="cta-btn">Get started →</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a class="logo-wrap" href="#" style="text-decoration:none">
-        <div class="toggle-icon"></div>
-        <div class="logo-text">SwitchTo<span>AI</span></div>
-      </a>
-      <p>Helping UK businesses identify where AI can save time and money — starting with a free, no-obligation assessment.</p>
+      <a class="logo-wrap" href="#" style="text-decoration:none"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span style="color:var(--blue)">AI</span></div></a>
+      <p>Helping UK businesses identify where AI can save time and money — starting with a free, instant tool recommendation.</p>
     </div>
     <div>
       <div class="footer-col-title">Industries</div>
@@ -789,17 +271,15 @@ footer p.copy { font-size: 12px; color: var(--muted); }
     <div>
       <div class="footer-col-title">Assessment</div>
       <ul class="footer-links">
-        <li><a href="https://tally.so/r/vGqXeQ" target="_blank">Apply Now</a></li>
+        <li><a href="#assessment">Free Tool Recommendation</a></li>
+        <li><a href="https://calendly.com/a-madjaji/30min" target="_blank">Book a Call</a></li>
         <li><a href="#how">How it works</a></li>
-        <li><a href="#industries">Who it's for</a></li>
-        <li><a href="https://blog.switchtoai.ai">Blog</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="mailto:hello@switchtoai.ai">hello@switchtoai.ai</a></li>
-        <li></li>
       </ul>
     </div>
   </div>
@@ -810,35 +290,26 @@ footer p.copy { font-size: 12px; color: var(--muted); }
 
 <script>
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
 
-  function openTally(e) {
-    e.preventDefault();
-    const email    = document.getElementById('f-email').value.trim();
-    const industry = document.getElementById('f-industry').value;
+  function goToRecommendation() {
+    const name    = document.getElementById('f-name').value.trim();
+    const company = document.getElementById('f-company').value.trim();
+    const pain    = document.getElementById('f-pain').value.trim();
 
-    if (!email) {
-      document.getElementById('f-email').focus();
-      document.getElementById('f-email').style.borderColor = '#3B7BFF';
+    if (!pain) {
+      const el = document.getElementById('f-pain');
+      el.focus();
+      el.style.borderColor = '#3B7BFF';
       return;
     }
-gtag('event', 'assessment_submit', {
-  'industry': industry || 'not selected'
-});
-    const params = new URLSearchParams();
-    if (email)    params.set('email', email);
-    if (industry) params.set('industry', industry);
 
-    const url = `https://tally.so/r/vGqXeQ?${params.toString()}`;
-    const a = document.createElement('a');
-    a.href = url;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const params = new URLSearchParams();
+    if (name)    params.set('name', name);
+    if (company) params.set('company', company);
+    params.set('pain', pain);
+
+    window.location.href = `/recommendation.html?${params.toString()}`;
   }
 </script>
 </body>
