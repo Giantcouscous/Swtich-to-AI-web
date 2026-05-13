@@ -825,14 +825,13 @@ nav {
 .preview-modal {
   position:fixed;
   inset:0;
-  z-index:1000;
+  z-index:9999;
   display:none;
-  align-items:flex-start;
+  align-items:center;
   justify-content:center;
-  padding:96px 28px 32px;
-  background:rgba(3,6,12,.82);
+  padding:90px 28px 32px;
+  background:rgba(3,6,12,.86);
   backdrop-filter:blur(14px);
-  overflow-y:auto;
 }
 
 .preview-modal.open {
@@ -840,16 +839,20 @@ nav {
 }
 
 .preview-dialog {
-  width:min(1180px,94vw);
+  width:min(1120px,92vw);
+  max-height:calc(100vh - 130px);
   background:var(--bg2);
   border:1px solid var(--border-b);
   border-radius:18px;
   overflow:hidden;
-  box-shadow:0 30px 90px rgba(0,0,0,.55);
-  margin:0 auto;
+  box-shadow:0 30px 90px rgba(0,0,0,.65);
+
+  display:flex;
+  flex-direction:column;
 }
 
 .preview-modal-head {
+  flex:0 0 auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -884,6 +887,10 @@ nav {
 }
 
 .preview-modal-body {
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
   padding:22px;
   display:flex;
   flex-direction:column;
@@ -892,6 +899,7 @@ nav {
 
 .preview-page {
   width:100%;
+  flex:0 0 auto;
   border:1px solid var(--border);
   border-radius:12px;
   overflow:hidden;
