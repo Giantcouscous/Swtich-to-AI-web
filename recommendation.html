@@ -825,13 +825,14 @@ nav {
 .preview-modal {
   position:fixed;
   inset:0;
-  z-index:300;
+  z-index:1000;
   display:none;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
-  padding:28px;
+  padding:96px 28px 32px;
   background:rgba(3,6,12,.82);
   backdrop-filter:blur(14px);
+  overflow-y:auto;
 }
 
 .preview-modal.open {
@@ -839,20 +840,16 @@ nav {
 }
 
 .preview-dialog {
-  width:min(1120px,96vw);
-  max-height:92vh;
+  width:min(1180px,94vw);
   background:var(--bg2);
   border:1px solid var(--border-b);
   border-radius:18px;
   overflow:hidden;
   box-shadow:0 30px 90px rgba(0,0,0,.55);
-
-  display:flex;
-  flex-direction:column;
+  margin:0 auto;
 }
 
 .preview-modal-head {
-  flex:0 0 auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -860,7 +857,6 @@ nav {
   padding:18px 22px;
   border-bottom:1px solid var(--border);
   background:var(--bg2);
-  z-index:2;
 }
 
 .preview-modal-title {
@@ -888,14 +884,10 @@ nav {
 }
 
 .preview-modal-body {
-  flex:1 1 auto;
-  min-height:0;
-  overflow-y:auto;
-  overflow-x:hidden;
   padding:22px;
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:22px;
 }
 
 .preview-page {
@@ -903,8 +895,7 @@ nav {
   border:1px solid var(--border);
   border-radius:12px;
   overflow:hidden;
-  background:var(--bg);
-  flex:0 0 auto;
+  background:#0b0e13;
 }
 
 .preview-page img {
