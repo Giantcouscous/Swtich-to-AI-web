@@ -3,8 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SwitchToAI — Stop doing the work software should be doing</title>
-<meta name="description" content="We map exactly where your team is losing hours to admin, chasing, and repetition — and automate it. Free assessment, delivered in 48 hours.">
+<meta name="description" content="We map exactly where your team is losing hours to admin, chasing, and repetition — and automate it. Free assessment for UK businesses, delivered in 48 hours.">
+<title>AI Automation for UK Businesses | SwitchToAI</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://switchtoai.ai/#business",
+      "name": "SwitchToAI",
+      "url": "https://switchtoai.ai",
+      "description": "AI automation consultancy helping UK businesses identify and automate the admin, chasing, and repetition eating their team's time.",
+      "areaServed": "GB",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@switchtoai.ai",
+        "contactType": "customer service"
+      },
+      "founder": {
+        "@id": "https://switchtoai.ai/#ahmed"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://switchtoai.ai/#ahmed",
+      "name": "Ahmed M",
+      "jobTitle": "Founder",
+      "worksFor": {
+        "@id": "https://switchtoai.ai/#business"
+      },
+      "url": "https://switchtoai.ai"
+    }
+  ]
+}
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ4D8CHN9M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MJ4D8CHN9M');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -26,6 +72,7 @@ nav.scrolled { background:rgba(14,17,23,0.95); backdrop-filter:blur(20px); paddi
 .logo-wrap:hover .toggle-icon { border-color:var(--blue); }
 .logo-wrap:hover .toggle-icon::after { box-shadow:0 0 18px rgba(59,123,255,0.9); }
 .logo-text { font-family:'Manrope',sans-serif; font-weight:800; font-size:17px; letter-spacing:-0.02em; color:var(--white); }
+.logo-text span { color:var(--blue); }
 .nav-right { display:flex; align-items:center; gap:32px; }
 .nav-link { font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; transition:color 0.2s; }
 .nav-link:hover { color:var(--white); }
@@ -94,13 +141,16 @@ textarea { resize:none; height:90px; line-height:1.55; }
 .ind-card:hover .ind-icon { background:rgba(59,123,255,0.15); }
 .ind-name { font-size:15px; font-weight:700; color:var(--off); margin-bottom:8px; letter-spacing:-0.01em; }
 .ind-desc { font-size:13px; font-weight:300; color:var(--muted); line-height:1.6; }
+/* FOUNDER */
+.founder-section { padding:110px 64px; border-top:1px solid var(--border); }
+.founder-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.8fr; gap:80px; align-items:center; }
+.founder-avatar { width:72px; height:72px; border-radius:50%; background:rgba(59,123,255,0.12); border:1px solid rgba(59,123,255,0.25); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:22px; font-weight:600; color:var(--blue); margin-bottom:16px; }
+.founder-name { font-size:18px; font-weight:700; color:var(--off); letter-spacing:-0.01em; margin-bottom:4px; }
+.founder-title { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+.founder-bio { font-size:15px; font-weight:300; color:var(--muted); line-height:1.8; }
+.founder-bio strong { color:var(--off); font-weight:600; }
 .early-section { padding:100px 64px; border-top:1px solid var(--border); text-align:center; }
 .early-text { font-size:16px; font-weight:300; color:var(--muted); max-width:520px; margin:0 auto 40px; line-height:1.75; }
-.cta-section { padding:100px 64px; border-top:1px solid var(--border); text-align:center; position:relative; overflow:hidden; }
-.cta-section::before { content:''; position:absolute; bottom:-200px; left:50%; transform:translateX(-50%); width:800px; height:400px; background:radial-gradient(circle,rgba(59,123,255,0.1) 0%,transparent 65%); pointer-events:none; }
-.cta-title { font-family:'Fraunces',serif; font-size:clamp(32px,4vw,48px); font-weight:600; color:var(--off); letter-spacing:-0.02em; line-height:1.15; margin-bottom:16px; max-width:560px; margin-left:auto; margin-right:auto; }
-.cta-title em { font-style:italic; font-weight:300; color:var(--blue); }
-.cta-sub { font-size:16px; font-weight:300; color:var(--muted); margin-bottom:40px; }
 .cta-btn { display:inline-flex; align-items:center; gap:10px; background:var(--blue); color:white; text-decoration:none; padding:16px 36px; border-radius:10px; font-size:15px; font-weight:700; box-shadow:0 4px 32px rgba(59,123,255,0.35); transition:background 0.2s,transform 0.15s,box-shadow 0.2s; }
 .cta-btn:hover { background:var(--blue-dim); transform:translateY(-2px); box-shadow:0 8px 40px rgba(59,123,255,0.5); }
 footer { padding:56px 64px 36px; border-top:1px solid var(--border); }
@@ -122,8 +172,10 @@ footer p.copy { font-size:12px; color:var(--muted); }
   .trust-items { gap:24px; }
   .steps { grid-template-columns:1fr; }
   .ind-grid { grid-template-columns:1fr 1fr; }
+  .founder-section { padding:70px 24px; }
+  .founder-inner { grid-template-columns:1fr; gap:40px; }
   .footer-top { grid-template-columns:1fr 1fr; gap:32px; }
-  .section, .early-section, .cta-section { padding:70px 24px; }
+  .section, .early-section { padding:70px 24px; }
   footer { padding:48px 24px 28px; }
   .footer-bottom { flex-direction:column; gap:10px; text-align:center; }
   .stats { max-width:100%; }
@@ -135,11 +187,12 @@ footer p.copy { font-size:12px; color:var(--muted); }
 <nav id="nav">
   <a class="logo-wrap" href="#">
     <div class="toggle-icon"></div>
-    <div class="logo-text">SwitchTo<span style="color:var(--blue)">AI</span></div>
+    <div class="logo-text">SwitchTo<span>AI</span></div>
   </a>
   <div class="nav-right">
     <a href="#how" class="nav-link">How it works</a>
     <a href="#industries" class="nav-link">Who it's for</a>
+    <a href="https://blog.switchtoai.ai" class="nav-link">Blog</a>
     <a href="#assessment" class="nav-btn">Free assessment</a>
   </div>
 </nav>
@@ -180,6 +233,10 @@ footer p.copy { font-size:12px; color:var(--muted); }
         <div class="field">
           <label>Company Name</label>
           <input type="text" id="f-company" placeholder="Your Business Ltd">
+        </div>
+        <div class="field">
+          <label>Business Email</label>
+          <input type="email" id="f-email" placeholder="john@yourbusiness.com">
         </div>
         <div class="field">
           <label>Biggest time drain right now</label>
@@ -240,6 +297,19 @@ footer p.copy { font-size:12px; color:var(--muted); }
   </div>
 </section>
 
+<!-- FOUNDER -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div>
+      <div class="founder-avatar">AM</div>
+      <div class="founder-name">Ahmed M.</div>
+      <div class="founder-title">Founder, SwitchToAI</div>
+    </div>
+    <p class="founder-bio">Ahmed is a <strong>VP at a major global financial institution</strong>, where he uses AI tools daily to cut through the admin that would otherwise eat his week. <strong>The same tools that save him hours every week are completely unknown to most small business owners.</strong> SwitchToAI is his answer to that gap: a straightforward service that maps where your time is actually going, and builds the automation to get it back.</p>
+  </div>
+</section>
+
+<!-- EARLY ACCESS -->
 <section class="early-section">
   <div class="sec-label">Early Access</div>
   <div class="sec-title" style="margin:0 auto 24px;max-width:600px;text-align:center;">We're working with our <em>first clients now</em></div>
@@ -247,16 +317,10 @@ footer p.copy { font-size:12px; color:var(--muted); }
   <a href="#assessment" class="cta-btn">Get your free tool recommendation →</a>
 </section>
 
-<section class="cta-section">
-  <div class="cta-title">Ready to see what <em>AI can do</em> for your business?</div>
-  <p class="cta-sub">Takes 2 minutes. Instant recommendation. Free assessment available.</p>
-  <a href="#assessment" class="cta-btn">Get started →</a>
-</section>
-
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a class="logo-wrap" href="#" style="text-decoration:none"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span style="color:var(--blue)">AI</span></div></a>
+      <a class="logo-wrap" href="#" style="text-decoration:none"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span>AI</span></div></a>
       <p>Helping UK businesses identify where AI can save time and money — starting with a free, instant tool recommendation.</p>
     </div>
     <div>
@@ -269,11 +333,12 @@ footer p.copy { font-size:12px; color:var(--muted); }
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Assessment</div>
+      <div class="footer-col-title">Resources</div>
       <ul class="footer-links">
         <li><a href="#assessment">Free Tool Recommendation</a></li>
         <li><a href="https://calendly.com/a-madjaji/30min" target="_blank">Book a Call</a></li>
         <li><a href="#how">How it works</a></li>
+        <li><a href="https://blog.switchtoai.ai">Blog</a></li>
       </ul>
     </div>
     <div>
@@ -295,6 +360,7 @@ footer p.copy { font-size:12px; color:var(--muted); }
   function goToRecommendation() {
     const name    = document.getElementById('f-name').value.trim();
     const company = document.getElementById('f-company').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
     const pain    = document.getElementById('f-pain').value.trim();
 
     if (!pain) {
@@ -304,9 +370,14 @@ footer p.copy { font-size:12px; color:var(--muted); }
       return;
     }
 
+    gtag('event', 'recommendation_submit', {
+      'company': company || 'not provided'
+    });
+
     const params = new URLSearchParams();
     if (name)    params.set('name', name);
     if (company) params.set('company', company);
+    if (email)   params.set('email', email);
     params.set('pain', pain);
 
     window.location.href = `/recommendation.html?${params.toString()}`;
