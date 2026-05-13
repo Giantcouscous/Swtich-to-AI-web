@@ -1549,14 +1549,18 @@ function openCasePreview(caseId) {
 
   body.innerHTML = data.pages.map(([src, caption]) => `
     <figure class="preview-page">
-      <img src="${src}" alt="${caption}" loading="lazy">
+      <img src="${src}" alt="${caption}">
       <figcaption class="preview-page-caption">${caption}</figcaption>
     </figure>
   `).join('');
 
   modal.classList.add('open');
-  modal.setAttribute('aria-hidden','false');
+  modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+
+  requestAnimationFrame(() => {
+    body.scrollTop = 0;
+  });
 }
 
 function closeCasePreview() {
