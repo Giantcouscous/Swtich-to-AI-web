@@ -119,6 +119,60 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-i
 .case-result-label { font-size:13px; font-weight:300; color:var(--muted); line-height:1.4; }
 .case-quote { margin-top:24px; padding:16px 18px; background:var(--bg3); border-radius:8px; font-size:13px; font-weight:300; color:rgba(240,238,233,0.7); line-height:1.65; font-style:italic; }
 
+
+
+/* TRUSTED ASSESSMENT PREVIEWS */
+.proof-intro { display:grid; grid-template-columns:minmax(0,0.9fr) minmax(320px,1.1fr); gap:32px; align-items:end; margin-top:20px; }
+.proof-copy { font-size:16px; font-weight:300; color:var(--muted); max-width:620px; line-height:1.75; }
+.proof-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.proof-stat { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:16px; }
+.proof-stat strong { display:block; font-family:'Fraunces',serif; color:var(--off); font-size:24px; margin-bottom:4px; }
+.proof-stat span { color:var(--muted); font-size:12px; line-height:1.45; display:block; }
+.case-carousel-wrap { position:relative; margin-top:48px; }
+.case-carousel { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(560px,1fr); gap:24px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 4px 22px; scrollbar-color:rgba(59,123,255,.5) transparent; }
+.case-proof-card { scroll-snap-align:start; background:linear-gradient(180deg,var(--bg2),rgba(20,24,32,.92)); border:1px solid var(--border); border-radius:18px; overflow:hidden; position:relative; transition:border-color .25s, transform .2s; }
+.case-proof-card:hover { border-color:var(--border-b); transform:translateY(-3px); }
+.case-proof-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),rgba(59,123,255,0.15)); z-index:1; }
+.case-proof-top { padding:28px 30px 24px; display:grid; grid-template-columns:1fr auto; gap:20px; }
+.case-kicker { font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); margin-bottom:8px; }
+.case-proof-title { font-size:24px; font-weight:800; color:var(--off); letter-spacing:-.02em; margin-bottom:10px; }
+.case-proof-desc { color:var(--muted); font-size:14px; font-weight:300; line-height:1.65; max-width:560px; }
+.case-trusted-badge { align-self:start; border:1px solid rgba(34,197,94,.25); background:rgba(34,197,94,.08); color:var(--green); border-radius:999px; padding:8px 12px; font-size:11px; font-weight:800; white-space:nowrap; }
+.case-proof-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.case-proof-metric { background:rgba(26,32,48,.72); padding:18px 22px; }
+.case-proof-metric strong { display:block; font-family:'Fraunces',serif; font-size:30px; color:var(--blue); line-height:1; margin-bottom:7px; }
+.case-proof-metric span { font-size:12px; color:var(--muted); line-height:1.4; display:block; }
+.preview-rail { display:grid; grid-template-columns:1.1fr .8fr .8fr; gap:12px; padding:24px 30px 28px; align-items:stretch; }
+.preview-thumb { position:relative; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--bg); min-height:150px; cursor:pointer; box-shadow:0 12px 34px rgba(0,0,0,.18); }
+.preview-thumb:first-child { min-height:230px; }
+.preview-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s, opacity .25s; }
+.preview-thumb:hover img { transform:scale(1.035); opacity:.82; }
+.preview-thumb-label { position:absolute; left:10px; bottom:10px; right:10px; display:flex; align-items:center; justify-content:space-between; gap:8px; background:rgba(14,17,23,.78); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.08); color:var(--white); border-radius:8px; padding:8px 10px; font-size:11px; font-weight:700; }
+.case-proof-actions { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:0 30px 30px; }
+.case-proof-note { color:var(--muted); font-size:12px; line-height:1.5; }
+.case-preview-btn { border:1px solid rgba(59,123,255,.35); background:rgba(59,123,255,.12); color:var(--blue); border-radius:9px; padding:12px 18px; font-size:13px; font-weight:800; cursor:pointer; transition:background .2s,border-color .2s,transform .15s; white-space:nowrap; font-family:'Manrope',sans-serif; }
+.case-preview-btn:hover { background:rgba(59,123,255,.2); border-color:rgba(59,123,255,.65); transform:translateY(-1px); }
+.preview-modal { position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:28px; background:rgba(3,6,12,.82); backdrop-filter:blur(14px); }
+.preview-modal.open { display:flex; }
+.preview-dialog { width:min(1120px,96vw); max-height:92vh; background:var(--bg2); border:1px solid var(--border-b); border-radius:18px; overflow:hidden; box-shadow:0 30px 90px rgba(0,0,0,.55); display:grid; grid-template-rows:auto 1fr; }
+.preview-modal-head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 22px; border-bottom:1px solid var(--border); }
+.preview-modal-title { font-size:16px; font-weight:800; color:var(--off); }
+.preview-modal-sub { font-size:12px; color:var(--muted); margin-top:3px; }
+.preview-close { width:36px; height:36px; border-radius:9px; border:1px solid var(--border); background:var(--bg3); color:var(--white); font-size:22px; cursor:pointer; }
+.preview-modal-body { overflow:auto; padding:22px; display:grid; gap:18px; }
+.preview-page { border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--bg); }
+.preview-page img { display:block; width:100%; height:auto; }
+.preview-page-caption { padding:10px 12px; background:var(--bg3); color:var(--muted); font-size:12px; border-top:1px solid var(--border); }
+@media (max-width:960px) {
+  .proof-intro { grid-template-columns:1fr; }
+  .proof-strip { grid-template-columns:1fr; }
+  .case-carousel { grid-auto-columns:88vw; }
+  .case-proof-top { grid-template-columns:1fr; padding:24px; }
+  .case-proof-metrics { grid-template-columns:1fr; }
+  .preview-rail { grid-template-columns:1fr; padding:20px 24px; }
+  .case-proof-actions { flex-direction:column; align-items:flex-start; padding:0 24px 24px; }
+}
+
 /* CTA SECTION */
 .cta-section { padding:100px 64px; border-top:1px solid var(--border); text-align:center; position:relative; overflow:hidden; }
 .cta-section::before { content:''; position:absolute; bottom:-200px; left:50%; transform:translateX(-50%); width:800px; height:400px; background:radial-gradient(circle,rgba(59,123,255,0.12) 0%,transparent 65%); pointer-events:none; }
@@ -279,59 +333,84 @@ footer p { font-size:12px; color:var(--muted); }
   <hr class="section-divider">
 
   <!-- CASE STUDIES -->
-  <section class="cases-section">
-    <div class="sec-label">Client Results</div>
-    <div class="sec-title">What the assessment <em>actually finds</em></div>
-    <div class="cases-grid">
-
-      <!-- Retail Circle -->
-      <div class="case-card">
-        <div class="case-avatar">RC</div>
-        <div class="case-business">Luxury Watch Brokerage</div>
-        <div class="case-name">Retail Circle</div>
-        <div class="case-context">4-person team. Global market. Already highly automated — AWS CRM, custom integrations, tech-first operation. We were challenged to find meaningful gains in a business that had already done the obvious work.</div>
-        <div class="case-results">
-          <div class="case-result">
-            <div class="case-result-num">8–12</div>
-            <div class="case-result-label">hours per week recovered through three automations</div>
-          </div>
-          <div class="case-result">
-            <div class="case-result-num">£234k</div>
-            <div class="case-result-label">Year 1 impact — conservative floor</div>
-          </div>
-          <div class="case-result">
-            <div class="case-result-num">£40–70</div>
-            <div class="case-result-label">combined tool cost per month</div>
-          </div>
-        </div>
-        <div class="case-quote">"Weekend leads were going unanswered until Monday. In a £10k–£150k+ deal market, one missed contact can cost more than a year of tool costs."</div>
+  <section class="cases-section" id="trusted-assessments">
+    <div class="sec-label">They trusted us</div>
+    <div class="sec-title">Real assessment samples, not generic AI advice</div>
+    <div class="proof-intro">
+      <p class="proof-copy">These are selected pages from real SwitchToAI assessments. The point is not to show a full document dump — it is to prove the level of diagnosis, prioritisation, and commercial thinking clients receive for £1,250.</p>
+      <div class="proof-strip">
+        <div class="proof-stat"><strong>48h</strong><span>from interview to written assessment</span></div>
+        <div class="proof-stat"><strong>£1,250</strong><span>fixed-price diagnostic report</span></div>
+        <div class="proof-stat"><strong>0</strong><span>retainers or lock-in required</span></div>
       </div>
+    </div>
 
-      <!-- Tacos Collective -->
-      <div class="case-card">
-        <div class="case-avatar">TC</div>
-        <div class="case-business">Multi-Site Food & Beverage</div>
-        <div class="case-name">Tacos Collective</div>
-        <div class="case-context">14–15 staff across multiple sites. Stock ordering done reactively via WhatsApp. Revenue reporting compiled manually every week. No unified view of supplier costs across locations.</div>
-        <div class="case-results">
-          <div class="case-result">
-            <div class="case-result-num">5–6</div>
-            <div class="case-result-label">hours per week recovered across the ownership team</div>
+    <div class="case-carousel-wrap">
+      <div class="case-carousel" aria-label="Trusted assessment examples">
+
+        <article class="case-proof-card">
+          <div class="case-proof-top">
+            <div>
+              <div class="case-kicker">Luxury Watch Brokerage</div>
+              <div class="case-proof-title">Retail Circle</div>
+              <p class="case-proof-desc">A 4-person luxury watch brokerage with an AWS CRM, global buyers, weekend lead leakage, dormant clients, and high-value quotation workflows.</p>
+            </div>
+            <div class="case-trusted-badge">Trusted us with their workflow</div>
           </div>
-          <div class="case-result">
-            <div class="case-result-num">£9,100</div>
-            <div class="case-result-label">Year 1 time value at £35/hr — conservative</div>
+          <div class="case-proof-metrics">
+            <div class="case-proof-metric"><strong>8-12</strong><span>hours per week recoverable admin</span></div>
+            <div class="case-proof-metric"><strong>£234k</strong><span>Year 1 impact, conservative floor</span></div>
+            <div class="case-proof-metric"><strong>£40-70</strong><span>combined tool cost per month</span></div>
           </div>
-          <div class="case-result">
-            <div class="case-result-num">£9–16</div>
-            <div class="case-result-label">combined tool cost per month on Make</div>
+          <div class="preview-rail">
+            <div class="preview-thumb" onclick="openCasePreview('retail')"><img src="case-previews/retail-circle/page-1.jpg" alt="Retail Circle assessment cover"><div class="preview-thumb-label"><span>Cover summary</span><span>View</span></div></div>
+            <div class="preview-thumb" onclick="openCasePreview('retail')"><img src="case-previews/retail-circle/page-3.jpg" alt="Retail Circle impact effort matrix"><div class="preview-thumb-label"><span>Impact matrix</span><span>View</span></div></div>
+            <div class="preview-thumb" onclick="openCasePreview('retail')"><img src="case-previews/retail-circle/page-8.jpg" alt="Retail Circle financial impact"><div class="preview-thumb-label"><span>Financial impact</span><span>View</span></div></div>
           </div>
-        </div>
-        <div class="case-quote">"Revenue reporting dropped from 60 minutes per week to under 5. One Make scenario replaced 52 hours of manual work per year."</div>
+          <div class="case-proof-actions">
+            <div class="case-proof-note">Selected pages only: cover, executive summary, matrix, quick wins, and financial impact.</div>
+            <button class="case-preview-btn" type="button" onclick="openCasePreview('retail')">Preview selected pages →</button>
+          </div>
+        </article>
+
+        <article class="case-proof-card">
+          <div class="case-proof-top">
+            <div>
+              <div class="case-kicker">Multi-site Food & Beverage</div>
+              <div class="case-proof-title">Tacos Collective</div>
+              <p class="case-proof-desc">A 14-15 person multi-site taqueria with reactive stock ordering, manual revenue reporting, WhatsApp ops noise, and supplier visibility gaps.</p>
+            </div>
+            <div class="case-trusted-badge">Trusted us with their operations</div>
+          </div>
+          <div class="case-proof-metrics">
+            <div class="case-proof-metric"><strong>5-6</strong><span>hours per week recoverable admin</span></div>
+            <div class="case-proof-metric"><strong>£9,100</strong><span>Year 1 floor at £35/hr</span></div>
+            <div class="case-proof-metric"><strong>£350-800</strong><span>combined tool cost per year</span></div>
+          </div>
+          <div class="preview-rail">
+            <div class="preview-thumb" onclick="openCasePreview('tacos')"><img src="case-previews/tacos-collective/page-1.jpg" alt="Tacos Collective assessment cover"><div class="preview-thumb-label"><span>Cover summary</span><span>View</span></div></div>
+            <div class="preview-thumb" onclick="openCasePreview('tacos')"><img src="case-previews/tacos-collective/page-4.jpg" alt="Tacos Collective impact effort matrix"><div class="preview-thumb-label"><span>Impact matrix</span><span>View</span></div></div>
+            <div class="preview-thumb" onclick="openCasePreview('tacos')"><img src="case-previews/tacos-collective/page-9.jpg" alt="Tacos Collective financial impact"><div class="preview-thumb-label"><span>Financial impact</span><span>View</span></div></div>
+          </div>
+          <div class="case-proof-actions">
+            <div class="case-proof-note">Selected pages only: cover, executive summary, matrix, quick wins, and financial impact.</div>
+            <button class="case-preview-btn" type="button" onclick="openCasePreview('tacos')">Preview selected pages →</button>
+          </div>
+        </article>
+
       </div>
-
     </div>
   </section>
+
+  <div class="preview-modal" id="case-preview-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="preview-dialog">
+      <div class="preview-modal-head">
+        <div><div class="preview-modal-title" id="preview-modal-title">Assessment preview</div><div class="preview-modal-sub">Selected sample pages only. Full reports are client-specific.</div></div>
+        <button class="preview-close" type="button" onclick="closeCasePreview()" aria-label="Close preview">×</button>
+      </div>
+      <div class="preview-modal-body" id="preview-modal-body"></div>
+    </div>
+  </div>
 
   <hr class="section-divider">
 
@@ -516,6 +595,62 @@ function getFallback() {
     pain_summary: 'manual repetitive work'
   };
 }
+
+
+// ─── CASE STUDY PREVIEW MODAL ────────────────────────────────────────────────
+const CASE_PREVIEWS = {
+  retail: {
+    title: 'Retail Circle — selected assessment pages',
+    pages: [
+      ['case-previews/retail-circle/page-1.jpg', 'Cover summary — recoverable admin, Year 1 impact, tool cost'],
+      ['case-previews/retail-circle/page-2.jpg', 'Executive summary — pain, opportunity, outcome'],
+      ['case-previews/retail-circle/page-3.jpg', 'Impact / effort matrix — where to start and what to skip'],
+      ['case-previews/retail-circle/page-4.jpg', 'Quick wins — three fixes, one week, £40-70/month'],
+      ['case-previews/retail-circle/page-8.jpg', 'Financial impact — conservative ROI breakdown']
+    ]
+  },
+  tacos: {
+    title: 'Tacos Collective — selected assessment pages',
+    pages: [
+      ['case-previews/tacos-collective/page-1.jpg', 'Cover summary — recoverable admin, Year 1 floor, tool cost'],
+      ['case-previews/tacos-collective/page-2.jpg', 'Executive summary — operational bottlenecks and outcomes'],
+      ['case-previews/tacos-collective/page-4.jpg', 'Impact / effort matrix — priority map'],
+      ['case-previews/tacos-collective/page-5.jpg', 'Quick wins — three fixes, one week, £9-16/month'],
+      ['case-previews/tacos-collective/page-9.jpg', 'Financial impact — conservative value and break-even']
+    ]
+  }
+};
+
+function openCasePreview(caseId) {
+  const modal = document.getElementById('case-preview-modal');
+  const title = document.getElementById('preview-modal-title');
+  const body = document.getElementById('preview-modal-body');
+  const data = CASE_PREVIEWS[caseId];
+  if (!data) return;
+  title.textContent = data.title;
+  body.innerHTML = data.pages.map(([src, caption]) => `
+    <figure class="preview-page">
+      <img src="${src}" alt="${caption}" loading="lazy">
+      <figcaption class="preview-page-caption">${caption}</figcaption>
+    </figure>
+  `).join('');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCasePreview() {
+  const modal = document.getElementById('case-preview-modal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCasePreview(); });
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('case-preview-modal');
+  if (e.target === modal) closeCasePreview();
+});
 
 // ─── MAIN ────────────────────────────────────────────────────────────────────
 async function init() {
