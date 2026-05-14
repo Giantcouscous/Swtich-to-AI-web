@@ -43,30 +43,33 @@ export async function onRequest(context) {
       );
     }
 
-    const prompt = `
-You are an AI tool specialist for SwitchToAI.
+    const prompt = `You are a specialist AI automation advisor for SwitchToAI, a UK-based consultancy helping small service businesses recover time through automation.
 
-Pain point:
-${pain}
+A business owner has submitted the following:
+Pain point: ${pain}
+${company ? `Company: ${company}` : ''}
+${name ? `Name: ${name}` : ''}
 
-Company:
-${company}
+Your task: identify the single best off-the-shelf AI or automation tool that directly solves this pain point for a small UK service business.
 
-Name:
-${name}
+Requirements:
+- Prioritise tools that are mature, actively maintained, and have transparent pricing
+- Must be suitable for non-technical business owners — no coding required
+- UK-compliant where relevant (GDPR-friendly, GBP pricing or free tier available)
+- Prefer tools with a free tier or trial so they can test before paying
+- Be specific — not "a CRM" but "HubSpot" or "Pipedrive"
+- If the pain point is about building an AI agent, recommend Make.com or n8n as the foundation
 
-Return ONLY valid JSON:
-
+Return ONLY valid JSON — no markdown, no explanation, no extra text:
 {
-  "tool_name": "",
-  "why_it_fits": "",
-  "what_it_does": "",
-  "price": "",
-  "setup_time": "",
-  "url": "",
-  "pain_summary": ""
-}
-`;
+  "tool_name": "Exact tool name",
+  "why_it_fits": "2 sentences max. Be specific to their exact pain point — mention what the tool does in the context of what they described.",
+  "what_it_does": "1 sentence general description.",
+  "price": "Free / Free – £X/month / from £X/month",
+  "setup_time": "e.g. 2 hours / Half a day / 1 week",
+  "url": "https://exacturl.com",
+  "pain_summary": "3-4 words for a page headline"
+}`;
 console.log('API KEY EXISTS:', !!env.ANTHROPIC_API_KEY);
 console.log('API KEY PREFIX:', env.ANTHROPIC_API_KEY?.slice(0, 10));
     const anthropicResponse = await fetch(
