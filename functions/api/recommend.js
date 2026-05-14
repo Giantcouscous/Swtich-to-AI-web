@@ -67,7 +67,8 @@ Return ONLY valid JSON:
   "pain_summary": ""
 }
 `;
-
+console.log('API KEY EXISTS:', !!env.ANTHROPIC_API_KEY);
+console.log('API KEY PREFIX:', env.ANTHROPIC_API_KEY?.slice(0, 10));
     const anthropicResponse = await fetch(
       'https://api.anthropic.com/v1/messages',
       {
