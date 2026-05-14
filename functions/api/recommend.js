@@ -1,6 +1,14 @@
-export async function onRequest() {
+export async function onRequestPost(context) {
+
   return new Response(
-    JSON.stringify({ ok: true, message: "function works" }),
-    { headers: { "Content-Type": "application/json" } }
+    JSON.stringify({
+      success: true,
+      method: 'POST works'
+    }),
+    {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
   );
 }
