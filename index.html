@@ -287,13 +287,58 @@ footer p.copy { font-size:12px; color:var(--muted); }
 </section>
 
 <section class="section" id="industries">
-  <div class="sec-label">Who It's For</div>
-  <div class="sec-title">Built for any service business where <em>time is leaking</em></div>
-  <div class="ind-grid">
-    <a href="/estate-agents.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="ind-name">Estate Agents</div><div class="ind-desc">Automate listings, client follow-ups, and viewing reports so your team focuses on closing.</div></a>
-    <a href="/mortgage-brokers.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div class="ind-name">Mortgage Brokers</div><div class="ind-desc">Never miss a lead again. AI handles enquiries and follow-ups around the clock.</div></a>
-    <a href="/solicitors.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8l7-5 7 5"/><line x1="3" y1="21" x2="21" y2="21"/></svg></div><div class="ind-name">Solicitors</div><div class="ind-desc">Cut time spent on routine client Q&A, document prep, and case status updates.</div></a>
-    <a href="/finance-accounting.html" class="ind-card"><div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="ind-name">Finance & Accounting</div><div class="ind-desc">Automate reporting, data entry, and client communications that eat your week.</div></a>
+  <div class="sec-label">What We Fix</div>
+  <div class="sec-title">Recognise any of <em>these?</em></div>
+  <div class="ind-grid" style="grid-template-columns:repeat(4,1fr)">
+
+    <div class="ind-card" onclick="prefill('Leads come in but follow-up falls through the cracks — especially evenings and weekends')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.63a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+      <div class="ind-name">Lead follow-up gaps</div>
+      <div class="ind-desc">Enquiries arrive out of hours and go cold before anyone responds Monday morning.</div>
+    </div>
+
+    <div class="ind-card" onclick="prefill('Dormant clients and past customers are not being re-engaged automatically')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="ind-name">Dormant client re-engagement</div>
+      <div class="ind-desc">Past clients sitting silent in the CRM with no automated touchpoint to bring them back.</div>
+    </div>
+
+    <div class="ind-card" onclick="prefill('Manual reporting takes hours every week — pulling data from multiple sources and formatting it')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <div class="ind-name">Manual reporting</div>
+      <div class="ind-desc">Weekly or monthly reports built by hand from spreadsheets and copy-pasted data.</div>
+    </div>
+
+    <div class="ind-card" onclick="prefill('Chasing clients for documents and signatures is eating hours every week')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="ind-name">Document chasing</div>
+      <div class="ind-desc">Sending reminders manually for IDs, signatures, and forms that clients keep forgetting.</div>
+    </div>
+
+    <div class="ind-card" onclick="prefill('Invoice chasing and payment reminders are done manually and take up too much time')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <div class="ind-name">Invoice & payment admin</div>
+      <div class="ind-desc">Chasing overdue invoices by hand and reconciling payments across multiple platforms.</div>
+    </div>
+
+    <div class="ind-card" onclick="prefill('Internal communications are noisy and unstructured — too many WhatsApp groups and unclear ownership')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="ind-name">Internal comms noise</div>
+      <div class="ind-desc">WhatsApp groups, scattered updates, and no single source of truth for ops and handoffs.</div>
+    </div>
+
+    <div class="ind-card" onclick="prefill('I want to build an AI agent to automate a repetitive workflow in my business')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <div class="ind-name">Build an AI agent</div>
+      <div class="ind-desc">Automate a full workflow end-to-end — not just a notification, but a system that acts.</div>
+    </div>
+
+    <div class="ind-card" onclick="prefill('Something else is eating my team\'s time that I cannot easily describe')" style="cursor:pointer">
+      <div class="ind-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="ind-name">Something else</div>
+      <div class="ind-desc">Not on the list? Describe your situation and we'll find the right fix.</div>
+    </div>
+
   </div>
 </section>
 
@@ -382,6 +427,11 @@ footer p.copy { font-size:12px; color:var(--muted); }
 
     window.location.href = `/recommendation.html?${params.toString()}`;
   }
+  function prefill(text) {
+  document.getElementById('f-pain').value = text;
+  document.getElementById('assessment').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.getElementById('f-pain').focus();
+}
 </script>
 </body>
 </html>
