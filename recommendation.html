@@ -579,7 +579,17 @@ function showContent() {
 }
 
 function getFallback() {
-  return { tool_name:'Zapier', why_it_fits:'Zapier connects your existing tools and automates repetitive steps without coding — based on what you described, it can eliminate the manual work immediately.', what_it_does:'An automation platform connecting 6,000+ apps and workflows.', price:'Free – £20/month', setup_time:'2-4 hours', url:'https://zapier.com', pain_summary:'manual repetitive work' };
+
+  return {
+    tool_name: 'Tool recommendation unavailable',
+    why_it_fits: 'The recommendation API is temporarily unavailable.',
+    what_it_does: 'Please try again shortly.',
+    price: '-',
+    setup_time: '-',
+    url: 'https://switchtoai.ai',
+    pain_summary: 'temporary issue'
+  };
+
 }
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────
