@@ -55,12 +55,12 @@ Return ONLY valid JSON — no markdown, no explanation, no code fences:
         'x-api-key': env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 600,
-        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-        messages: [{ role: 'user', content: prompt }],
-      }),
+ody: JSON.stringify({
+  model: 'claude-sonnet-4-20250514',
+  max_tokens: 600,
+  messages: [{role: 'user',
+      content: prompt}]
+}),
     });
 
     if (!anthropicResponse.ok) {
@@ -72,21 +72,33 @@ Return ONLY valid JSON — no markdown, no explanation, no code fences:
       );
     }
 
-    const data = await anthropicResponse.json();
+const raw = await anthropicResponse.text();
 
-    // Extract text from response blocks
-    let rawText = '';
-    for (const block of data.content || []) {
-      if (block.type === 'text') rawText += block.text;
-    }
+console.log(raw);
 
-    // Strip any accidental markdown fences
-    const clean = rawText.replace(/```json|```/g, '').trim();
+const data = JSON.parse(raw);
 
-    // Validate it's parseable JSON before returning
-    const parsed = JSON.parse(clean);
+let rawText = '';
 
-    return new Response(JSON.stringify(parsed), { headers: corsHeaders });
+for (const block of data.content || []) {
+  if (block.type === 'text') {
+    rawText += block.text;
+  }
+}
+
+const clean = rawText
+  .replace(/```json/g, '')
+  .replace(/```/g, '')
+  .trim();
+
+console.log(clean);
+
+const parsed = JSON.parse(clean);
+
+return new Response(
+  JSON.stringify(parsed),
+  { headers: corsHeaders }
+);
 
   } catch (err) {
     console.error('Worker error:', err);
