@@ -93,12 +93,30 @@ const clean = rawText
 
 console.log(clean);
 
-const parsed = JSON.parse(clean);
+try {
 
-return new Response(
-  JSON.stringify(parsed),
-  { headers: corsHeaders }
-);
+  const parsed = JSON.parse(clean);
+
+  return new Response(
+    JSON.stringify(parsed),
+    { headers: corsHeaders }
+  );
+
+} catch(parseErr) {
+
+  console.log('FAILED TO PARSE:', clean);
+
+  return new Response(
+    JSON.stringify({
+      error: 'parse_failed',
+      raw: clean
+    }),
+    {
+      status: 500,
+      headers: corsHeaders
+    }
+  );
+}
 
   } catch (err) {
     console.error('Worker error:', err);
