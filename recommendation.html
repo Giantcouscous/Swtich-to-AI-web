@@ -483,7 +483,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const EMAILJS_PUBLIC_KEY = 'Fh8vr7qh3pTmRt0ps';
 const EMAILJS_SERVICE_ID  = 'service_5qzkpxg';
 const EMAILJS_TEMPLATE_ID = 'template_l5ystes';
-const EMAILJS_ENABLED = false;
+const EMAILJS_ENABLED = true;
 
 const params      = new URLSearchParams(window.location.search);
 const userName    = params.get('name')    || '';
@@ -710,7 +710,13 @@ async function init() {
 
   renderRecommendation(tool);
 
-  saveLead(tool.tool_name).catch(console.warn);
+  const backgroundTasks = [saveLead(tool.tool_name)];
+
+if (EMAILJS_ENABLED) {
+  backgroundTasks.push(sendEmailNotification(tool.tool_name));
+}
+
+Promise.all(backgroundTasks).catch(console.warn);
 
   // ALWAYS show content no matter what
   showContent();
