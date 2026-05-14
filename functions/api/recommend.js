@@ -94,16 +94,18 @@ Return ONLY valid JSON:
 
     if (!anthropicResponse.ok) {
 
-      return new Response(
-        JSON.stringify({
-          error: 'Anthropic failed',
-          detail: text
-        }),
-        {
-          status: 500,
-          headers
-        }
-      );
+console.log(text);
+
+return new Response(
+  JSON.stringify({
+    error: 'Anthropic failed',
+    detail: text
+  }),
+  {
+    status: 500,
+    headers
+  }
+);
 
     }
 
@@ -148,12 +150,15 @@ return new Response(
   { headers }
 );
 
-  } catch (err) {
+} catch (err) {
 
-    return new Response(
-      JSON.stringify({
-        error: err.message
-      }),
+  console.log(err);
+
+  return new Response(
+    JSON.stringify({
+      error: err.message,
+      stack: err.stack
+    }),
       {
         status: 500,
         headers
