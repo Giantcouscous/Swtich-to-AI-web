@@ -523,17 +523,16 @@ async function getToolRecommendation() {
     })
   });
 
-  console.log('API status:', response.status);
+  const raw = await response.text();
 
-  const text = await response.text();
-
-  console.log('Raw API response:', text);
+  console.log('API STATUS:', response.status);
+  console.log('RAW RESPONSE:', raw);
 
   if (!response.ok) {
-    throw new Error(`API failed: ${response.status} ${text}`);
+    throw new Error(raw);
   }
 
-  return JSON.parse(text);
+  return JSON.parse(raw);
 }
 
 // ── LEAD & EMAIL ──────────────────────────────────────────────────────────
@@ -648,47 +647,45 @@ document.addEventListener('keydown', (e) => {
 
 // ── INIT ──────────────────────────────────────────────────────────────────
 async function init() {
+
   if (!userPain) {
     window.location.href = '/';
     return;
   }
 
-  // Personalised loading text
   if (userName) {
     document.getElementById('loading-name-text').textContent =
       `Searching for the best match for ${userName.split(' ')[0]}...`;
   }
 
-  // START animation immediately
   animateLoadingSteps();
 
   let tool;
 
   try {
 
-    // Minimum loading experience so user sees animation
-    await new Promise(resolve => setTimeout(resolve, 3500));
-
     tool = await getToolRecommendation();
 
-    console.log('Worker response:', tool);
+    console.log('TOOL RESPONSE:', tool);
 
-  } catch(e) {
+    if (!tool || !tool.tool_name) {
+      throw new Error('Invalid tool response');
+    }
+
+  } catch (e) {
 
     console.error('Recommendation failed:', e);
 
-   throw e;
+    tool = getFallback();
   }
 
   renderRecommendation(tool);
 
-  Promise.all([
-    saveLead(tool.tool_name)
-  ]).catch(console.warn);
+  saveLead(tool.tool_name).catch(console.warn);
 
-  setTimeout(showContent, 400);
+  // ALWAYS show content no matter what
+  showContent();
 }
-
 init();
 </script>
 
