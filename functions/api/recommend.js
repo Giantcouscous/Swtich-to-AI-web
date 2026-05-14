@@ -1,14 +1,6 @@
-export async function onRequestPost() {
-
+export async function onRequest() {
   return new Response(
-    JSON.stringify({
-      success: true,
-      message: "worker alive"
-    }),
-    {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
+    JSON.stringify({ ok: true, message: "function works" }),
+    { headers: { "Content-Type": "application/json" } }
   );
 }
