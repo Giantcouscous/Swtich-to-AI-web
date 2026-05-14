@@ -1,9 +1,9 @@
-export async function onRequestPost(context) {
-
+export async function onRequest(context) {
   return new Response(
     JSON.stringify({
       success: true,
-      method: 'POST works'
+      method: context.request.method,
+      message: 'function works'
     }),
     {
       headers: {
