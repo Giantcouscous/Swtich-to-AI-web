@@ -1,130 +1,317 @@
-export async function onRequest(context) {
-  const { request, env } = context;
+<script>
+const SUPABASE_URL = 'https://tfezfqoawgjugivwajfo.supabase.co';
+const SUPABASE_KEY = 'YOUR_SUPABASE_KEY';
 
-  const headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-  };
+const params = new URLSearchParams(window.location.search);
 
-  if (request.method === "OPTIONS") {
-    return new Response(null, { headers });
+const userName    = params.get('name') || '';
+const userCompany = params.get('company') || '';
+const userPain    = params.get('pain') || '';
+
+/* ─────────────────────────────────────────────────────────────
+   LOADING STEPS
+───────────────────────────────────────────────────────────── */
+function animateLoadingSteps() {
+  const steps = ['step-1','step-2','step-3','step-4'];
+  let current = 0;
+
+  const interval = setInterval(() => {
+    if (current > 0) {
+      document.getElementById(steps[current - 1]).classList.remove('active');
+      document.getElementById(steps[current - 1]).classList.add('done');
+    }
+
+    if (current < steps.length) {
+      document.getElementById(steps[current]).classList.add('active');
+      current++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 1800);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   WORKER API CALL
+───────────────────────────────────────────────────────────── */
+async function getToolRecommendation() {
+
+  const response = await fetch('/api/recommend', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      pain: userPain,
+      company: userCompany,
+      name: userName
+    })
+  });
+
+  const raw = await response.text();
+
+  console.log('API status:', response.status);
+  console.log('Raw API response:', raw);
+
+  if (!response.ok) {
+    throw new Error(`API failed: ${response.status} ${raw}`);
   }
 
-  if (request.method === "GET") {
-    return new Response(
-      JSON.stringify({ success: true, method: "GET", message: "function works" }),
-      { headers }
-    );
-  }
+  return JSON.parse(raw);
+}
 
-  if (request.method !== "POST") {
-    return new Response(
-      JSON.stringify({ error: "method_not_allowed" }),
-      { status: 405, headers }
-    );
-  }
+/* ─────────────────────────────────────────────────────────────
+   SAVE LEAD ONLY
+───────────────────────────────────────────────────────────── */
+async function saveLead(toolName) {
 
   try {
-    const { pain, company, name } = await request.json();
 
-    if (!pain) {
-      return new Response(
-        JSON.stringify({ error: "pain_required" }),
-        { status: 400, headers }
-      );
-    }
+    const { createClient } = supabase;
 
-    if (!env.ANTHROPIC_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: "missing_anthropic_key" }),
-        { status: 500, headers }
-      );
-    }
+    const db = createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
 
-    const prompt = `Return ONLY valid JSON. No markdown. No explanation.
-
-Recommend one current off-the-shelf AI or automation tool for this business pain point.
-
-Pain point: ${pain}
-Company: ${company || ""}
-Name: ${name || ""}
-
-JSON format:
-{
-  "tool_name": "Tool Name",
-  "why_it_fits": "One or two sentences explaining why this tool solves their specific pain point.",
-  "what_it_does": "One sentence describing what the tool does.",
-  "price": "Free / Free – £X/month / £X/month",
-  "setup_time": "e.g. 2 hours / Half a day / 1 week",
-  "url": "https://toolwebsite.com",
-  "pain_summary": "3-4 words summarising their pain point"
-}`;
-
-    const anthropicResponse = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: "claude-3-5-sonnet-20241022",
-        max_tokens: 700,
-        messages: [{ role: "user", content: prompt }],
-      }),
+    await db.from('leads').insert({
+      name: userName || null,
+      company: userCompany || null,
+      pain_point: userPain,
+      tool_recommended: toolName
     });
 
-    const raw = await anthropicResponse.text();
+  } catch (e) {
 
-    if (!anthropicResponse.ok) {
-      return new Response(
-        JSON.stringify({
-          error: "anthropic_error",
-          status: anthropicResponse.status,
-          detail: raw,
-        }),
-        { status: 502, headers }
-      );
-    }
+    console.warn('Lead save failed:', e);
 
-    const data = JSON.parse(raw);
-
-    let text = "";
-    for (const block of data.content || []) {
-      if (block.type === "text") text += block.text;
-    }
-
-    const clean = text
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim();
-
-    let parsed;
-
-    try {
-      parsed = JSON.parse(clean);
-    } catch (e) {
-      return new Response(
-        JSON.stringify({
-          error: "json_parse_failed",
-          raw: clean,
-        }),
-        { status: 500, headers }
-      );
-    }
-
-    return new Response(JSON.stringify(parsed), { headers });
-
-  } catch (err) {
-    return new Response(
-      JSON.stringify({
-        error: "worker_crash",
-        detail: err.message,
-      }),
-      { status: 500, headers }
-    );
   }
 }
-message: "NEW VERSION"
+
+/* ─────────────────────────────────────────────────────────────
+   RENDER TOOL
+───────────────────────────────────────────────────────────── */
+function renderRecommendation(tool) {
+
+  if (userName) {
+
+    document.getElementById('greeting').textContent =
+      `Here's your recommendation, ${userName.split(' ')[0]}`;
+
+  }
+
+  document.getElementById('tool-headline-pain').textContent =
+    tool.pain_summary || 'your problem';
+
+  if (userCompany) {
+
+    document.getElementById('tool-context-text').textContent =
+      `Based on what you told us about ${userCompany}, here's the most impactful tool we found.`;
+
+  } else {
+
+    document.getElementById('tool-context-text').textContent =
+      `Based on what you told us, here's the most impactful tool we found.`;
+
+  }
+
+  document.getElementById('tool-name').textContent =
+    tool.tool_name;
+
+  document.getElementById('tool-why').textContent =
+    tool.why_it_fits;
+
+  document.getElementById('tool-desc').textContent =
+    tool.what_it_does;
+
+  document.getElementById('tool-price').textContent =
+    tool.price;
+
+  document.getElementById('tool-setup').textContent =
+    `Setup: ${tool.setup_time}`;
+
+  const linkEl = document.getElementById('tool-link');
+
+  linkEl.href = tool.url;
+
+  linkEl.innerHTML = `
+    Visit ${tool.tool_name}
+    →
+  `;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SHOW CONTENT
+───────────────────────────────────────────────────────────── */
+function showContent() {
+
+  document.getElementById('loading-section').style.display = 'none';
+
+  const main = document.getElementById('main-content');
+
+  main.style.display = 'block';
+  main.style.animation = 'fadeIn 0.6s ease both';
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FALLBACK
+───────────────────────────────────────────────────────────── */
+function getFallback() {
+
+  return {
+    tool_name: 'Tool recommendation unavailable',
+    why_it_fits: 'The recommendation API is temporarily unavailable.',
+    what_it_does: 'Please try again shortly.',
+    price: '-',
+    setup_time: '-',
+    url: 'https://switchtoai.ai',
+    pain_summary: 'temporary issue'
+  };
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LIGHTBOX
+───────────────────────────────────────────────────────────── */
+const CASE_PREVIEWS = {
+
+  retail: {
+    pages: [
+      ['/Asset/case-previews/retail-circle/page-1.jpg','Cover summary'],
+      ['/Asset/case-previews/retail-circle/page-2.jpg','Executive summary'],
+      ['/Asset/case-previews/retail-circle/page-3.jpg','Impact / effort matrix'],
+      ['/Asset/case-previews/retail-circle/page-4.jpg','Quick wins'],
+      ['/Asset/case-previews/retail-circle/page-8.jpg','Financial impact']
+    ]
+  },
+
+  tacos: {
+    pages: [
+      ['/Asset/case-previews/tacos-collective/page-1.jpg','Cover summary'],
+      ['/Asset/case-previews/tacos-collective/page-2.jpg','Executive summary'],
+      ['/Asset/case-previews/tacos-collective/page-4.jpg','Impact / effort matrix'],
+      ['/Asset/case-previews/tacos-collective/page-5.jpg','Quick wins'],
+      ['/Asset/case-previews/tacos-collective/page-9.jpg','Financial impact']
+    ]
+  }
+
+};
+
+let lbPages = [];
+let lbIndex = 0;
+
+function openLightbox(caseId, startIndex = 0) {
+
+  const data = CASE_PREVIEWS[caseId];
+
+  if (!data) return;
+
+  lbPages = data.pages;
+  lbIndex = startIndex;
+
+  updateLightbox();
+
+  document.getElementById('lightbox').classList.add('open');
+
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+
+  const [src, caption] = lbPages[lbIndex];
+
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-caption').textContent = caption;
+
+  document.getElementById('lb-counter').textContent =
+    `${lbIndex + 1} / ${lbPages.length}`;
+
+  document.getElementById('lb-prev').style.opacity =
+    lbIndex === 0 ? '0.3' : '1';
+
+  document.getElementById('lb-next').style.opacity =
+    lbIndex === lbPages.length - 1 ? '0.3' : '1';
+}
+
+function closeLightbox() {
+
+  document.getElementById('lightbox').classList.remove('open');
+
+  document.body.style.overflow = '';
+}
+
+function lbNav(dir) {
+
+  const next = lbIndex + dir;
+
+  if (next >= 0 && next < lbPages.length) {
+
+    lbIndex = next;
+
+    updateLightbox();
+  }
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+
+  if (e.target === this) {
+    closeLightbox();
+  }
+
+});
+
+document.addEventListener('keydown', (e) => {
+
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+
+  if (e.key === 'ArrowLeft') {
+    lbNav(-1);
+  }
+
+  if (e.key === 'ArrowRight') {
+    lbNav(1);
+  }
+
+});
+
+/* ─────────────────────────────────────────────────────────────
+   INIT
+───────────────────────────────────────────────────────────── */
+async function init() {
+
+  if (!userPain) {
+    window.location.href = '/';
+    return;
+  }
+
+  if (userName) {
+
+    document.getElementById('loading-name-text').textContent =
+      `Searching for the best match for ${userName.split(' ')[0]}...`;
+
+  }
+
+  animateLoadingSteps();
+
+  let tool;
+
+  try {
+
+    tool = await getToolRecommendation();
+
+  } catch (e) {
+
+    console.error('Recommendation failed:', e);
+
+    tool = getFallback();
+  }
+
+  renderRecommendation(tool);
+
+  saveLead(tool.tool_name).catch(console.warn);
+
+  setTimeout(showContent, 500);
+}
+
+init();
+</script>
