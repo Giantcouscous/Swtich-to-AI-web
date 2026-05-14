@@ -124,9 +124,29 @@ Return ONLY valid JSON:
       .replace(/```/g, '')
       .trim();
 
-    return new Response(output, {
+let parsed;
+
+try {
+  parsed = JSON.parse(output);
+} catch (e) {
+
+  return new Response(
+    JSON.stringify({
+      error: 'Invalid Claude JSON',
+      raw: output
+    }),
+    {
+      status: 500,
       headers
-    });
+    }
+  );
+
+}
+
+return new Response(
+  JSON.stringify(parsed),
+  { headers }
+);
 
   } catch (err) {
 
