@@ -537,33 +537,30 @@ async function getToolRecommendation() {
 
 // ── LEAD & EMAIL ──────────────────────────────────────────────────────────
 async function saveLead(toolName) {
-
   try {
-
     const { createClient } = supabase;
 
-    const db = createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+    const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    const result = await db
+    const { data, error } = await db
       .from('leads')
-      .insert({
-        name: userName || null,
-        company: userCompany || null,
-        pain_point: userPain,
-        tool_recommended: toolName
-      });
+      .insert([
+        {
+          name: userName || null,
+          company: userCompany || null,
+          email: params.get('email') || null,
+          pain_point: userPain || null,
+          tool_recommended: toolName || null
+        }
+      ])
+      .select();
 
-    console.log('SUPABASE RESULT:', result);
+    console.log('SUPABASE DATA:', data);
+    console.log('SUPABASE ERROR:', error);
 
-  } catch(e) {
-
+  } catch (e) {
     console.warn('Lead save failed:', e);
-
   }
-
 }
 
 async function sendEmailNotification(toolName) {
