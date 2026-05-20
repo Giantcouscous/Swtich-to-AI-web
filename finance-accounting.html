@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation for Finance & Accounting Firms UK | SwitchToAI</title>
+<meta name="description" content="We help UK accountants and finance teams automate reporting, data entry, and client communications. Free assessment. Results in 48 hours.">
+<link rel="canonical" href="https://switchtoai.ai/finance-accounting.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+/* SHARED MOBILE-FIRST CSS FOR ALL 4 VERTICAL PAGES */
+/* Drop this entire block as the <style> content, replacing existing styles */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#0E1117; --bg2:#141820; --bg3:#1A2030;
+  --blue:#3B7BFF; --blue-dim:#2D6FE8;
+  --white:#F0EEE9; --off:#F8F6F1; --muted:#7A8699;
+  --border:rgba(255,255,255,0.07); --border-b:rgba(59,123,255,0.25);
+  --r:12px;
+}
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body { font-family:'Manrope',sans-serif; background:var(--bg); color:var(--white); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+
+/* NAV */
+nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:16px 20px; background:rgba(14,17,23,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+.logo-wrap { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.toggle-icon { width:40px; height:24px; background:#1C1C22; border:2px solid #333; border-radius:12px; position:relative; flex-shrink:0; transition:border-color 0.3s; }
+.toggle-icon::after { content:''; position:absolute; right:3px; top:50%; transform:translateY(-50%); width:16px; height:16px; border-radius:50%; background:var(--blue); box-shadow:0 0 8px rgba(59,123,255,0.6); }
+.logo-wrap:hover .toggle-icon { border-color:var(--blue); }
+.logo-text { font-weight:800; font-size:16px; letter-spacing:-0.02em; color:var(--white); }
+.logo-text span { color:var(--blue); }
+.nav-right { display:flex; align-items:center; gap:12px; }
+.nav-link { display:none; }
+.nav-btn { background:var(--blue); color:white; padding:9px 16px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; white-space:nowrap; }
+
+/* HERO */
+.hero-wrap { padding:72px 20px 40px; position:relative; overflow:hidden; }
+.hero-wrap::after { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; background:radial-gradient(circle,rgba(59,123,255,0.1) 0%,transparent 65%); pointer-events:none; }
+.hero-content { position:relative; z-index:1; margin-bottom:28px; }
+.hero-label { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border:1px solid rgba(59,123,255,0.3); padding:5px 12px; border-radius:100px; margin-bottom:24px; }
+h1 { font-family:'Fraunces',serif; font-size:clamp(28px,7vw,48px); font-weight:600; line-height:1.1; letter-spacing:-0.02em; color:var(--off); margin-bottom:16px; }
+h1 em { font-style:italic; color:var(--blue); font-weight:300; }
+.hero-sub { font-size:15px; font-weight:400; line-height:1.7; color:var(--muted); margin-bottom:24px; }
+.hero-cta { display:inline-flex; align-items:center; gap:8px; background:var(--blue); color:white; padding:14px 24px; border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; box-shadow:0 4px 20px rgba(59,123,255,0.35); min-height:52px; }
+.hero-note { display:block; margin-top:10px; font-size:11px; color:var(--muted); }
+
+/* HERO WIDGETS — estate agents stats box */
+.stats-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; position:relative; z-index:1; }
+.stat-row { padding:16px 20px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:60px 1fr; gap:14px; align-items:start; }
+.stat-row:last-child { border-bottom:none; }
+.stat-n { font-family:'Fraunces',serif; font-size:24px; font-weight:600; color:var(--blue); line-height:1; }
+.stat-unit { font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+.stat-l { font-size:12px; font-weight:400; color:var(--white); line-height:1.6; padding-top:3px; }
+
+/* HERO WIDGETS — mortgage pipeline box */
+.pipeline-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; }
+.pipeline-header { padding:16px 20px; border-bottom:1px solid var(--border); font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+.pipeline-item { padding:14px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+.pipeline-item:last-child { border-bottom:none; }
+.pipeline-item.alert { border-left:2px solid #FF5B5B; }
+.p-label { font-size:13px; font-weight:500; color:var(--white); }
+.p-time { font-size:11px; font-weight:300; color:var(--muted); }
+.p-time.red { color:#FF7B7B; }
+
+/* HERO WIDGETS — solicitors billable box */
+.billable-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; position:relative; }
+.billable-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--blue),transparent); }
+.billable-header { padding:16px 20px; border-bottom:1px solid var(--border); font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+.billable-item { padding:13px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+.billable-item:last-child { border-bottom:none; }
+.billable-item.total { background:var(--bg3); }
+.b-task { font-size:13px; font-weight:400; color:var(--muted); }
+.b-task.strong { color:var(--off); font-weight:600; }
+.b-time { font-size:13px; font-weight:600; color:var(--blue); }
+.b-time.big { font-size:16px; }
+
+/* HERO WIDGETS — finance week calendar */
+.week-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; }
+.week-header { padding:16px 20px; border-bottom:1px solid var(--border); font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+.week-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:5px; padding:16px 20px; }
+.day-label { font-size:9px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); text-align:center; margin-bottom:5px; }
+.day-block { height:48px; border-radius:5px; display:flex; align-items:center; justify-content:center; padding:3px; }
+.day-block.admin { background:rgba(59,123,255,0.15); border:1px solid rgba(59,123,255,0.3); }
+.day-block.billable { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); }
+.day-block span { font-size:9px; font-weight:500; text-align:center; line-height:1.3; }
+.day-block.admin span { color:var(--blue); }
+.day-block.billable span { color:var(--muted); }
+.week-legend { display:flex; gap:16px; padding:0 20px 16px; }
+.legend-item { display:flex; align-items:center; gap:7px; font-size:10px; color:var(--muted); }
+.legend-dot { width:9px; height:9px; border-radius:2px; }
+.legend-dot.admin { background:rgba(59,123,255,0.4); }
+.legend-dot.billable { background:rgba(255,255,255,0.1); }
+
+/* SECTIONS */
+.section { padding:48px 20px; border-top:1px solid var(--border); }
+.section-inner { max-width:1100px; margin:0 auto; }
+.sec-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); margin-bottom:12px; }
+.sec-title { font-family:'Fraunces',serif; font-size:clamp(24px,6vw,40px); font-weight:600; letter-spacing:-0.02em; line-height:1.15; color:var(--off); margin-bottom:28px; }
+.sec-title em { font-style:italic; font-weight:300; color:var(--blue); }
+
+/* PAIN GRID — 1 col mobile */
+.pain-grid { display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; }
+.pain-item { background:var(--bg2); padding:20px; }
+.pain-item::before { content:'—'; display:block; color:var(--blue); font-weight:700; margin-bottom:10px; font-size:13px; }
+.pain-item p { font-size:13px; font-weight:300; color:var(--muted); line-height:1.7; }
+
+/* PAIN LIST (mortgage) */
+.pain-list { display:flex; flex-direction:column; }
+.pain-item-list { display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+.pain-item-list:last-child { border-bottom:none; }
+.pain-dash { color:var(--blue); font-weight:700; font-size:14px; flex-shrink:0; padding-top:2px; }
+.pain-item-list p { font-size:14px; font-weight:300; color:var(--muted); line-height:1.7; }
+
+/* PAIN TABLE (finance) */
+.pain-table { width:100%; border-collapse:collapse; }
+.pain-table tr { border-bottom:1px solid var(--border); }
+.pain-table tr:last-child { border-bottom:none; }
+.pain-table td { padding:16px 0; font-size:13px; vertical-align:top; }
+.pain-table td:first-child { width:24px; color:var(--blue); font-weight:700; padding-right:16px; padding-top:18px; }
+.pain-table td:last-child { font-weight:300; color:var(--muted); line-height:1.7; }
+
+/* AUTO GRID — 1 col mobile */
+.auto-grid { display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; }
+.auto-item { background:var(--bg2); padding:24px; transition:background 0.3s; position:relative; }
+.auto-item:hover { background:var(--bg3); }
+.auto-item::after { content:''; position:absolute; bottom:0; left:24px; right:24px; height:2px; background:var(--blue); transform:scaleX(0); transition:transform 0.3s ease; transform-origin:left; border-radius:2px; }
+.auto-item:hover::after { transform:scaleX(1); }
+.auto-num { font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:rgba(59,123,255,0.15); line-height:1; margin-bottom:14px; }
+.auto-title { font-size:15px; font-weight:700; color:var(--off); margin-bottom:8px; letter-spacing:-0.01em; }
+.auto-body { font-size:13px; font-weight:300; color:var(--muted); line-height:1.7; }
+.auto-item.more { background:var(--bg); }
+
+/* OUTCOME */
+.outcome-section { padding:48px 20px; border-top:1px solid var(--border); background:var(--bg2); }
+.outcome-inner { max-width:1100px; margin:0 auto; }
+.outcome-card { background:var(--bg3); border:1px solid var(--border); border-radius:16px; padding:24px; max-width:680px; position:relative; }
+.outcome-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--blue),transparent); border-radius:2px 2px 0 0; }
+.outcome-card p { font-size:14px; font-weight:300; line-height:1.8; color:var(--muted); margin-bottom:14px; }
+.outcome-card p:last-child { margin-bottom:0; }
+.outcome-card p strong { color:var(--off); font-weight:600; }
+.outcome-disclaimer { font-size:11px; color:rgba(122,134,153,0.5); font-style:italic; border-top:1px solid var(--border); padding-top:14px; margin-top:14px; line-height:1.6; }
+
+/* CTA */
+.cta-section { padding:48px 20px; border-top:1px solid var(--border); text-align:center; position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; bottom:-200px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(circle,rgba(59,123,255,0.1) 0%,transparent 65%); pointer-events:none; }
+.cta-title { font-family:'Fraunces',serif; font-size:clamp(22px,5vw,36px); font-weight:600; letter-spacing:-0.02em; color:var(--off); margin-bottom:12px; }
+.cta-title em { font-style:italic; font-weight:300; color:var(--blue); }
+.cta-sub { font-size:14px; font-weight:300; color:var(--muted); margin-bottom:28px; }
+.cta-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--blue); color:white; text-decoration:none; padding:15px 28px; border-radius:10px; font-size:15px; font-weight:700; box-shadow:0 4px 24px rgba(59,123,255,0.35); min-height:52px; width:100%; max-width:340px; }
+
+/* FOOTER */
+footer { padding:32px 20px; border-top:1px solid var(--border); display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; }
+.footer-note { font-size:12px; color:var(--muted); }
+
+/* DESKTOP 768px+ */
+@media (min-width:768px) {
+  nav { padding:20px 48px; }
+  .nav-link { display:block; font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+  .nav-link:hover { color:var(--white); }
+  .nav-right { gap:28px; }
+  .hero-wrap { padding:100px 48px 72px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; max-width:1200px; margin:0 auto; }
+  .hero-wrap::after { width:500px; height:500px; top:-100px; right:0; }
+  .hero-content { margin-bottom:0; }
+  h1 { font-size:clamp(36px,4vw,56px); }
+  .hero-sub { font-size:16px; }
+  .pain-grid { display:grid; grid-template-columns:repeat(3,1fr); flex-direction:unset; }
+  .auto-grid { display:grid; grid-template-columns:1fr 1fr; flex-direction:unset; }
+  .auto-item { padding:32px; }
+  .auto-item::after { left:32px; right:32px; }
+  .section { padding:80px 48px; }
+  .outcome-section { padding:80px 48px; }
+  .outcome-card { padding:40px; }
+  .cta-section { padding:80px 48px; }
+  .cta-btn { width:auto; }
+  footer { flex-direction:row; justify-content:space-between; padding:36px 48px; text-align:left; }
+}
+
+@media (min-width:1100px) {
+  nav { padding:20px 64px; }
+  .hero-wrap { padding:110px 64px 80px; max-width:none; }
+  .section { padding:90px 64px; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .outcome-section { padding:90px 64px; }
+  .cta-section { padding:90px 64px; }
+  footer { padding:40px 64px; }
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo-wrap" href="/"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span>AI</span></div></a>
+  <div class="nav-right">
+    <a href="/#how" class="nav-link">How it works</a>
+    <a href="/#industries" class="nav-link">Industries</a>
+    <a href="/#assessment" class="nav-btn">Free assessment</a>
+  </div>
+</nav>
+<div class="hero-wrap">
+  <div class="hero-content">
+    <span class="hero-label">Finance & Accounting</span>
+    <h1>Month-end shouldn't <em>take all month.</em></h1>
+    <p class="hero-sub">We find exactly where your team's time disappears — and build automation that gets it back. Free assessment, 48 hours turnaround.</p>
+    <a href="/#assessment" class="hero-cta">Get my free assessment →</a>
+    <span class="hero-note">No pitch. No obligation. Just a clear picture of where AI can help.</span>
+  </div>
+  <div class="week-box">
+    <div class="week-header">A typical week — where the hours actually go</div>
+    <div class="week-grid">
+      <div class="day-label">MON</div><div class="day-label">TUE</div><div class="day-label">WED</div><div class="day-label">THU</div><div class="day-label">FRI</div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Chasing docs</span></div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Reporting</span></div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Data entry</span></div>
+      <div class="day-block billable"><span>Client work</span></div>
+      <div class="day-block admin"><span>Chasing</span></div>
+      <div class="day-block admin"><span>Month-end prep</span></div>
+      <div class="day-block billable"><span>Reviews</span></div>
+    </div>
+    <div class="week-legend">
+      <div class="legend-item"><div class="legend-dot admin"></div>Admin / manual</div>
+      <div class="legend-item"><div class="legend-dot billable"></div>Actual client work</div>
+    </div>
+  </div>
+</div>
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-label">The reality</div>
+    <h2 class="sec-title">Sound <em>familiar?</em></h2>
+    <table class="pain-table">
+      <tr><td>—</td><td>Month-end reporting takes 3 days and most of it is copying numbers between spreadsheets and reformatting the same template.</td></tr>
+      <tr><td>—</td><td>Chasing clients for receipts, bank statements, and approvals is a part-time job. Someone on your team does little else in the week before close.</td></tr>
+      <tr><td>—</td><td>New client onboarding requires the same information collected across four different formats — engagement letter, direct debit, software access, KYC.</td></tr>
+      <tr><td>—</td><td>Management accounts produced manually every single month from the same template. There is no reason a human needs to do this.</td></tr>
+      <tr><td>—</td><td>Your team is doing data entry. In 2026. That should have stopped two years ago.</td></tr>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-label">What we do</div>
+    <h2 class="sec-title">Where the hours go — and how we <em>get them back</em></h2>
+    <div class="auto-grid">
+      <div class="auto-item"><div class="auto-num">01</div><div class="auto-title">Management reporting</div><p class="auto-body">Automated report generation from your existing accounting software. Data pulled, formatted, and distributed to stakeholders on schedule. No manual assembly. No reformatting. No 9pm on a Sunday.</p></div>
+      <div class="auto-item"><div class="auto-num">02</div><div class="auto-title">Client document collection</div><p class="auto-body">Automated requests and chase sequences for receipts, bank feeds, and approvals. Clients get reminders at the right time in the right tone. Your team stops chasing and starts working.</p></div>
+      <div class="auto-item"><div class="auto-num">03</div><div class="auto-title">Data entry & reconciliation</div><p class="auto-body">Bank feeds, expense categorisation, and invoice matching handled automatically. Exceptions flagged for human review. Your team touches the edge cases — not the bulk of the work.</p></div>
+      <div class="auto-item"><div class="auto-num">04</div><div class="auto-title">Client onboarding</div><p class="auto-body">New client intake fully automated — engagement letter, direct debit setup, software access, and information collection all triggered from a single workflow. First to billable work in hours, not days.</p></div>
+      <div class="auto-item"><div class="auto-num">05</div><div class="auto-title">Payroll communications</div><p class="auto-body">Payroll run confirmations, payslip distribution, and HMRC submission notifications automated. One less thing your team manages manually every single month.</p></div>
+      <div class="auto-item more"><div class="auto-num">+</div><div class="auto-title">And more</div><p class="auto-body">Every practice is different. The assessment maps your specific workflow before we recommend anything. We find the hours first — then build the automation.</p></div>
+    </div>
+  </div>
+</section>
+<section class="outcome-section">
+  <div class="outcome-inner">
+    <div class="sec-label">Early results</div>
+    <h2 class="sec-title">What this looks like <em>in practice</em></h2>
+    <div class="outcome-card">
+      <p>A <strong>12-person accountancy practice in Leeds</strong>. Two senior accountants spending 6 hours each on monthly reporting and client document chasing.</p>
+      <p>After implementation: <strong>reporting time cut from 6 hours to 90 minutes</strong> per accountant. Client document collection improved across the board — less time spent per client per month. Capacity to take on 4 additional clients without additional headcount.</p>
+      <p>The numbers were significant. The bigger change was that month-end stopped being something people dreaded.</p>
+      <p class="outcome-disclaimer">This is representative of what we typically find. Your numbers will vary — which is exactly why we do the assessment first, before recommending anything.</p>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="cta-title">Find out where your practice is <em>losing time every month.</em></div>
+  <p class="cta-sub">Free. 48 hours turnaround. No obligation.</p>
+  <a href="/#assessment" class="cta-btn">Get my free assessment →</a>
+</section>
+<footer>
+  <a class="logo-wrap" href="/" style="text-decoration:none"><div class="toggle-icon"></div><div class="logo-text">SwitchTo<span>AI</span></div></a>
+  <span class="footer-note">© 2026 SwitchToAI Ltd · London, UK · hello@switchtoai.ai</span>
+</footer>
+</body>
+</html>
