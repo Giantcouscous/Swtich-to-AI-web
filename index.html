@@ -236,16 +236,21 @@ textarea { resize: none; height: 88px; line-height: 1.55; }
   display: flex; align-items: flex-start; gap: 16px;
 }
 .stat:last-child { border-bottom: none; }
+.stat-num-wrap {
+  display: flex; flex-direction: column;
+  align-items: flex-start; flex-shrink: 0;
+  min-width: 64px; gap: 2px;
+}
 .stat-num {
   font-family: 'Fraunces', serif;
   font-size: 26px; font-weight: 600;
-  color: var(--blue); line-height: 1; flex-shrink: 0;
-  min-width: 64px;
+  color: var(--blue); line-height: 1;
 }
-.stat-num small {
-  font-size: 12px; font-family: 'Manrope', sans-serif;
-  font-weight: 500; display: block; color: var(--muted);
-  margin-top: 2px; letter-spacing: 0.04em;
+.stat-unit {
+  font-size: 11px; font-family: 'Manrope', sans-serif;
+  font-weight: 600; color: var(--muted);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  line-height: 1;
 }
 .stat-text { }
 .stat-l {
