@@ -230,39 +230,38 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
 
   <div class="hero-content fade-in">
     <h1>Stop doing the work<br><em>software</em> should be doing.</h1>
-    <p class="hero-sub">Book a free 30-minute call. We map your biggest time drains live — no prep needed, no obligation.</p>
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-num-wrap">
-          <div class="stat-num">8</div>
-          <div class="stat-unit">hrs/wk</div>
-        </div>
-        <div class="stat-text">
-          <div class="stat-l">Average time recovered after a first implementation</div>
-          <div class="stat-note">Based on our assessment findings — your number may differ. That's why we check first.</div>
-        </div>
-      </div>
-      <div class="stat">
-        <div class="stat-num-wrap">
-          <div class="stat-num">48</div>
-          <div class="stat-unit">hours</div>
-        </div>
-        <div class="stat-text">
-          <div class="stat-l">From call to written report. Know where AI can help before spending a penny.</div>
-        </div>
-      </div>
-      <div class="stat">
-        <div class="stat-num-wrap">
-          <div class="stat-num">&#163;0</div>
-          <div class="stat-unit">to start</div>
-        </div>
-        <div class="stat-text">
-          <div class="stat-l">The tool recommendation and the call are both free. Full assessment from &#163;1,250.</div>
-        </div>
-      </div>
+   <p class="hero-sub">Tell us the biggest time drain in your business and we'll instantly recommend the AI tool we'd start with. No sales call. No email required.</p>
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num-wrap">
+      <div class="stat-num">1</div>
+      <div class="stat-unit">problem</div>
+    </div>
+    <div class="stat-text">
+      <div class="stat-l">Tell us the task that wastes the most time each week</div>
     </div>
   </div>
 
+  <div class="stat">
+    <div class="stat-num-wrap">
+      <div class="stat-num">1</div>
+      <div class="stat-unit">tool</div>
+    </div>
+    <div class="stat-text">
+      <div class="stat-l">See the AI tool we'd use first and why</div>
+    </div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-num-wrap">
+      <div class="stat-num">0</div>
+      <div class="stat-unit">email</div>
+    </div>
+    <div class="stat-text">
+      <div class="stat-l">No signup required to see your recommendation</div>
+    </div>
+  </div>
+</div>
   <div class="form-wrap fade-in">
     <div class="form-card">
       <div class="form-top">
@@ -271,27 +270,17 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
         <div class="form-sub">Tell us your biggest time drain. We'll find the best tool for it — instantly.</div>
       </div>
       <div class="form-body">
-        <div class="field">
-          <label>Your Name</label>
-          <input type="text" id="f-name" placeholder="John Smith" autocomplete="name">
-        </div>
-        <div class="field">
-          <label>Company Name</label>
-          <input type="text" id="f-company" placeholder="Your Business Ltd" autocomplete="organization">
-        </div>
-        <div class="field">
-          <label>Business Email</label>
-          <input type="email" id="f-email" placeholder="john@yourbusiness.com" autocomplete="email" inputmode="email">
-        </div>
-        <div class="field">
-          <label>Biggest time drain right now</label>
-          <textarea id="f-pain" placeholder="e.g. Chasing clients for documents, writing reports manually, following up on leads over the weekend..."></textarea>
-        </div>
-        <button class="submit-btn" type="button" onclick="goToRecommendation()">
-          Find my AI tool <span class="btn-arrow">&#8594;</span>
-        </button>
-        <p class="form-note">Free. Instant.</p>
-      </div>
+  <div class="field">
+    <label>Biggest time drain right now</label>
+    <textarea id="f-pain" placeholder="e.g. Chasing clients for documents, following up leads, writing reports manually, scheduling appointments, data entry..."></textarea>
+  </div>
+
+  <button class="submit-btn" type="button" onclick="goToRecommendation()">
+    Show my recommendation <span class="btn-arrow">&#8594;</span>
+  </button>
+
+  <p class="form-note">Instant recommendation. No email required.</p>
+</div>
     </div>
   </div>
 
@@ -443,7 +432,9 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
 
 <script>
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
   function prefill(text) {
     document.getElementById('f-pain').value = text;
@@ -452,22 +443,22 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
   }
 
   function goToRecommendation() {
-    const name    = document.getElementById('f-name').value.trim();
-    const company = document.getElementById('f-company').value.trim();
-    const email   = document.getElementById('f-email').value.trim();
-    const pain    = document.getElementById('f-pain').value.trim();
+    const pain = document.getElementById('f-pain').value.trim();
+
     if (!pain) {
       const el = document.getElementById('f-pain');
       el.focus();
       el.style.borderColor = '#3B7BFF';
       return;
     }
-    gtag('event', 'recommendation_submit', { 'company': company || 'not provided' });
+
+    gtag('event', 'recommendation_submit', {
+      source: 'homepage_pain_only'
+    });
+
     const params = new URLSearchParams();
-    if (name)    params.set('name', name);
-    if (company) params.set('company', company);
-    if (email)   params.set('email', email);
     params.set('pain', pain);
+
     window.location.href = `/recommendation?${params.toString()}`;
   }
 </script>
