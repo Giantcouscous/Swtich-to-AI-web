@@ -229,58 +229,65 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
 <section class="hero" id="assessment">
 
   <div class="hero-content fade-in">
-    <h1>Stop doing the work<br><em>software</em> should be doing.</h1>
- <p class="hero-sub">Tell us the biggest time drain in your business and we'll instantly recommend the AI tool we'd start with. No sales call. No email required.</p>
-<div class="stats">
-  <div class="stat">
-    <div class="stat-num-wrap">
-      <div class="stat-num">1</div>
-      <div class="stat-unit">problem</div>
-    </div>
-    <div class="stat-text">
-      <div class="stat-l">Tell us the task that wastes the most time each week</div>
+    <h1>Describe the bottleneck.<br><em>We'll show the tool.</em></h1>
+    <p class="hero-sub">Tell us the biggest time drain in your business and we'll instantly recommend the AI tool we'd start with. No sales call. No email required.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num-wrap">
+          <div class="stat-num">01</div>
+          <div class="stat-unit">bottleneck</div>
+        </div>
+        <div class="stat-text">
+          <div class="stat-l">Identify the bottleneck</div>
+          <div class="stat-note">Tell us the task that consumes the most time each week.</div>
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-num-wrap">
+          <div class="stat-num">02</div>
+          <div class="stat-unit">tool</div>
+        </div>
+        <div class="stat-text">
+          <div class="stat-l">Get a recommendation</div>
+          <div class="stat-note">We'll show the AI tool we'd use first and explain why.</div>
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-num-wrap">
+          <div class="stat-num">03</div>
+          <div class="stat-unit">proof</div>
+        </div>
+        <div class="stat-text">
+          <div class="stat-l">See real assessments</div>
+          <div class="stat-note">Review real examples before deciding if you want to explore further.</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="stat">
-    <div class="stat-num-wrap">
-      <div class="stat-num">1</div>
-      <div class="stat-unit">tool</div>
-    </div>
-    <div class="stat-text">
-      <div class="stat-l">See the AI tool we'd use first and why</div>
-    </div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-num-wrap">
-      <div class="stat-num">0</div>
-      <div class="stat-unit">email</div>
-    </div>
-    <div class="stat-text">
-      <div class="stat-l">No signup required to see your recommendation</div>
-    </div>
-  </div>
-</div>
   <div class="form-wrap fade-in">
     <div class="form-card">
       <div class="form-top">
         <div class="form-tag">&#10022; Free Tool Recommendation</div>
         <div class="form-title">Find the right AI tool for your business</div>
-        <div class="form-sub">Tell us your biggest time drain. We'll find the best tool for it — instantly.</div>
+        <div class="form-sub">One pain point in. One practical recommendation out.</div>
       </div>
+
       <div class="form-body">
-  <div class="field">
-    <label>Biggest time drain right now</label>
-    <textarea id="f-pain" placeholder="e.g. Chasing clients for documents, following up leads, writing reports manually, scheduling appointments, data entry..."></textarea>
-  </div>
+        <div class="field">
+          <label>Biggest time drain right now</label>
+          <textarea id="f-pain" placeholder="e.g. Chasing clients for documents, following up leads, writing reports manually, scheduling appointments, data entry..."></textarea>
+        </div>
 
-  <button class="submit-btn" type="button" onclick="goToRecommendation()">
-    Show my recommendation <span class="btn-arrow">&#8594;</span>
-  </button>
+        <button class="submit-btn" type="button" onclick="goToRecommendation()">
+          Show my recommendation <span class="btn-arrow">&#8594;</span>
+        </button>
 
-  <p class="form-note">Instant recommendation. No email required.</p>
-</div>
+        <p class="form-note">Instant recommendation. No email required.</p>
+      </div>
     </div>
   </div>
 
@@ -443,24 +450,24 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
   }
 
   function goToRecommendation() {
-    const pain = document.getElementById('f-pain').value.trim();
+  const pain = document.getElementById('f-pain').value.trim();
 
-    if (!pain) {
-      const el = document.getElementById('f-pain');
-      el.focus();
-      el.style.borderColor = '#3B7BFF';
-      return;
-    }
-
-    gtag('event', 'recommendation_submit', {
-      source: 'homepage_pain_only'
-    });
-
-    const params = new URLSearchParams();
-    params.set('pain', pain);
-
-    window.location.href = `/recommendation?${params.toString()}`;
+  if (!pain) {
+    const el = document.getElementById('f-pain');
+    el.focus();
+    el.style.borderColor = '#3B7BFF';
+    return;
   }
+
+  gtag('event', 'recommendation_submit', {
+    source: 'homepage_pain_only'
+  });
+
+  const params = new URLSearchParams();
+  params.set('pain', pain);
+
+  window.location.href = `/recommendation?${params.toString()}`;
+}
 </script>
 </body>
 </html>
