@@ -761,11 +761,13 @@ async function saveLead(toolName) {
     }]).select();
     console.log('SUPABASE DATA:', data);
     if (data && data.length > 0) {
-  gtag('event', 'qualify_lead', {
-    event_category: 'lead',
-    event_label: toolName || 'unknown',
-    value: 1
-  });
+  setTimeout(() => {
+    gtag('event', 'qualify_lead', {
+      event_category: 'lead',
+      event_label: toolName || 'unknown',
+      value: 1
+    });
+  }, 1000);
 }
     console.log('SUPABASE ERROR:', error);
   } catch (e) { console.warn('Lead save failed:', e); }
