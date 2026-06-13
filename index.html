@@ -130,11 +130,31 @@ textarea { resize: none; height: 88px; line-height: 1.55; }
 .stat-l { font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 .stat-note { font-size: 11px; color: var(--muted); font-style: italic; font-weight: 300; margin-top: 3px; line-height: 1.4; }
 
-.trust-bar { padding: 14px 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); overflow: hidden; position: relative; }
-.trust-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: block; }
-.trust-items { display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 2px; }
-.trust-items::-webkit-scrollbar { display: none; }
-.trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.trust-bar {
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.trust-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted);
+}
+.trust-items {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: 8px;
+}
+.trust-item {
+  font-size: 12px; font-weight: 500; color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}
 
 .section { padding: 48px 20px; border-top: 1px solid var(--border); }
 .sec-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
@@ -224,7 +244,10 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
   .form-body { padding: 24px 32px 28px; }
   .stats { margin-top: 32px; }
   .stat { padding: 18px 22px; }
-  .trust-bar { padding: 20px 48px; display: flex; align-items: center; gap: 48px; }
+  .trust-bar { flex-direction: row; justify-content: center; gap: 20px; padding: 20px 48px; }
+  .trust-label { white-space: nowrap; }
+  .trust-items { flex-wrap: nowrap; gap: 10px; }
+  .trust-item { font-size: 13px; }
   .trust-label { display: inline; margin-bottom: 0; white-space: nowrap; }
   .trust-items { overflow-x: visible; flex-wrap: wrap; gap: 32px; }
   .trust-item { font-size: 13px; }
