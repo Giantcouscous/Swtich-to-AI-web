@@ -828,6 +828,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 const params   = new URLSearchParams(window.location.search);
 const userPain = params.get('pain') || '';
+let painPhrase = '';
 
 // ── LOADING STEPS ─────────────────────────────────────────────────────────
 function animateLoadingSteps() {
@@ -1004,6 +1005,7 @@ record: {
   name: name || null,
   email: email,
   pain_point: userPain || null,
+  pain_phrase: painPhrase || null,
   industry: industry || null
 }
         })
@@ -1022,6 +1024,7 @@ await db.from('report_requests').insert([{
   name: name || null,
   email: email,
   pain_point: userPain || null,
+  pain_phrase: painPhrase || null,
   industry: industry || null,
 }]);
 
@@ -1047,8 +1050,10 @@ async function init() {
   animateLoadingSteps();
   let tool;
   try {
-    tool = await getToolRecommendation();
-    if (!tool || !tool.tool_name) throw new Error('Invalid tool response');
+   tool = await getToolRecommendation();
+if (!tool || !tool.tool_name) throw new Error('Invalid tool response');
+
+painPhrase = tool.pain_phrase || '';
   } catch (e) {
     console.error('Recommendation failed:', e);
     tool = getFallback();
