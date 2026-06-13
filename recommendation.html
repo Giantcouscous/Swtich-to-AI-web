@@ -721,6 +721,7 @@ footer p { font-size: 12px; color: var(--muted); }
         <div class="email-fields">
           <input class="email-input" type="text" id="ec-name" placeholder="Your name" autocomplete="name">
           <input class="email-input" type="email" id="ec-email" placeholder="your@email.com" autocomplete="email" inputmode="email">
+          <input class="email-input" type="text" id="ec-industry" placeholder="Your industry e.g. Estate Agent, Accountancy..." autocomplete="organization-title">
         </div>
         <button class="email-submit-btn" onclick="submitReportRequest()">
           Send me the reports &#8594;
@@ -974,8 +975,9 @@ document.addEventListener('keydown', (e) => {
 
 // ── REPORT REQUEST ────────────────────────────────────────────────────────
 async function submitReportRequest() {
-  const name  = document.getElementById('ec-name').value.trim();
-  const email = document.getElementById('ec-email').value.trim();
+  const name     = document.getElementById('ec-name').value.trim();
+const email    = document.getElementById('ec-email').value.trim();
+const industry = document.getElementById('ec-industry').value.trim();
 
   if (!email) {
     document.getElementById('ec-email').focus();
@@ -998,11 +1000,12 @@ try {
           'Authorization': 'Bearer ' + SUPABASE_KEY
         },
         body: JSON.stringify({
-          record: {
-            name: name || null,
-            email: email,
-            pain_point: userPain || null
-          }
+record: {
+  name: name || null,
+  email: email,
+  pain_point: userPain || null,
+  industry: industry || null
+}
         })
       }
     );
@@ -1015,11 +1018,12 @@ try {
     // Also save to table for your records
     const { createClient } = supabase;
     const db = createClient(SUPABASE_URL, SUPABASE_KEY);
-    await db.from('report_requests').insert([{
-      name: name || null,
-      email: email,
-      pain_point: userPain || null,
-    }]);
+await db.from('report_requests').insert([{
+  name: name || null,
+  email: email,
+  pain_point: userPain || null,
+  industry: industry || null,
+}]);
 
     document.getElementById('email-success').style.display = 'block';
     btn.textContent = 'Sent \u2713';
