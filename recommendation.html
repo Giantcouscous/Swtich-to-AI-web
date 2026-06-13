@@ -990,7 +990,7 @@ async function submitReportRequest() {
 try {
     // Call Edge Function directly — no webhook needed
     const res = await fetch(
-      'https://fiykaghrcnhswmwsrgdy.supabase.co/functions/v1/send-reports',
+      'https://fiykaghrcnhswmwsrgdy.supabase.co/functions/v1/swift-function',
       {
         method: 'POST',
         headers: {
