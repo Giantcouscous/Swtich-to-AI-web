@@ -73,6 +73,33 @@ h1 { font-family: 'Fraunces', serif; font-size: clamp(32px, 8vw, 48px); font-wei
 h1 em { font-style: italic; color: var(--blue); font-weight: 300; }
 .hero-sub { font-size: 15px; font-weight: 400; line-height: 1.7; color: var(--muted); margin-bottom: 0; max-width: 480px; }
 
+  /* ── FLOW STRIP ── */
+.flow-strip {
+  display: flex; flex-direction: column;
+  gap: 0; margin-top: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--r); overflow: hidden;
+}
+.flow-step {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+.flow-step:last-child { border-bottom: none; }
+.flow-arrow {
+  display: none; /* hidden on mobile — steps stack vertically */
+}
+.flow-label {
+  font-size: 13px; font-weight: 600;
+  color: var(--white);
+}
+.flow-time {
+  font-size: 11px; font-weight: 500;
+  color: var(--blue); letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+  
 .form-wrap { position: relative; z-index: 2; margin-bottom: 32px; }
 .form-card { background: var(--bg2); border: 1px solid var(--border-b); border-radius: var(--r); overflow: hidden; }
 .form-top { padding: 24px 24px 20px; border-bottom: 1px solid var(--border); position: relative; }
@@ -162,6 +189,27 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
 .fade-in { animation: fadeUp 0.5s ease both; }
 
 @media (min-width: 768px) {
+  
+  .flow-strip {
+    flex-direction: row; align-items: stretch;
+    border-radius: var(--r);
+  }
+  .flow-step {
+    flex: 1; flex-direction: column;
+    align-items: flex-start; justify-content: center;
+    gap: 6px; border-bottom: none;
+    border-right: 1px solid var(--border);
+    padding: 18px 20px;
+  }
+  .flow-step:last-child { border-right: none; }
+  .flow-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--blue); font-size: 16px; opacity: 0.4;
+    padding: 0 4px; flex-shrink: 0;
+    border-bottom: none;
+  }
+  .flow-label { font-size: 13px; }
+  .flow-time { font-size: 11px; }
   nav { padding: 20px 48px; }
   .nav-link { display: block; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-link:hover { color: var(--white); }
@@ -232,47 +280,22 @@ footer { padding: 40px 20px 32px; border-top: 1px solid var(--border); }
    <h1>Stop doing the work<br><em>software</em> should be doing.</h1>
     <p class="hero-sub">Tell us the biggest time drain in your business and we'll instantly recommend the AI tool we'd start with. No sales call. No email required.</p>
 
-    <div class="stats">
-
-  <div class="stat">
-    <div class="stat-num-wrap">
-      <div class="stat-num">1</div>
-      <div class="stat-unit">step</div>
-    </div>
-    <div class="stat-text">
-      <div class="stat-l">Describe the bottleneck</div>
-      <div class="stat-note">
-        Tell us the task that wastes the most time in your business.
+<div class="flow-strip">
+      <div class="flow-step">
+        <div class="flow-label">Describe your bottleneck</div>
+        <div class="flow-time">30 seconds</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-label">Get your AI tool</div>
+        <div class="flow-time">instant</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-label">See real assessments</div>
+        <div class="flow-time">free, no sign-up</div>
       </div>
     </div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-num-wrap">
-      <div class="stat-num">2</div>
-      <div class="stat-unit">step</div>
-    </div>
-    <div class="stat-text">
-      <div class="stat-l">Get your recommendation</div>
-      <div class="stat-note">
-        We'll show the AI tool we'd use first and explain why.
-      </div>
-    </div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-num-wrap">
-      <div class="stat-num">3</div>
-      <div class="stat-unit">step</div>
-    </div>
-    <div class="stat-text">
-      <div class="stat-l">See real examples</div>
-      <div class="stat-note">
-        Review real AI assessments and discover what's possible.
-      </div>
-    </div>
-  </div>
-</div>
 </div>
     </div>
   </div>
