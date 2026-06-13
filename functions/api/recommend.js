@@ -1,18 +1,14 @@
 export async function onRequest(context) {
-
   const { request, env } = context;
-
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json',
   };
-
   if (request.method === 'OPTIONS') {
     return new Response(null, { headers });
   }
-
   if (request.method === 'GET') {
     return new Response(
       JSON.stringify({
@@ -22,15 +18,11 @@ export async function onRequest(context) {
       { headers }
     );
   }
-
   try {
-
     const body = await request.json();
-
     const pain = body.pain || '';
     const company = body.company || '';
     const name = body.name || '';
-
     if (!pain) {
       return new Response(
         JSON.stringify({
@@ -42,16 +34,12 @@ export async function onRequest(context) {
         }
       );
     }
-
     const prompt = `You are a specialist AI automation advisor for SwitchToAI, a UK-based consultancy helping small service businesses recover time through automation.
-
 A business owner has submitted the following:
 Pain point: ${pain}
 ${company ? `Company: ${company}` : ''}
 ${name ? `Name: ${name}` : ''}
-
 Your task: identify the single best off-the-shelf AI or automation tool that directly solves this pain point for a small UK service business.
-
 Requirements:
 - Prioritise tools that are mature, actively maintained, and have transparent pricing
 - Must be suitable for non-technical business owners — no coding required
@@ -59,6 +47,18 @@ Requirements:
 - Prefer tools with a free tier or trial so they can test before paying
 - Be specific — not "a CRM" but "HubSpot" or "Pipedrive"
 - If the pain point is about building an AI agent, recommend Make.com or n8n as the foundation
+
+You must also produce a normalised pain phrase for use in marketing copy.
+"pain_phrase" rules:
+- A short lower-case noun phrase, 3 to 7 words, naming the PROBLEM.
+- It must read correctly inside the sentence "the cost of ___ in your business".
+- No leading article (do not start with "the", "a", or "an"). UK spelling.
+- If the owner described a desired solution rather than a problem, convert it to the underlying problem.
+- Examples:
+    "automatic booking"        -> "bookings handled by hand"
+    "leads on weekends"        -> "weekend leads going unanswered"
+    "too much admin reporting" -> "reports built manually each week"
+    "chasing clients for docs" -> "documents chased one email at a time"
 
 Return ONLY valid JSON — no markdown, no explanation, no extra text:
 {
@@ -68,7 +68,8 @@ Return ONLY valid JSON — no markdown, no explanation, no extra text:
   "price": "Free / Free – £X/month / from £X/month",
   "setup_time": "e.g. 2 hours / Half a day / 1 week",
   "url": "https://exacturl.com",
-  "pain_summary": "3-4 words for a page headline"
+  "pain_summary": "3-4 words for a page headline",
+  "pain_phrase": "lower-case noun phrase that fits 'the cost of ___ in your business'"
 }`;
 console.log('API KEY EXISTS:', !!env.ANTHROPIC_API_KEY);
 console.log('API KEY PREFIX:', env.ANTHROPIC_API_KEY?.slice(0, 10));
@@ -93,13 +94,9 @@ model: 'claude-sonnet-4-5',
         })
       }
     );
-
     const text = await anthropicResponse.text();
-
     if (!anthropicResponse.ok) {
-
 console.log(text);
-
 return new Response(
   JSON.stringify({
     error: 'Anthropic failed',
@@ -110,32 +107,22 @@ return new Response(
     headers
   }
 );
-
     }
-
     const data = JSON.parse(text);
-
     let output = '';
-
     for (const block of data.content) {
-
       if (block.type === 'text') {
         output += block.text;
       }
-
     }
-
     output = output
       .replace(/```json/g, '')
       .replace(/```/g, '')
       .trim();
-
 let parsed;
-
 try {
   parsed = JSON.parse(output);
 } catch (e) {
-
   return new Response(
     JSON.stringify({
       error: 'Invalid Claude JSON',
@@ -146,18 +133,17 @@ try {
       headers
     }
   );
-
 }
-
+// Safety net: never return an empty pain_phrase
+if (!parsed.pain_phrase || !parsed.pain_phrase.trim()) {
+  parsed.pain_phrase = 'the problem you flagged';
+}
 return new Response(
   JSON.stringify(parsed),
   { headers }
 );
-
 } catch (err) {
-
   console.log(err);
-
   return new Response(
     JSON.stringify({
       error: err.message,
@@ -168,7 +154,5 @@ return new Response(
         headers
       }
     );
-
   }
-
 }
