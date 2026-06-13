@@ -987,7 +987,32 @@ async function submitReportRequest() {
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  try {
+try {
+    // Call Edge Function directly — no webhook needed
+    const res = await fetch(
+      'https://fiykaghrcnhswmwsrgdy.supabase.co/functions/v1/send-reports',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + SUPABASE_KEY
+        },
+        body: JSON.stringify({
+          record: {
+            name: name || null,
+            email: email,
+            pain_point: userPain || null
+          }
+        })
+      }
+    );
+
+    const result = await res.json();
+    console.log('Function result:', result);
+
+    if (!res.ok) throw new Error(result.error || 'Function failed');
+
+    // Also save to table for your records
     const { createClient } = supabase;
     const db = createClient(SUPABASE_URL, SUPABASE_KEY);
     await db.from('report_requests').insert([{
@@ -997,7 +1022,7 @@ async function submitReportRequest() {
     }]);
 
     document.getElementById('email-success').style.display = 'block';
-    btn.textContent = 'Sent ✓';
+    btn.textContent = 'Sent \u2713';
     btn.style.background = '#1d9e6e';
 
     gtag('event', 'report_request', {
